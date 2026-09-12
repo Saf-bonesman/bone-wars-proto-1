@@ -8,6 +8,7 @@ camp player
 camp enemy
 hole
 inverted version of each
+cursor
 
 48*48
 player art
