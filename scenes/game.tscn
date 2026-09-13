@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://caaq8dsa0rdiv"]
 
+[ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_qbsmt"]
+[ext_resource type="PackedScene" uid="uid://bv7qirvlnssu7" path="res://scenes/Board.tscn" id="2_cpr0p"]
+
 [node name="Game" type="Node2D" unique_id=1720362518]
+script = ExtResource("1_qbsmt")
 
 [node name="HUD" type="Control" parent="." unique_id=587045064]
 layout_mode = 3
@@ -10,7 +14,8 @@ offset_bottom = 40.0
 
 [node name="Map" type="Node2D" parent="." unique_id=1790659061]
 
-[node name="Board" type="Node2D" parent="Map" unique_id=1373318400]
+[node name="Board2" parent="Map" unique_id=1421904820 instance=ExtResource("2_cpr0p")]
+board_width = 8
 
 [node name="Player" type="Node2D" parent="Map" unique_id=2069835495]
 
