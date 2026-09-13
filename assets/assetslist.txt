@@ -10,6 +10,11 @@ hole
 inverted version of each
 cursor
 
+16*16?
+begin dig (earth up)
+end dig (bones)
+explosion
+
 48*48
 player art
 
