@@ -12,3 +12,4 @@ script = ExtResource("1_tm3qm")
 [node name="Camps" type="Node2D" parent="." unique_id=830518747]
 
 [node name="Player" parent="." unique_id=30233815 instance=ExtResource("2_tm3qm")]
+position = Vector2(8, 8)
