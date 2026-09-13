@@ -1,7 +1,51 @@
 [gd_scene format=3 uid="uid://drmxgba7hxaru"]
 
+[ext_resource type="Texture2D" uid="uid://omx4vvvlsm8t" path="res://assets/ui/menu_placeholder.png" id="1_qa3i8"]
+[ext_resource type="Texture2D" uid="uid://bu7kenhbqvnc" path="res://assets/ui/menu_select_placeholder.png" id="2_1utw0"]
+[ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="3_8sw7y"]
+
 [node name="PlayerMenu" type="Control" unique_id=1982733969]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+
+[node name="MenuBackground" type="Sprite2D" parent="." unique_id=1528355104]
+texture = ExtResource("1_qa3i8")
+
+[node name="MenuSelector" type="Sprite2D" parent="MenuBackground" unique_id=919066569]
+position = Vector2(0, -16)
+texture = ExtResource("2_1utw0")
+
+[node name="DigLabel" type="Label" parent="MenuBackground" unique_id=166486610]
+offset_left = -30.0
+offset_top = -23.0
+offset_right = 32.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sw7y")
+text = "start dig"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SabLabel" type="Label" parent="MenuBackground" unique_id=1964886127]
+offset_left = -32.0
+offset_top = -7.0
+offset_right = 30.0
+offset_bottom = 7.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sw7y")
+theme_override_font_sizes/font_size = 15
+text = "sabotage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdLabel" type="Label" parent="MenuBackground" unique_id=950109461]
+offset_left = -30.0
+offset_top = 9.0
+offset_right = 31.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sw7y")
+theme_override_font_sizes/font_size = 13
+text = "third thing"
+horizontal_alignment = 1
+vertical_alignment = 1

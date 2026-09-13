@@ -5,6 +5,7 @@ var move_timer
 var tile_height
 var w
 var h
+var player_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,8 +18,11 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _input(_event : InputEvent) -> void:
+func _input(event : InputEvent) -> void:
 	move_timer.start()
+	if event.is_action_pressed("action_a"):
+		move_timer.stop()
+		player_menu = $PlayerMenu
 	
 # repeat timer
 func _on_move_timer_timeout() -> void:
