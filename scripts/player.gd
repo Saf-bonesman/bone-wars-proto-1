@@ -5,9 +5,11 @@ var move_timer
 var tile_height
 var w
 var h
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	move_timer = get_node("MoveTimer")
+	move_timer.start()
 	
 #Limit screen
 func limit_pos() -> void:
@@ -15,7 +17,7 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _input(_event) -> void:
+func _input(_event : InputEvent) -> void:
 	move_timer.start()
 	
 # repeat timer
@@ -36,3 +38,5 @@ func _on_move_timer_timeout() -> void:
 	position = Vector2i(
 		curr_pos.x * tile_height + tile_height/2, 
 		curr_pos.y * tile_height + tile_height/2)
+	if Input.is_action_just_released("action_move"):
+		move_timer.stop()
