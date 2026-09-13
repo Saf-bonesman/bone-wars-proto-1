@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b5cd385odm4sm"]
+
+[ext_resource type="PackedScene" uid="uid://bv7qirvlnssu7" path="res://scenes/Board.tscn" id="1_xkm8s"]
+
+[node name="Map" type="Node2D" unique_id=2024162226]
+
+[node name="Board" parent="." unique_id=1421904820 instance=ExtResource("1_xkm8s")]
+board_width = 8
+board_height = 6
+
+[node name="Player" type="Node2D" parent="." unique_id=997804848]
+
+[node name="Player_Menu" type="Control" parent="Player" unique_id=1304758874]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Camps" type="Node2D" parent="." unique_id=1365756363]

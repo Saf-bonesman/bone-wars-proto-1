@@ -1,28 +1,13 @@
 [gd_scene format=3 uid="uid://caaq8dsa0rdiv"]
 
 [ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_qbsmt"]
-[ext_resource type="PackedScene" uid="uid://bv7qirvlnssu7" path="res://scenes/Board.tscn" id="2_cpr0p"]
 [ext_resource type="PackedScene" uid="uid://5a8tictfyrl5" path="res://scenes/HUD.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://b5cd385odm4sm" path="res://scenes/Map.tscn" id="2_qbsmt"]
 
 [node name="Game" type="Node2D" unique_id=1720362518]
 script = ExtResource("1_qbsmt")
 
 [node name="HUD" parent="." unique_id=2096496772 instance=ExtResource("2_lnu2h")]
 
-[node name="Map" type="Node2D" parent="." unique_id=1790659061]
+[node name="Map" parent="." unique_id=2024162226 instance=ExtResource("2_qbsmt")]
 position = Vector2(16, 0)
-
-[node name="Board" parent="Map" unique_id=1421904820 instance=ExtResource("2_cpr0p")]
-board_width = 8
-board_height = 6
-
-[node name="Player" type="Node2D" parent="Map" unique_id=2069835495]
-
-[node name="Player_Menu" type="Control" parent="Map/Player" unique_id=1965913490]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Camps" type="Node2D" parent="Map" unique_id=278613772]
