@@ -1,8 +1,8 @@
 extends Node2D
 
 ## generates and draws a board state
-@export var board_width : int = 5
-@export var board_height : int = 5
+@export var board_width : int = 10
+@export var board_height : int = 7
 @export var terrain : TileMapLayer
 const tileSize = 16
 var board : Dictionary = {}
