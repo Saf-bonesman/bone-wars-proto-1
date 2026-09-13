@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ctt1elqkpsy2u"]
+
+[node name="MoveTimer" type="Timer" unique_id=1415654893]
+autostart = true

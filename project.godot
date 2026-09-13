@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bone Wars Proto1"
-run/main_scene="uid://bv7qirvlnssu7"
+run/main_scene="uid://caaq8dsa0rdiv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

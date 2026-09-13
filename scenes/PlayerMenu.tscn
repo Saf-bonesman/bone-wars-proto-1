@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drmxgba7hxaru"]
 
-[node name="Player_Menu" type="Control" unique_id=1982733969]
+[node name="PlayerMenu" type="Control" unique_id=1982733969]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
