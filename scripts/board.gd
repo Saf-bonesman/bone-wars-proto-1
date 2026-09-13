@@ -24,7 +24,7 @@ func _init_board() -> void:
 			Location.position.x = x * tileSize
 			board[Vector2i (x,y)] = Cell
 
-#actually draw the tiles
+## actually draw the tiles
 func redraw_board() -> void:
 	for cell in board:
 		var terrainIndex = terrainDict.get(board.get(cell).TileType)
