@@ -8,15 +8,15 @@ var current_player_turn : int = 0
 
 ## test
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("action_right"):
+	if Input.is_action_just_pressed("debug_middlemoues"):
 		_find_bones(randi_range(0,5))
 		print(current_player_turn, ", ", score_array[current_player_turn])
-	if Input.is_action_just_pressed("action_down"):
+	if Input.is_action_just_pressed("debug_rightmouse"):
 		end_turn()
-	if Input.is_action_just_pressed("action_left"):
-		_sabotage_punishment()
-	if Input.is_action_just_pressed("action_up"):
-		_score_new_building()
+	##if Input.is_action_just_pressed("action_left"):
+	##	_sabotage_punishment()
+	##if Input.is_action_just_pressed("action_up"):
+	##	_score_new_building()
 
 func _ready() -> void:
 	HUD.init_player_displays()
@@ -27,6 +27,7 @@ func end_turn() -> void:
 	else:
 		current_player_turn += 1
 	HUD.update_info_display("turn",0,current_player_turn+1)
+	turn_end.emit(current_player_turn)
 
 func _send_score() -> void:
 	HUD.set_score_display(current_player_turn, score_array[current_player_turn])
@@ -46,3 +47,5 @@ func _sabotage_punishment() -> void:
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage", punishment, 0)
 	_send_score()
+	
+signal turn_end

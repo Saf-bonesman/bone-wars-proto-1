@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://caaq8dsa0rdiv"]
 
-[ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_qbsmt"]
-[ext_resource type="PackedScene" uid="uid://5a8tictfyrl5" path="res://scenes/HUD.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://b5cd385odm4sm" path="res://scenes/Map.tscn" id="2_qbsmt"]
+[ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_cpr0p"]
+[ext_resource type="PackedScene" uid="uid://5a8tictfyrl5" path="res://scenes/HUD.tscn" id="2_78awf"]
+[ext_resource type="PackedScene" uid="uid://djtdvklxw2yey" path="res://scenes/Map.tscn" id="3_s0nni"]
 
 [node name="Game" type="Node2D" unique_id=1720362518]
-script = ExtResource("1_qbsmt")
+script = ExtResource("1_cpr0p")
 
-[node name="HUD" parent="." unique_id=2096496772 instance=ExtResource("2_lnu2h")]
+[node name="HUD" parent="." unique_id=2096496772 instance=ExtResource("2_78awf")]
 
-[node name="Map" parent="." unique_id=2024162226 instance=ExtResource("2_qbsmt")]
+[node name="Map" parent="." unique_id=2024162226 instance=ExtResource("3_s0nni")]
 position = Vector2(16, 0)
+
+[connection signal="turn_end" from="." to="Map" method="_on_game_turn_end"]
