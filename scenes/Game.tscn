@@ -14,7 +14,7 @@ offset_bottom = 40.0
 
 [node name="Map" type="Node2D" parent="." unique_id=1790659061]
 
-[node name="Board2" parent="Map" unique_id=1421904820 instance=ExtResource("2_cpr0p")]
+[node name="Board" parent="Map" unique_id=1421904820 instance=ExtResource("2_cpr0p")]
 board_width = 8
 
 [node name="Player" type="Node2D" parent="Map" unique_id=2069835495]
