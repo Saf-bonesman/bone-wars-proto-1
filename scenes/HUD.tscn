@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://5a8tictfyrl5"]
+
+[ext_resource type="Texture2D" uid="uid://di7uhwrqr6yy1" path="res://assets/saffs_placeholder_assets_holder/frameplaceholder.png" id="1_1etfg"]
+[ext_resource type="Script" uid="uid://d0n5jfy70h07i" path="res://scripts/hud.gd" id="1_7hsmw"]
+[ext_resource type="PackedScene" uid="uid://bbdhrq4ubcb0f" path="res://scenes/PlayerDisplay.tscn" id="3_1etfg"]
+[ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="3_nysna"]
+
+[node name="HUD" type="Control" unique_id=2096496772]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7hsmw")
+metadata/_edit_use_anchors_ = true
+
+[node name="FrameBackground" type="Sprite2D" parent="." unique_id=841738108]
+position = Vector2(80, 72)
+texture = ExtResource("1_1etfg")
+
+[node name="PlayerDisplay" parent="." unique_id=821448185 instance=ExtResource("3_1etfg")]
+layout_mode = 0
+
+[node name="PlayerDisplay2" parent="." unique_id=1463565118 instance=ExtResource("3_1etfg")]
+layout_mode = 0
+offset_left = 144.0
+offset_right = 184.0
+
+[node name="InfoDisplay" type="Label" parent="." unique_id=423197516]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 101.0
+offset_right = 156.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_nysna")
+text = "you got bones!"
+horizontal_alignment = 1
