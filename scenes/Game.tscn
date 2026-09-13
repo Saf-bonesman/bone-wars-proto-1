@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_qbsmt"]
 [ext_resource type="PackedScene" uid="uid://bv7qirvlnssu7" path="res://scenes/Board.tscn" id="2_cpr0p"]
+[ext_resource type="PackedScene" uid="uid://c1bu5uqa72nok" path="res://scenes/Player.tscn" id="3_cpr0p"]
 
 [node name="Game" type="Node2D" unique_id=1720362518]
 script = ExtResource("1_qbsmt")
@@ -17,12 +18,6 @@ offset_bottom = 40.0
 [node name="Board" parent="Map" unique_id=1421904820 instance=ExtResource("2_cpr0p")]
 board_width = 8
 
-[node name="Player" type="Node2D" parent="Map" unique_id=2069835495]
-
-[node name="Player_Menu" type="Control" parent="Map/Player" unique_id=1965913490]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Player" parent="Map" unique_id=30233815 instance=ExtResource("3_cpr0p")]
 
 [node name="Camps" type="Node2D" parent="Map" unique_id=278613772]
