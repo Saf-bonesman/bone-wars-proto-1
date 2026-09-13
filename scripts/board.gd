@@ -1,8 +1,8 @@
 extends Node2D
 
 ## generates and draws a board state
-@export var board_width : int = 10
-@export var board_height : int = 7
+@export var board_width : int = 8
+@export var board_height : int = 6
 @export var terrain : TileMapLayer
 const tileSize = 16
 var board : Dictionary = {}
@@ -22,7 +22,7 @@ func _init_board() -> void:
 			var Location = Marker2D.new()
 			Location.position.y = y * tileSize
 			Location.position.x = x * tileSize
-			board[Vector2i (x,y)] = Cell
+			board[Vector2i (x+1,y)] = Cell
 
 ## actually draw the tiles
 func redraw_board() -> void:
