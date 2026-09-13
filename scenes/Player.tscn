@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://c7bxph0xue0cw" path="res://assets/characters/cursor_placeholder.png" id="2_v6fml"]
 
 [node name="Player" type="Node2D" unique_id=30233815]
-position = Vector2(24, 8)
 script = ExtResource("1_3li8b")
 
 [node name="PlayerMenu" parent="." unique_id=1982733969 instance=ExtResource("1_p0vlq")]
@@ -14,6 +13,6 @@ script = ExtResource("1_3li8b")
 texture = ExtResource("2_v6fml")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=1033107008]
-wait_time = 0.1
+wait_time = 0.07
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
