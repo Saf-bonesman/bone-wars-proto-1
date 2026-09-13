@@ -8,6 +8,7 @@ camp player
 camp enemy
 hole
 inverted version of each
+cursor
 
 48*48
 player art
@@ -21,3 +22,19 @@ enemy art?
 
 112*48
 text box
+
++logo and start screen
++splash art for sabotage, exposed, sneaky, successful dig
+
+Sounds
+dig
+explosion
+exposed
+encamp
+menu boop
+rep up
+rep down
+bone cashing
+
+Music
+main music
