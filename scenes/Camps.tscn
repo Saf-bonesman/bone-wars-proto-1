@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dg410gpfwwu8y"]
+
+[ext_resource type="Script" uid="uid://dfkt7y7oavgrs" path="res://scripts/camps.gd" id="1_ct76l"]
+[ext_resource type="Texture2D" uid="uid://b6rpcynfwxkof" path="res://assets/tiles/camp_square.png" id="2_k0yem"]
+[ext_resource type="Texture2D" uid="uid://i4yamejbe6ey" path="res://assets/tiles/camp_triangle.png" id="3_b6v6v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0j4ty"]
+texture = ExtResource("2_k0yem")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hl6hb"]
+texture = ExtResource("3_b6v6v")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nt13d"]
+sources/1 = SubResource("TileSetAtlasSource_0j4ty")
+sources/2 = SubResource("TileSetAtlasSource_hl6hb")
+
+[node name="Camps" type="Node2D" unique_id=1464024325]
+script = ExtResource("1_ct76l")
+
+[node name="PlayerStructureTiles" type="TileMapLayer" parent="." unique_id=589632294]
+tile_set = SubResource("TileSet_nt13d")
