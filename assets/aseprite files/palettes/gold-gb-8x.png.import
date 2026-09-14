@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fnqwt8gr3n0q"
-path="res://.godot/imported/gold-gb-8x.png-26842f69c2ae455ae86aa5cd4edb3c64.ctex"
+path="res://.godot/imported/gold-gb-8x.png-599335a8ce4684a62663d3bf4524e6af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/gold-gb-8x.png"
-dest_files=["res://.godot/imported/gold-gb-8x.png-26842f69c2ae455ae86aa5cd4edb3c64.ctex"]
+source_file="res://assets/aseprite files/palettes/gold-gb-8x.png"
+dest_files=["res://.godot/imported/gold-gb-8x.png-599335a8ce4684a62663d3bf4524e6af.ctex"]
 
 [params]
 

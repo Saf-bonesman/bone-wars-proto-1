@@ -21,10 +21,6 @@ func board_init() -> void:
 	Player.w = board_width - 1
 	Player.h = board_height - 1
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("debug_leftmouse"):
-		spawn_camp()
-
 func spawn_camp():
 	var camp_coordinates = Player.curr_pos
 	if player_structures.has(camp_coordinates):

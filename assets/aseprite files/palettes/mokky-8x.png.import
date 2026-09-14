@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cypfl48g5ppqm"
-path="res://.godot/imported/mokky-8x.png-68ec4766d03b3e93bab67ff55c6ea1c5.ctex"
+path="res://.godot/imported/mokky-8x.png-ecfbe07d47e645d4cda17fada7b30efa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/mokky-8x.png"
-dest_files=["res://.godot/imported/mokky-8x.png-68ec4766d03b3e93bab67ff55c6ea1c5.ctex"]
+source_file="res://assets/aseprite files/palettes/mokky-8x.png"
+dest_files=["res://.godot/imported/mokky-8x.png-ecfbe07d47e645d4cda17fada7b30efa.ctex"]
 
 [params]
 

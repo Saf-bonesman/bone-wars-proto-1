@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqguluiujgftp"
-path="res://.godot/imported/ice-cream-gb-8x.png-329806b8c73556b86869d0911734e679.ctex"
+path="res://.godot/imported/ice-cream-gb-8x.png-65acd83d13aa1d6d7f3f6d1f1a751c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/ice-cream-gb-8x.png"
-dest_files=["res://.godot/imported/ice-cream-gb-8x.png-329806b8c73556b86869d0911734e679.ctex"]
+source_file="res://assets/aseprite files/palettes/ice-cream-gb-8x.png"
+dest_files=["res://.godot/imported/ice-cream-gb-8x.png-65acd83d13aa1d6d7f3f6d1f1a751c0a.ctex"]
 
 [params]
 

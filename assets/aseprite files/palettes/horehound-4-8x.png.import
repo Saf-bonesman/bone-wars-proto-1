@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx1ygx0ug0um4"
-path="res://.godot/imported/horehound-4-8x.png-5e181923f5e3987b503462dfd8cc241f.ctex"
+path="res://.godot/imported/horehound-4-8x.png-8393a7545a16a8b52e1cb718c467a4ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/horehound-4-8x.png"
-dest_files=["res://.godot/imported/horehound-4-8x.png-5e181923f5e3987b503462dfd8cc241f.ctex"]
+source_file="res://assets/aseprite files/palettes/horehound-4-8x.png"
+dest_files=["res://.godot/imported/horehound-4-8x.png-8393a7545a16a8b52e1cb718c467a4ac.ctex"]
 
 [params]
 
