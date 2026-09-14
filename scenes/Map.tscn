@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://kryf5jqc4evo" path="res://scripts/map.gd" id="1_tm3qm"]
 [ext_resource type="PackedScene" uid="uid://bv7qirvlnssu7" path="res://scenes/Board.tscn" id="1_xkm8s"]
 [ext_resource type="PackedScene" uid="uid://c1bu5uqa72nok" path="res://scenes/Player.tscn" id="2_tm3qm"]
+[ext_resource type="PackedScene" uid="uid://dg410gpfwwu8y" path="res://scenes/Camps.tscn" id="3_tm3qm"]
 
 [node name="Map" type="Node2D" unique_id=479964413]
 script = ExtResource("1_tm3qm")
 
 [node name="Board" parent="." unique_id=1421904820 instance=ExtResource("1_xkm8s")]
 
-[node name="Camps" type="Node2D" parent="." unique_id=830518747]
+[node name="Camps" parent="." unique_id=1464024325 instance=ExtResource("3_tm3qm")]
 
 [node name="Player" parent="." unique_id=30233815 instance=ExtResource("2_tm3qm")]
 position = Vector2(8, 8)
