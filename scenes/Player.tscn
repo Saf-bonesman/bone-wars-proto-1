@@ -13,6 +13,6 @@ script = ExtResource("1_3li8b")
 texture = ExtResource("2_v6fml")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=1033107008]
-wait_time = 0.07
+wait_time = 0.05
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

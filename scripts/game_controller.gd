@@ -1,13 +1,13 @@
 extends Node2D
 
 @onready var HUD : Control = $HUD
-
+@onready var Map : Node2D = $Map
 var score_array : Array[int] = [0, 0, 0, 0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
 
 ## test
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_middlemoues"):
 		_find_bones(randi_range(0,5))
 		print(current_player_turn, ", ", score_array[current_player_turn])
@@ -20,6 +20,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	HUD.init_player_displays()
+	Map.Player.broadcast_action.connect(_on_broadcast_action)
+
+func _on_broadcast_action(action_type : String, coords : Vector2i) -> void:
+	print(action_type)
+	match action_type:
+		"encamp":
+			Map.spawn_camp()
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:

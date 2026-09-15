@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nwuqn0kxu8rb"
-path="res://.godot/imported/borealis-8x.png-fcd06243ccc8603c8477c65f165ce8bc.ctex"
+path="res://.godot/imported/borealis-8x.png-b0a053ca1815f782d4fb52791d40b763.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/borealis-8x.png"
-dest_files=["res://.godot/imported/borealis-8x.png-fcd06243ccc8603c8477c65f165ce8bc.ctex"]
+source_file="res://assets/aseprite files/palettes/borealis-8x.png"
+dest_files=["res://.godot/imported/borealis-8x.png-b0a053ca1815f782d4fb52791d40b763.ctex"]
 
 [params]
 

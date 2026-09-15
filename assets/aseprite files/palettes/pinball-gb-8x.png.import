@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cub67xi7lk3uc"
-path="res://.godot/imported/pinball-gb-8x.png-eaa80565cf4ef8965debf84f49594b9c.ctex"
+path="res://.godot/imported/pinball-gb-8x.png-e8cb01174144865aaf9c65a0bc1f07e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/pinball-gb-8x.png"
-dest_files=["res://.godot/imported/pinball-gb-8x.png-eaa80565cf4ef8965debf84f49594b9c.ctex"]
+source_file="res://assets/aseprite files/palettes/pinball-gb-8x.png"
+dest_files=["res://.godot/imported/pinball-gb-8x.png-e8cb01174144865aaf9c65a0bc1f07e2.ctex"]
 
 [params]
 

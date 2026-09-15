@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhxt8oj5rp41h"
-path="res://.godot/imported/neon-dawn-8x.png-2db40cd1f174ee18b0612496498b0218.ctex"
+path="res://.godot/imported/neon-dawn-8x.png-cb8b5343ca45799ebcf7d61a858eafdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/palettes/neon-dawn-8x.png"
-dest_files=["res://.godot/imported/neon-dawn-8x.png-2db40cd1f174ee18b0612496498b0218.ctex"]
+source_file="res://assets/aseprite files/palettes/neon-dawn-8x.png"
+dest_files=["res://.godot/imported/neon-dawn-8x.png-cb8b5343ca45799ebcf7d61a858eafdf.ctex"]
 
 [params]
 
