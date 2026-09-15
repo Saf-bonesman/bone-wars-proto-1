@@ -5,8 +5,6 @@ var move_timer
 var tile_height
 var w
 var h
-var player_menu
-var PLAYER_MENU = preload("res://scenes/PlayerMenu.tscn")
 
 enum player_state {
 	ENCAMP,
@@ -43,16 +41,12 @@ func _input(_event) -> void:
 		player_state.MENUING:
 			if Input.is_action_pressed("action_a"):
 				print("choose menu option")
-				player_menu = PLAYER_MENU.instantiate()
-				add_child(player_menu)
-				#if curr_pos.x < 8:
-				player_menu.position = Vector2i(10, 10)
+				broadcast_action.emit("menu", curr_pos)
 				move_timer.set_paused(true)
 				current_state = player_state.ACTION_SABOTAGE
 		player_state.ACTION_SABOTAGE:
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
-				player_menu.queue_free()
 				move_timer.set_paused(false)
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:

@@ -27,6 +27,8 @@ func _on_broadcast_action(action_type : String, coords : Vector2i) -> void:
 	match action_type:
 		"encamp":
 			Map.spawn_camp()
+		"menu":
+			Map.spawn_menu(coords)
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:
