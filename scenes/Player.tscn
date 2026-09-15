@@ -8,7 +8,6 @@
 script = ExtResource("1_3li8b")
 
 [node name="PlayerMenu" parent="." unique_id=1982733969 instance=ExtResource("1_p0vlq")]
-visible = false
 
 [node name="Cursor" type="Sprite2D" parent="." unique_id=648782166]
 texture = ExtResource("2_v6fml")

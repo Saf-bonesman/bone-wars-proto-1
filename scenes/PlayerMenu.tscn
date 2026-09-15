@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://drmxgba7hxaru"]
 
+[ext_resource type="Theme" uid="uid://c3polhfklpqly" path="res://themes/menu.tres" id="1_1utw0"]
 [ext_resource type="Texture2D" uid="uid://omx4vvvlsm8t" path="res://assets/ui/menu_placeholder.png" id="1_qa3i8"]
 [ext_resource type="Texture2D" uid="uid://bu7kenhbqvnc" path="res://assets/ui/menu_select_placeholder.png" id="2_1utw0"]
 [ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="3_8sw7y"]
 
-[node name="PlayerMenu" type="Control" unique_id=1982733969]
-layout_mode = 3
-anchors_preset = 0
+[node name="PlayerMenu" type="PanelContainer" unique_id=854711762]
+theme = ExtResource("1_1utw0")
 
 [node name="MenuBackground" type="Sprite2D" parent="." unique_id=1528355104]
+visible = false
 texture = ExtResource("1_qa3i8")
 
 [node name="MenuSelector" type="Sprite2D" parent="MenuBackground" unique_id=919066569]
+visible = false
 position = Vector2(0, -16)
 texture = ExtResource("2_1utw0")
 
