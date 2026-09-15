@@ -11,9 +11,6 @@ var board_dict : Dictionary
 var player_structures : Dictionary = {}
 var current_player_turn = 0
 
-func _ready() -> void:
-	board_init()
-	
 func board_init() -> void:
 	board_node.tileSize = tile_height
 	board_dict = board_node._init_board(board_width, board_height)
