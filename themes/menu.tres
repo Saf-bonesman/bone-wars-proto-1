@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://c3polhfklpqly"]
+
+[ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="1_xavh1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xavh1"]
+
+[resource]
+default_font = ExtResource("1_xavh1")
+default_font_size = 16
+BorderPanelContainer/styles/Border = SubResource("StyleBoxTexture_xavh1")

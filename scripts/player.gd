@@ -5,6 +5,8 @@ var move_timer
 var tile_height
 var w
 var h
+var player_menu
+# player_menu = $PlayerMenu
 
 enum player_state {
 	ENCAMP,
@@ -27,7 +29,7 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _input(_event : InputEvent) -> void:
+func _input(event : InputEvent) -> void:
 	move_timer.start()
 	match current_state:
 		player_state.ENCAMP:
