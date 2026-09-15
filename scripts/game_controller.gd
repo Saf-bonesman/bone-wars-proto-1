@@ -13,6 +13,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 		print(current_player_turn, ", ", score_array[current_player_turn])
 	if Input.is_action_just_pressed("debug_rightmouse"):
 		end_turn()
+	if Input.is_action_just_pressed("debug_key_1"):
+		Map.display_range(1, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_2"):
+		Map.display_range(2, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_3"):
+		Map.display_range(3, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_4"):
+		Map.undraw_range()
 	##if Input.is_action_just_pressed("action_left"):
 	##	_sabotage_punishment()
 	##if Input.is_action_just_pressed("action_up"):
