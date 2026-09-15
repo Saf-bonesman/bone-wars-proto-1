@@ -6,7 +6,10 @@
 [ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="3_8sw7y"]
 
 [node name="PlayerMenu" type="PanelContainer" unique_id=854711762]
+offset_right = 64.0
+offset_bottom = 48.0
 theme = ExtResource("1_1utw0")
+theme_type_variation = &"BorderPanelContainer"
 
 [node name="MenuBackground" type="Sprite2D" parent="." unique_id=1528355104]
 visible = false

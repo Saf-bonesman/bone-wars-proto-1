@@ -1,10 +1,13 @@
 [gd_resource type="Theme" format=3 uid="uid://c3polhfklpqly"]
 
+[ext_resource type="Texture2D" uid="uid://deh4wu8304yyk" path="res://assets/ui/Textbox_border.png" id="1_6tgry"]
 [ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="1_xavh1"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xavh1"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tgry"]
+texture = ExtResource("1_6tgry")
 
 [resource]
 default_font = ExtResource("1_xavh1")
 default_font_size = 16
-BorderPanelContainer/styles/Border = SubResource("StyleBoxTexture_xavh1")
+BorderPanelContainer/base_type = &"PanelContainer"
+BorderPanelContainer/styles/panel = SubResource("StyleBoxTexture_6tgry")
