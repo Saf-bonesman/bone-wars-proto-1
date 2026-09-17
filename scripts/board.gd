@@ -40,6 +40,7 @@ class Tile:
 	}
 	var loc : Marker2D
 	var tile_type : String = "wastes"
+	var player_tile : String = "none"
 	var type_id : Vector2i = terrainDict.get(tile_type).pick_random()
 
 	func randomize_cell_type() -> void:

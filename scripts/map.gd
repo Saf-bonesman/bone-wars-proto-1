@@ -20,7 +20,8 @@ func board_init() -> void:
 	Player.h = board_height - 1
 
 func display_range(r : int, p : Vector2i) -> void:
-	var avail_range = _get_display_range(r, [p])
+	var point_array : Array[Vector2i] = [p]
+	var avail_range = get_display_range(r, point_array)
 	board_node.draw_range(avail_range, board_dict)
 
 func undraw_range() -> void:
@@ -37,7 +38,7 @@ func _on_game_turn_end(turn) -> void:
 	current_player_turn = turn # Replace with function body.
 
 ## this is the first time I've used a recursive function since uni btw
-func _get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector2i]:
+func get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector2i]:
 	if walkdist <= 0: 
 		return start
 	const directions : Array[Vector2i] = [
@@ -55,9 +56,20 @@ func _get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector
 			&& _is_in_bounds(next):
 				movement_range.append(next)
 	movement_range.append(start)
-	return _get_display_range(walkdist - 1, movement_range)
+	return get_display_range(walkdist - 1, movement_range)
 
 func _is_in_bounds(point : Vector2i) -> bool:
 	if point.x > board_width || point.x < 0 || point.y > board_height || point.y < 0:
 		return false
 	return true
+
+func get_spaces_info(search_range : Array[Vector2i], search_for : String) -> Array[Vector2i]:
+	var found : Array[Vector2i]
+	for coordinates in search_range:
+		if !board_dict.has(coordinates):
+			continue
+		var cell = board_dict.get(coordinates)
+		## we should probably make this an enum at some point
+		if cell.tile_type == search_for:
+			found.append(coordinates)
+	return found
