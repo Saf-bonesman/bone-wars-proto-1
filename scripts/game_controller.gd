@@ -9,18 +9,32 @@ var current_player_turn : int = 0
 ## test
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_middlemoues"):
-		_find_bones(randi_range(0,5))
-		print(current_player_turn, ", ", score_array[current_player_turn])
+		_restart_game()
 	if Input.is_action_just_pressed("debug_rightmouse"):
 		end_turn()
+	if Input.is_action_just_pressed("debug_key_1"):
+		Map.display_range(1, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_2"):
+		Map.display_range(2, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_3"):
+		Map.display_range(3, Map.Player.curr_pos)
+	if Input.is_action_just_pressed("debug_key_4"):
+		Map.undraw_range()
 	##if Input.is_action_just_pressed("action_left"):
 	##	_sabotage_punishment()
 	##if Input.is_action_just_pressed("action_up"):
 	##	_score_new_building()
 
 func _ready() -> void:
-	HUD.init_player_displays()
+	_restart_game()
 	Map.Player.broadcast_action.connect(_on_broadcast_action)
+
+func _restart_game() -> void:
+	score_array = [0, 0, 0, 0, 0]
+	current_player_turn = 0
+	Map.board_init()
+	HUD.init_player_displays()
+
 
 func _on_broadcast_action(action_type : String, coords : Vector2i) -> void:
 	print(action_type)
