@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" uid="uid://ns4nsjfb7ubc" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="PackedScene" uid="uid://drmxgba7hxaru" path="res://scenes/PlayerMenu.tscn" id="1_p0vlq"]
-[ext_resource type="Texture2D" uid="uid://c7bxph0xue0cw" path="res://assets/aseprite files/characters/cursor_placeholder.png" id="2_v6fml"]
+[ext_resource type="SpriteFrames" uid="uid://fo1cln8l0p1e" path="res://assets/resources/spriteframes/animated_cursor.tres" id="4_mdl7e"]
 
-[node name="Player" type="Node2D" unique_id=30233815]
+[node name="Player" type="Node2D" unique_id=30233815 node_paths=PackedStringArray("cursor_sprite")]
 script = ExtResource("1_3li8b")
+cursor_sprite = NodePath("Cursor")
 
 [node name="PlayerMenu" parent="." unique_id=1982733969 instance=ExtResource("1_p0vlq")]
 
-[node name="Cursor" type="Sprite2D" parent="." unique_id=648782166]
-texture = ExtResource("2_v6fml")
-
 [node name="MoveTimer" type="Timer" parent="." unique_id=1033107008]
 wait_time = 0.05
+
+[node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=689992505]
+sprite_frames = ExtResource("4_mdl7e")
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://fo1cln8l0p1e"]
+
+[ext_resource type="Texture2D" uid="uid://cphw2t0vwlho1" path="res://assets/ui/cursor/cursor.png" id="1_pbfo4"]
+[ext_resource type="Texture2D" uid="uid://c80owoa6b4v3i" path="res://assets/ui/cursor/cursor_varient.png" id="2_unhmn"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pbfo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_unhmn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]

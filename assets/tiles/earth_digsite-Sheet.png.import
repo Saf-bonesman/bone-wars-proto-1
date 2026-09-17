@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5osql8hmrfj5"
-path="res://.godot/imported/tileset.png-1765741783035f9ed0748c69ab140bfe.ctex"
+uid="uid://udxhjq73x1sd"
+path="res://.godot/imported/earth_digsite-Sheet.png-864269373295a94c78b4a4340c4251e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-1765741783035f9ed0748c69ab140bfe.ctex"]
+source_file="res://assets/tiles/earth_digsite-Sheet.png"
+dest_files=["res://.godot/imported/earth_digsite-Sheet.png-864269373295a94c78b4a4340c4251e3.ctex"]
 
 [params]
 

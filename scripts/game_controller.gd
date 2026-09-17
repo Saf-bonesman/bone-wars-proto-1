@@ -6,6 +6,8 @@ var score_array : Array[int] = [0, 0, 0, 0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
 
+
+
 ## test
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_middlemoues"):

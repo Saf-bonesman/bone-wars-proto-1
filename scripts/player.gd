@@ -6,6 +6,7 @@ var tile_height
 var w
 var h
 var player_menu
+@export var cursor_sprite : AnimatedSprite2D
 
 enum player_state {
 	ENCAMP,
@@ -21,6 +22,7 @@ var current_state = player_state.ENCAMP
 func _ready() -> void:
 	move_timer = get_node("MoveTimer")
 	move_timer.start()
+	cursor_sprite.play("default", .5, false)
 	
 #Limit screen
 func limit_pos() -> void:

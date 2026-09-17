@@ -1,16 +1,22 @@
-[gd_scene format=3 uid="uid://bv7qirvlnssu7"]
+[gd_scene format=4 uid="uid://bv7qirvlnssu7"]
 
 [ext_resource type="Script" uid="uid://caog5l8vya5xx" path="res://scripts/board.gd" id="1_qails"]
 [ext_resource type="TileSet" uid="uid://d1f5d525bqpqx" path="res://assets/resources/tilesets/terraintileset.tres" id="3_66b1s"]
 [ext_resource type="TileSet" uid="uid://chmifcdkox3k5" path="res://assets/resources/tilesets/terraintileset_rev.tres" id="3_w6jgk"]
 
-[node name="Board" type="Node2D" unique_id=1421904820 node_paths=PackedStringArray("terrain", "view_range")]
+[node name="Board" type="Node2D" unique_id=1421904820 node_paths=PackedStringArray("terrain", "view_range", "grid")]
 script = ExtResource("1_qails")
 terrain = NodePath("TerrainTiles")
 view_range = NodePath("RangeTiles")
+grid = NodePath("GridOverlay")
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=498345380]
 tile_set = ExtResource("3_66b1s")
 
 [node name="RangeTiles" type="TileMapLayer" parent="." unique_id=1375193658]
 tile_set = ExtResource("3_w6jgk")
+
+[node name="GridOverlay" type="TileMapLayer" parent="." unique_id=1460473382]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAUAAgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAADAAMAAgAAAAAAAAADAAQAAgAAAAAAAAADAAUAAgAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAEAAQAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAgAAAAAAAAAFAAQAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAAMAAgAAAAAAAAAGAAQAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAAAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAMAAgAAAAAAAAAHAAQAAgAAAAAAAAAHAAUAAgAAAAAAAAA=")
+tile_set = ExtResource("3_66b1s")

@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://7e7yq6d71wf2"]
+
+[ext_resource type="Texture2D" uid="uid://udxhjq73x1sd" path="res://assets/tiles/earth_digsite-Sheet.png" id="1_flhkr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njbis"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6cf4"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvb50"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn8vr"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tf2c"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoi6m"]
+atlas = ExtResource("1_flhkr")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njbis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6cf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvb50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn8vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tf2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoi6m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
