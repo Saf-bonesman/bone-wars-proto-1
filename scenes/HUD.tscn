@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5a8tictfyrl5"]
 
-[ext_resource type="Texture2D" uid="uid://di7uhwrqr6yy1" path="res://assets/saffs_placeholder_assets_holder/frameplaceholder.png" id="1_1etfg"]
 [ext_resource type="Script" uid="uid://d0n5jfy70h07i" path="res://scripts/hud.gd" id="1_7hsmw"]
+[ext_resource type="Texture2D" uid="uid://cpx082afsqwxh" path="res://assets/ui/frame/frame_med_2.png" id="2_7hsmw"]
 [ext_resource type="PackedScene" uid="uid://bbdhrq4ubcb0f" path="res://scenes/PlayerDisplay.tscn" id="3_1etfg"]
 [ext_resource type="Theme" uid="uid://crll6jfs1qhjx" path="res://themes/main_info_label.tres" id="4_7hsmw"]
 
@@ -15,7 +15,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FrameBackground" type="Sprite2D" parent="." unique_id=841738108]
 position = Vector2(80, 72)
-texture = ExtResource("1_1etfg")
+texture = ExtResource("2_7hsmw")
 
 [node name="PlayerDisplay" parent="." unique_id=821448185 instance=ExtResource("3_1etfg")]
 layout_mode = 0

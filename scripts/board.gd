@@ -3,6 +3,7 @@ extends Node2D
 ## generates and draws a board state
 @export var terrain : TileMapLayer
 @export var view_range : TileMapLayer
+@export var grid : TileMapLayer
 var tileSize
 
 func _init_board(board_width, board_height) -> Dictionary:
