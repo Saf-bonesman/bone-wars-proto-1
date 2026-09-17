@@ -6,7 +6,6 @@ var tile_height
 var w
 var h
 var player_menu
-# player_menu = $PlayerMenu
 
 enum player_state {
 	ENCAMP,
@@ -29,8 +28,7 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _input(event : InputEvent) -> void:
-	move_timer.start()
+func _input(_event) -> void:
 	match current_state:
 		player_state.ENCAMP:
 			if Input.is_action_pressed("action_a"):
@@ -45,6 +43,9 @@ func _input(event : InputEvent) -> void:
 			if Input.is_action_pressed("action_a"):
 				print("choose menu option")
 				current_state = player_state.ACTION_SABOTAGE
+				player_menu = $PlayerMenu
+				#move_timer.set_paused(true)
+				#move_timer.set_paused(false)
 		player_state.ACTION_SABOTAGE:
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
@@ -57,8 +58,9 @@ func _input(event : InputEvent) -> void:
 # repeat timer
 func _on_move_timer_timeout() -> void:
 	match current_state:
-		player_state.ENCAMP, \
-		player_state.CAMP_SELECTION:
+		player_state.MENUING:
+			pass
+		_:
 			_handle_move()
 
 func _handle_move() -> void:
@@ -78,7 +80,5 @@ func _handle_move() -> void:
 	position = Vector2i(
 		curr_pos.x * tile_height + tile_height/2, 
 		curr_pos.y * tile_height + tile_height/2)
-	if Input.is_action_just_released("action_move"):
-		move_timer.pause()
 
 signal broadcast_action
