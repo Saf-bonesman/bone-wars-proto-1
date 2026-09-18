@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx1ygx0ug0um4"
-path="res://.godot/imported/horehound-4-8x.png-8393a7545a16a8b52e1cb718c467a4ac.ctex"
+uid="uid://dx4xnltdh8xpi"
+path="res://.godot/imported/sunrisegb-8x.png-4efd70fd86dbdb147a6924d7c8806502.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/horehound-4-8x.png"
-dest_files=["res://.godot/imported/horehound-4-8x.png-8393a7545a16a8b52e1cb718c467a4ac.ctex"]
+source_file="res://assets/working files/palettes/sunrisegb-8x.png"
+dest_files=["res://.godot/imported/sunrisegb-8x.png-4efd70fd86dbdb147a6924d7c8806502.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nwuqn0kxu8rb"
-path="res://.godot/imported/borealis-8x.png-b0a053ca1815f782d4fb52791d40b763.ctex"
+uid="uid://dnyd4flmjh8ba"
+path="res://.godot/imported/pumpkin-spice-8x.png-a13c0455c2783e0693b2a187ffd5cbff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/borealis-8x.png"
-dest_files=["res://.godot/imported/borealis-8x.png-b0a053ca1815f782d4fb52791d40b763.ctex"]
+source_file="res://assets/working files/palettes/pumpkin-spice-8x.png"
+dest_files=["res://.godot/imported/pumpkin-spice-8x.png-a13c0455c2783e0693b2a187ffd5cbff.ctex"]
 
 [params]
 

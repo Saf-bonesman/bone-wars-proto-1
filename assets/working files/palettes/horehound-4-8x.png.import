@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp2mkivcteebk"
-path="res://.godot/imported/warm-ochre-8x.png-38229e43b39d23f885362b782b1e094a.ctex"
+uid="uid://cx1ygx0ug0um4"
+path="res://.godot/imported/horehound-4-8x.png-5ac30d75bae23c77395a9b7e9fa8eab3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/warm-ochre-8x.png"
-dest_files=["res://.godot/imported/warm-ochre-8x.png-38229e43b39d23f885362b782b1e094a.ctex"]
+source_file="res://assets/working files/palettes/horehound-4-8x.png"
+dest_files=["res://.godot/imported/horehound-4-8x.png-5ac30d75bae23c77395a9b7e9fa8eab3.ctex"]
 
 [params]
 

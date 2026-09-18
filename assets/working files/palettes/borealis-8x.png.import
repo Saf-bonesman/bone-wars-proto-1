@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqguluiujgftp"
-path="res://.godot/imported/ice-cream-gb-8x.png-65acd83d13aa1d6d7f3f6d1f1a751c0a.ctex"
+uid="uid://nwuqn0kxu8rb"
+path="res://.godot/imported/borealis-8x.png-0de9acb513e71082e1644183f2453c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/ice-cream-gb-8x.png"
-dest_files=["res://.godot/imported/ice-cream-gb-8x.png-65acd83d13aa1d6d7f3f6d1f1a751c0a.ctex"]
+source_file="res://assets/working files/palettes/borealis-8x.png"
+dest_files=["res://.godot/imported/borealis-8x.png-0de9acb513e71082e1644183f2453c20.ctex"]
 
 [params]
 

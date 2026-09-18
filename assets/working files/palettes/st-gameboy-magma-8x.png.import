@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp2squ7mperft"
-path="res://.godot/imported/calico-4-8x.png-c0467a6b70ba02abcbbfcf27c3caaa69.ctex"
+uid="uid://bcyhigf0bvfvl"
+path="res://.godot/imported/st-gameboy-magma-8x.png-8cf3c47154744df7e6edeb73a86fbff5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/calico-4-8x.png"
-dest_files=["res://.godot/imported/calico-4-8x.png-c0467a6b70ba02abcbbfcf27c3caaa69.ctex"]
+source_file="res://assets/working files/palettes/st-gameboy-magma-8x.png"
+dest_files=["res://.godot/imported/st-gameboy-magma-8x.png-8cf3c47154744df7e6edeb73a86fbff5.ctex"]
 
 [params]
 
