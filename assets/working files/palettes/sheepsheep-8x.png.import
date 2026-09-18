@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c726qq2x34cxs"
-path="res://.godot/imported/tileset.png-81164b1038800d3c8c76ea32dccc8063.ctex"
+uid="uid://jatnhw547ok"
+path="res://.godot/imported/sheepsheep-8x.png-8e0d1e84451e63947bdc2df075281f5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/tiles/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-81164b1038800d3c8c76ea32dccc8063.ctex"]
+source_file="res://assets/working files/palettes/sheepsheep-8x.png"
+dest_files=["res://.godot/imported/sheepsheep-8x.png-8e0d1e84451e63947bdc2df075281f5b.ctex"]
 
 [params]
 

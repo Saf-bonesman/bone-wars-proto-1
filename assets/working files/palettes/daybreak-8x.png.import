@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7bxph0xue0cw"
-path="res://.godot/imported/cursor_placeholder.png-386312383a99c7148142dd7e14fb9ed8.ctex"
+uid="uid://c0xhdmmbcr77p"
+path="res://.godot/imported/daybreak-8x.png-9ab81e7431738de692d1e43953737f34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/characters/cursor_placeholder.png"
-dest_files=["res://.godot/imported/cursor_placeholder.png-386312383a99c7148142dd7e14fb9ed8.ctex"]
+source_file="res://assets/working files/palettes/daybreak-8x.png"
+dest_files=["res://.godot/imported/daybreak-8x.png-9ab81e7431738de692d1e43953737f34.ctex"]
 
 [params]
 

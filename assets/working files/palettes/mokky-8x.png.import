@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhnqhbb5adjnw"
-path="res://.godot/imported/egypt-gb-8x.png-88d34d432932d412ae0efe966f245f5c.ctex"
+uid="uid://cypfl48g5ppqm"
+path="res://.godot/imported/mokky-8x.png-11f6bbc04e0c4790a83aa4e19e892649.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/egypt-gb-8x.png"
-dest_files=["res://.godot/imported/egypt-gb-8x.png-88d34d432932d412ae0efe966f245f5c.ctex"]
+source_file="res://assets/working files/palettes/mokky-8x.png"
+dest_files=["res://.godot/imported/mokky-8x.png-11f6bbc04e0c4790a83aa4e19e892649.ctex"]
 
 [params]
 

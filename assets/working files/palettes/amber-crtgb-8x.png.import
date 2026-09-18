@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fa5hero232db"
-path="res://.godot/imported/earth-gb-8x.png-cafea8657f007da3e7b09d4336d8af3e.ctex"
+uid="uid://bjxlsitmmc5dn"
+path="res://.godot/imported/amber-crtgb-8x.png-5e342b3ea3813d25874e373054b0eb08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/earth-gb-8x.png"
-dest_files=["res://.godot/imported/earth-gb-8x.png-cafea8657f007da3e7b09d4336d8af3e.ctex"]
+source_file="res://assets/working files/palettes/amber-crtgb-8x.png"
+dest_files=["res://.godot/imported/amber-crtgb-8x.png-5e342b3ea3813d25874e373054b0eb08.ctex"]
 
 [params]
 

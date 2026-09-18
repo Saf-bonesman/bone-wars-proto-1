@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jatnhw547ok"
-path="res://.godot/imported/sheepsheep-8x.png-9d3900b50efb98db70781188d8a7b3d4.ctex"
+uid="uid://dhxt8oj5rp41h"
+path="res://.godot/imported/neon-dawn-8x.png-7457a415dacd6ca03ed39ba556dbdc1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/sheepsheep-8x.png"
-dest_files=["res://.godot/imported/sheepsheep-8x.png-9d3900b50efb98db70781188d8a7b3d4.ctex"]
+source_file="res://assets/working files/palettes/neon-dawn-8x.png"
+dest_files=["res://.godot/imported/neon-dawn-8x.png-7457a415dacd6ca03ed39ba556dbdc1d.ctex"]
 
 [params]
 

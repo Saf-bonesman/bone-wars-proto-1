@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cub67xi7lk3uc"
-path="res://.godot/imported/pinball-gb-8x.png-e8cb01174144865aaf9c65a0bc1f07e2.ctex"
+uid="uid://fa5hero232db"
+path="res://.godot/imported/earth-gb-8x.png-144f30df34f0b13bbe95d6d0561c456f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/pinball-gb-8x.png"
-dest_files=["res://.godot/imported/pinball-gb-8x.png-e8cb01174144865aaf9c65a0bc1f07e2.ctex"]
+source_file="res://assets/working files/palettes/earth-gb-8x.png"
+dest_files=["res://.godot/imported/earth-gb-8x.png-144f30df34f0b13bbe95d6d0561c456f.ctex"]
 
 [params]
 

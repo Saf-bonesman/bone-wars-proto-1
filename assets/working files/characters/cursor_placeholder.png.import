@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnyd4flmjh8ba"
-path="res://.godot/imported/pumpkin-spice-8x.png-2a450de36596de85aea9a99284cb26ab.ctex"
+uid="uid://c7bxph0xue0cw"
+path="res://.godot/imported/cursor_placeholder.png-f18120f13ff42c84e15a4c6d4537c9d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/pumpkin-spice-8x.png"
-dest_files=["res://.godot/imported/pumpkin-spice-8x.png-2a450de36596de85aea9a99284cb26ab.ctex"]
+source_file="res://assets/working files/characters/cursor_placeholder.png"
+dest_files=["res://.godot/imported/cursor_placeholder.png-f18120f13ff42c84e15a4c6d4537c9d3.ctex"]
 
 [params]
 

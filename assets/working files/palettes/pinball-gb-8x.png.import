@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhxt8oj5rp41h"
-path="res://.godot/imported/neon-dawn-8x.png-cb8b5343ca45799ebcf7d61a858eafdf.ctex"
+uid="uid://cub67xi7lk3uc"
+path="res://.godot/imported/pinball-gb-8x.png-c5477ca45d79ef59e146ec79d605cc87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/neon-dawn-8x.png"
-dest_files=["res://.godot/imported/neon-dawn-8x.png-cb8b5343ca45799ebcf7d61a858eafdf.ctex"]
+source_file="res://assets/working files/palettes/pinball-gb-8x.png"
+dest_files=["res://.godot/imported/pinball-gb-8x.png-c5477ca45d79ef59e146ec79d605cc87.ctex"]
 
 [params]
 

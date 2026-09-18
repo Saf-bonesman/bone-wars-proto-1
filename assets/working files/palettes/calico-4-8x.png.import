@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0xhdmmbcr77p"
-path="res://.godot/imported/daybreak-8x.png-eec1ef224146e8d303020318e24448ef.ctex"
+uid="uid://bp2squ7mperft"
+path="res://.godot/imported/calico-4-8x.png-20085e7d1bb7c4bc61f8ff39ea2d5028.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/palettes/daybreak-8x.png"
-dest_files=["res://.godot/imported/daybreak-8x.png-eec1ef224146e8d303020318e24448ef.ctex"]
+source_file="res://assets/working files/palettes/calico-4-8x.png"
+dest_files=["res://.godot/imported/calico-4-8x.png-20085e7d1bb7c4bc61f8ff39ea2d5028.ctex"]
 
 [params]
 

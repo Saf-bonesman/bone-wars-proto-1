@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdmqm0q87xrya"
-path="res://.godot/imported/icon_48.png-9ba4c3c864641ad1c60d43f770848bf4.ctex"
+uid="uid://baaavjfn2vlj4"
+path="res://.godot/imported/foxfire-8x.png-9ed0eab5f84bc16f551eb1a658294eed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite files/ui/icon_48.png"
-dest_files=["res://.godot/imported/icon_48.png-9ba4c3c864641ad1c60d43f770848bf4.ctex"]
+source_file="res://assets/working files/palettes/foxfire-8x.png"
+dest_files=["res://.godot/imported/foxfire-8x.png-9ed0eab5f84bc16f551eb1a658294eed.ctex"]
 
 [params]
 
