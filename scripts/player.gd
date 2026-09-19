@@ -51,12 +51,14 @@ func _input(_event) -> void:
 		player_state.ACTION_SABOTAGE:
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
+				broadcast_action.emit("destroy")
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:
 			if Input.is_action_pressed("action_a"):
 				broadcast_action.emit("dig")
 				print("diggy diggy hole")
 				current_state = player_state.ENCAMP
+				broadcast_action.emit("choose_camp_loc")
 				
 # repeat timer
 func _on_move_timer_timeout() -> void:

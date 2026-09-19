@@ -12,3 +12,5 @@ tile_set = ExtResource("2_37xnl")
 [node name="Digsites" type="Node2D" parent="." unique_id=688116645]
 
 [node name="Dugsites" type="Node2D" parent="." unique_id=1399315254]
+
+[node name="Eeepies" type="Node2D" parent="." unique_id=1371793603]
