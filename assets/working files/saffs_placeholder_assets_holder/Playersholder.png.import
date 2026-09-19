@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fg5pjplcts1t"
-path="res://.godot/imported/Playersholder.png-8b1ffd32aedced6083035fa4704f343e.ctex"
+path="res://.godot/imported/Playersholder.png-fcf00ea2c910647748c9fba86db82462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/saffs_placeholder_assets_holder/Playersholder.png"
-dest_files=["res://.godot/imported/Playersholder.png-8b1ffd32aedced6083035fa4704f343e.ctex"]
+source_file="res://assets/working files/saffs_placeholder_assets_holder/Playersholder.png"
+dest_files=["res://.godot/imported/Playersholder.png-fcf00ea2c910647748c9fba86db82462.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5hriqvgvuq6w"
-path="res://.godot/imported/mcgriddie.png-b97ed95be6529a1b5507b18b94781c5a.ctex"
+path="res://.godot/imported/mcgriddie.png-57c38fe4b9b1db69f0f05794ae50efd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/saffs_placeholder_assets_holder/mcgriddie.png"
-dest_files=["res://.godot/imported/mcgriddie.png-b97ed95be6529a1b5507b18b94781c5a.ctex"]
+source_file="res://assets/working files/saffs_placeholder_assets_holder/mcgriddie.png"
+dest_files=["res://.godot/imported/mcgriddie.png-57c38fe4b9b1db69f0f05794ae50efd1.ctex"]
 
 [params]
 

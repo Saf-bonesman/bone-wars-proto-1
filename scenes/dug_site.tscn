@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br7fdwg7hqy3k"]
+
+[ext_resource type="Texture2D" uid="uid://c726qq2x34cxs" path="res://assets/aseprite files/tiles/tileset.png" id="1_e2e82"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7128"]
+atlas = ExtResource("1_e2e82")
+region = Rect2(48, 64, 16, 16)
+
+[node name="DugSite" type="Node2D" unique_id=876290749]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1403463349]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_s7128")
