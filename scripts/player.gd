@@ -35,7 +35,7 @@ func _input(_event) -> void:
 		player_state.ENCAMP:
 			if Input.is_action_pressed("action_a"):
 				print("encamp")
-				broadcast_action.emit("encamp", curr_pos)
+				broadcast_action.emit("encamp")
 				current_state = player_state.CAMP_SELECTION
 		player_state.CAMP_SELECTION:
 			if Input.is_action_pressed("action_a"):
@@ -54,6 +54,7 @@ func _input(_event) -> void:
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:
 			if Input.is_action_pressed("action_a"):
+				broadcast_action.emit("dig")
 				print("diggy diggy hole")
 				current_state = player_state.ENCAMP
 				
