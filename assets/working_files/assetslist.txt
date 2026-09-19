@@ -1,0 +1,45 @@
+assets
+16*16
+plain tile
+barren tile
+bountiful tile
+dig site 
+camp player
+camp enemy
+hole
+inverted version of each
+cursor
+
+16*16?
+begin dig (earth up)
+end dig (bones)
+explosion
+
+48*48
+player art
+
+neutral
+happy
+angry
+sneaky? (sabotaging)
+
+enemy art?
+
+112*48
+text box
+
++logo and start screen
++splash art for sabotage, exposed, sneaky, successful dig
+
+Sounds
+dig
+explosion
+exposed
+encamp
+menu boop
+rep up
+rep down
+bone cashing
+
+Music
+main music

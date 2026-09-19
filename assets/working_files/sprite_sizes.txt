@@ -1,0 +1,7 @@
+screen 160x144
+play area 128x96
+tile 16x16
+character portrait 48x48
+character splash ?x?
+app icon 16x16, 24x24, 32x32, 48x48, and 256x256 (according to windows dev advice; 256 should be upscale of at most 144x144)
+Cover image minimum 315*250 recc 630*500

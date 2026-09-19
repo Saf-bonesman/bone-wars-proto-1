@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7bxph0xue0cw"
-path="res://.godot/imported/cursor_placeholder.png-8f1402c0e747e4cf98a4d6978a7cab31.ctex"
+uid="uid://bqvlmnwi8el8x"
+path="res://.godot/imported/exclamation_regular.png-8c755429a4135d40be7f6b8ffb2e211b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/working_files/saffs_placeholder_assets_holder/cursor_placeholder.png"
-dest_files=["res://.godot/imported/cursor_placeholder.png-8f1402c0e747e4cf98a4d6978a7cab31.ctex"]
+source_file="res://assets/tiles/exclamation_regular.png"
+dest_files=["res://.godot/imported/exclamation_regular.png-8c755429a4135d40be7f6b8ffb2e211b.ctex"]
 
 [params]
 

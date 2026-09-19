@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://crll6jfs1qhjx"]
+
+[ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="1_mbvd7"]
+
+[resource]
+Label/colors/font_color = Color(0.14117648, 0.14117648, 0.28627452, 1)
+Label/fonts/font = ExtResource("1_mbvd7")
