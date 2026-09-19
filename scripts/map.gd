@@ -38,14 +38,10 @@ func available_actions(selected_camp : Vector2i) -> Dictionary:
 	for sab_option in avail_range_sab:
 		if Camps.get_struct_at_location(sab_option) == "digsite":
 			return_val["Sabotage"].append(sab_option)
-	if return_val["Sabotage"].is_empty():
-		return_val.erase("Sabotage")
 	var avail_range_dig = _get_display_range(1, [selected_camp])	
 	for dig_option in avail_range_dig:
-		if Camps.get_struct_at_location(dig_option) == "nothing":
+		if Camps.get_struct_at_location(dig_option) == "empty":
 			return_val["Dig"].append(dig_option)
-	if return_val["Dig"].is_empty():
-		return_val.erase("Dig")
 	return return_val
 
 func display_encamp_range() -> void:

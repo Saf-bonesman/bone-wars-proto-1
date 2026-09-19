@@ -45,6 +45,7 @@ func _on_broadcast_action(action_type : String) -> void:
 			_phase_encamp()
 		"encamp":
 			_phase_choose_camp()
+			print(Map.available_actions(Map.Player.curr_pos))
 		"dig":
 			_spawn_digsite()
 		"destroy":
