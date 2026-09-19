@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt0sf3q8frpwg"
-path="res://.godot/imported/cursor_placeholder.png-b07944e89ee1434a9410895a0f04d333.ctex"
+uid="uid://d2viwhgt21kca"
+path="res://.godot/imported/Textbox_border_4.png-0a1784c7ea7471589e61783f21173b66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/cursor_placeholder.png"
-dest_files=["res://.godot/imported/cursor_placeholder.png-b07944e89ee1434a9410895a0f04d333.ctex"]
+source_file="res://assets/ui/Textbox_border_4.png"
+dest_files=["res://.godot/imported/Textbox_border_4.png-0a1784c7ea7471589e61783f21173b66.ctex"]
 
 [params]
 
