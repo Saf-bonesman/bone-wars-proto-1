@@ -42,15 +42,15 @@ func _input(_event) -> void:
 				print("choose camp")
 				current_state = player_state.MENUING
 		player_state.MENUING:
+			#move_timer.set_paused(true)
 			if Input.is_action_pressed("action_a"):
 				print("choose menu option")
 				broadcast_action.emit("menu", curr_pos)
-				move_timer.set_paused(true)
 				current_state = player_state.ACTION_SABOTAGE
 		player_state.ACTION_SABOTAGE:
+			#move_timer.set_paused(false)
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
-				move_timer.set_paused(false)
 				broadcast_action.emit("destroy")
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:

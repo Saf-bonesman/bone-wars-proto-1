@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://c3polhfklpqly"]
 
-[ext_resource type="Texture2D" uid="uid://deh4wu8304yyk" path="res://assets/ui/Textbox_border.png" id="1_252og"]
+[ext_resource type="Texture2D" uid="uid://ba40jw7e70e2o" path="res://assets/ui/Textbox_border.png" id="1_252og"]
 [ext_resource type="Texture2D" uid="uid://cdts5akqmligv" path="res://assets/ui/Textbox_border_2.png" id="2_b10vi"]
-[ext_resource type="Texture2D" uid="uid://7djtqnmfn8ql" path="res://assets/ui/cursor/menu_cursor.png" id="2_lh6oj"]
+[ext_resource type="Texture2D" uid="uid://bm40tbwtra68w" path="res://assets/ui/cursor/menu_cursor.png" id="2_lh6oj"]
 [ext_resource type="Texture2D" uid="uid://d2viwhgt21kca" path="res://assets/ui/Textbox_border_4.png" id="3_2mai3"]
 [ext_resource type="FontFile" uid="uid://ourr6jjjc2pw" path="res://assets/resources/fonts/Bitfantasy.ttf" id="3_b10vi"]
 
