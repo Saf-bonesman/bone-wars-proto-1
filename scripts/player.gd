@@ -44,13 +44,13 @@ func _input(_event) -> void:
 		player_state.MENUING:
 			if Input.is_action_pressed("action_a"):
 				print("choose menu option")
+				broadcast_action.emit("menu", curr_pos)
+				move_timer.set_paused(true)
 				current_state = player_state.ACTION_SABOTAGE
-				player_menu = $PlayerMenu
-				#move_timer.set_paused(true)
-				#move_timer.set_paused(false)
 		player_state.ACTION_SABOTAGE:
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
+				move_timer.set_paused(false)
 				broadcast_action.emit("destroy")
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:

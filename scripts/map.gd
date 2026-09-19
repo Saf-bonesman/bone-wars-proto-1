@@ -12,6 +12,9 @@ var current_player_turn = 0
 var selected_camp_coordinates : Vector2i = Vector2i(2,2)
 var player_location_array_dict : Dictionary = {}
 
+var player_menu
+var PLAYER_MENU = preload("res://scenes/PlayerMenu.tscn")
+
 func _ready() -> void:
 	#initial p1 camp
 	var v1 : Array[Vector2i] = [Vector2i(0,0)]
@@ -71,6 +74,15 @@ func spawn_camp() -> void:
 	var camp_coordinates = Player.curr_pos
 	player_location_array_dict.get(current_player_turn).append(camp_coordinates)
 	Camps.new_camp(current_player_turn, camp_coordinates)
+
+func spawn_menu(coords : Vector2i) -> void:
+	print(coords.x)
+	player_menu = PLAYER_MENU.instantiate()
+	add_child(player_menu)
+	if coords.x < 4:
+		player_menu.position = Vector2i(3 * tile_height + tile_height, 0)
+	else:
+		player_menu.position = Vector2i(0, 0)
 
 func _on_game_turn_end(turn) -> void:
 	current_player_turn = turn
