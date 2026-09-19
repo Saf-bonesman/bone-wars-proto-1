@@ -9,6 +9,7 @@ var board_dict : Dictionary
 @onready var Player : Node2D = $Player
 @onready var Camps : Node2D = $Camps
 var current_player_turn = 0
+var selected_camp_coordinates : Vector2i = Vector2i(2,2)
 var player_location_array_dict : Dictionary = {}
 
 func _ready() -> void:
@@ -57,7 +58,7 @@ func undraw_range() -> void:
 
 func spawn_digsite() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "empty":
-		Camps.instantiate_digsite(current_player_turn, Player.curr_pos)
+		Camps.instantiate_digsite(current_player_turn, Player.curr_pos, selected_camp_coordinates)
 
 func destroy_digsite() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":

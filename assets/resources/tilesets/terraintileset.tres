@@ -1,11 +1,13 @@
 [gd_resource type="TileSet" format=3 uid="uid://d1f5d525bqpqx"]
 
-[ext_resource type="Texture2D" uid="uid://c5osql8hmrfj5" path="res://assets/tiles/tileset.png" id="1_cmpqc"]
 [ext_resource type="Texture2D" uid="uid://dmuc7yaomgmu2" path="res://assets/tiles/overlay.png" id="2_mnaw6"]
 [ext_resource type="Texture2D" uid="uid://doyddfn03gto0" path="res://assets/tiles/overlay_small.png" id="3_mnaw6"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cmpqc"]
+load_path = "res://.godot/imported/tileset.png-1765741783035f9ed0748c69ab140bfe.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66b1s"]
-texture = ExtResource("1_cmpqc")
+texture = SubResource("CompressedTexture2D_cmpqc")
 0:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
@@ -26,6 +28,9 @@ texture = ExtResource("1_cmpqc")
 3:3/0 = 0
 4:3/0 = 0
 3:4/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+10:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8up6l"]
 texture = ExtResource("2_mnaw6")

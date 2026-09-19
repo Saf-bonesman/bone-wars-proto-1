@@ -11,12 +11,16 @@ var digsite_scene : PackedScene = load("res://scenes/dig_site.tscn")
 var dugsite_scene : PackedScene = load("res://scenes/dug_site.tscn")
 var eepy_scene : PackedScene = load("res://scenes/eepy_indicator.tscn")
 @onready var digsites : Node2D = $Digsites
+## dugsites are the explosion animation,
+## when the explosion animation finishes it emits a signal
+## which causes the Map node to draw a hole
 @onready var dugsites : Node2D = $Dugsites
+## eepies are indicators for a camp being inactive
 @onready var eepies : Node2D = $Eeepies
 
 const structure_dict : Dictionary = {
-	"camp0" = Vector2i(0,0),
-	"camp1" = Vector2i(0,1)
+	"camp0" = Vector2i(1,0),
+	"camp1" = Vector2i(1,1)
 }
 
 var player_structure_locations : Dictionary = {}
@@ -59,10 +63,12 @@ func _on_digsite_animation_complete(loc : Vector2i) -> void:
 	print("spawn")
 	spawn_hole.emit(loc)
 
-func instantiate_digsite(player : int, struct_coord : Vector2i) -> void:
+func instantiate_digsite(player : int, struct_coord : Vector2i, camp_selected : Vector2i) -> void:
 	var dig : Node2D = digsite_scene.instantiate()
 	dig.owning_player = player
 	dig.position = struct_coord * Vector2i(16,16)
+	dig.my_location = struct_coord
+	dig.owning_camp = camp_selected
 	digsites.add_child(dig)
 	digsite_holder[struct_coord] = dig
 	var psti = PlayerStructureTypeInfo.new()
@@ -82,10 +88,11 @@ func _draw_new_struct(struct_type : String, struct_coord : Vector2i):
 	var tileIdx = structure_dict.get(struct_type)
 	structure_map.set_cell(struct_coord, 0, tileIdx, 0)
 	player_structure_locations[struct_coord] = struct_type
-
+	
 signal spawn_hole
 
 class PlayerStructureTypeInfo:
 	var owning_player : int
 	var type : String
 	var active : bool = true
+	var digging : bool = false

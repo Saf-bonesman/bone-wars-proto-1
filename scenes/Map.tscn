@@ -7,8 +7,6 @@
 
 [node name="Map" type="Node2D" unique_id=479964413]
 script = ExtResource("1_tm3qm")
-board_width = null
-board_height = null
 
 [node name="Board" parent="." unique_id=1421904820 instance=ExtResource("1_xkm8s")]
 
