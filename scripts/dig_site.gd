@@ -45,16 +45,24 @@ func end_digsite(destroy : bool) -> void:
 
 func show_connector() -> void:
 	var dir : String = ""
+	var vec_dir : Vector2i = Vector2i(0,0)
 	if owning_camp.x > my_location.x:
 		dir = "East"
+		vec_dir = Vector2i.RIGHT
 	elif owning_camp.y > my_location.y:
 		dir = "South"
+		vec_dir = Vector2i.DOWN
 	elif owning_camp.x < my_location.x:
 		dir = "West"
+		vec_dir = Vector2i.LEFT
 	else:
 		dir = "North"
+		vec_dir = Vector2i.UP
 	if dir == "":
 		return
 	connectors.get_node(dir+str(owning_player)).visible = true
+	var dig = connectors.get_node("D")
+	dig.position = Vector2i(dig.position) + (vec_dir * Vector2i(16,16))
+	dig.visible = true
 
 signal dig_dug

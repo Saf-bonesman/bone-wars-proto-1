@@ -11,7 +11,11 @@ var digsite_scene : PackedScene = load("res://scenes/dig_site.tscn")
 var dugsite_scene : PackedScene = load("res://scenes/dug_site.tscn")
 var eepy_scene : PackedScene = load("res://scenes/eepy_indicator.tscn")
 @onready var digsites : Node2D = $Digsites
+## dugsites are the explosion animation,
+## when the explosion animation finishes it emits a signal
+## which causes the Map node to draw a hole
 @onready var dugsites : Node2D = $Dugsites
+## eepies are indicators for a camp being inactive
 @onready var eepies : Node2D = $Eeepies
 
 const structure_dict : Dictionary = {
@@ -84,7 +88,7 @@ func _draw_new_struct(struct_type : String, struct_coord : Vector2i):
 	var tileIdx = structure_dict.get(struct_type)
 	structure_map.set_cell(struct_coord, 0, tileIdx, 0)
 	player_structure_locations[struct_coord] = struct_type
-
+	
 signal spawn_hole
 
 class PlayerStructureTypeInfo:

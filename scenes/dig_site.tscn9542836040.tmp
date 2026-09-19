@@ -114,5 +114,5 @@ rotation = 1.5707964
 texture = ExtResource("10_48v5a")
 
 [node name="D" type="Sprite2D" parent="Connectors" unique_id=1877315549]
-position = Vector2(-1, 8)
+position = Vector2(8, 8)
 texture = SubResource("AtlasTexture_dkh0w")
