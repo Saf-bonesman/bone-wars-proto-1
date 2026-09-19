@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bbdhrq4ubcb0f"]
 
-[ext_resource type="Theme" uid="uid://bt2ov3v5tpb8s" path="res://themes/score_disp.tres" id="1_0ykfh"]
-[ext_resource type="Theme" uid="uid://crll6jfs1qhjx" path="res://themes/main_info_label.tres" id="2_0ykfh"]
+[ext_resource type="Theme" uid="uid://bt2ov3v5tpb8s" path="res://assets/resources/themes/score_disp.tres" id="1_0ykfh"]
+[ext_resource type="Theme" uid="uid://ci7xj4e45axlg" path="res://assets/resources/themes/rep_text.tres" id="1_ly6gt"]
+[ext_resource type="Theme" uid="uid://crll6jfs1qhjx" path="res://assets/resources/themes/main_info_label.tres" id="2_0ykfh"]
 
 [node name="PlayerDisplay" type="Control" unique_id=821448185]
 layout_mode = 3
@@ -10,43 +11,41 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ReputationLabel" type="Label" parent="." unique_id=1194708714]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = -0.1
+anchor_right = 0.25
+anchor_bottom = 0.05
 offset_left = 2.0
 offset_top = 15.0
 offset_right = 14.0
 offset_bottom = 22.0
-theme = ExtResource("1_0ykfh")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("1_ly6gt")
 text = "REP"
 metadata/_edit_use_anchors_ = true
 
 [node name="ScoreDisplay" type="Label" parent="." unique_id=41245744]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
 anchor_top = -0.025
-anchor_right = 0.025
 anchor_bottom = -0.025
 offset_top = 20.0
 offset_right = 18.0
 offset_bottom = 33.0
 theme = ExtResource("1_0ykfh")
-theme_override_font_sizes/font_size = 14
 text = "00"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerNumber" type="Label" parent="." unique_id=277508004]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
 anchor_top = -0.075
-anchor_right = 0.025
 anchor_bottom = -0.075
 offset_left = 1.0
 offset_top = 4.0
 offset_right = 16.0
 offset_bottom = 17.0
 theme = ExtResource("2_0ykfh")
-theme_override_font_sizes/font_size = 14
 text = "P1"
 metadata/_edit_use_anchors_ = true

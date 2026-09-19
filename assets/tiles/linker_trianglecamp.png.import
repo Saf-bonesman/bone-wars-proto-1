@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rlfuhx1oaxlo"
-path="res://.godot/imported/exclamation.png-9c8d0fe2711262bc37c43673ab7cf0f5.ctex"
+uid="uid://brsfmhsj8y157"
+path="res://.godot/imported/linker_trianglecamp.png-13346bceb6e6546a91e490da775743d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/exclamation.png"
-dest_files=["res://.godot/imported/exclamation.png-9c8d0fe2711262bc37c43673ab7cf0f5.ctex"]
+source_file="res://assets/tiles/linker_trianglecamp.png"
+dest_files=["res://.godot/imported/linker_trianglecamp.png-13346bceb6e6546a91e490da775743d2.ctex"]
 
 [params]
 
