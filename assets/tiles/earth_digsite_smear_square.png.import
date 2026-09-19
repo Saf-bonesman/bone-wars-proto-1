@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7bxph0xue0cw"
-path="res://.godot/imported/cursor_placeholder.png-b07944e89ee1434a9410895a0f04d333.ctex"
+uid="uid://dibv0dvtq3n3w"
+path="res://.godot/imported/earth_digsite_smear_square.png-1d3f5296ee267bb6f51ba48f020969b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/cursor_placeholder.png"
-dest_files=["res://.godot/imported/cursor_placeholder.png-b07944e89ee1434a9410895a0f04d333.ctex"]
+source_file="res://assets/tiles/earth_digsite_smear_square.png"
+dest_files=["res://.godot/imported/earth_digsite_smear_square.png-1d3f5296ee267bb6f51ba48f020969b2.ctex"]
 
 [params]
 
