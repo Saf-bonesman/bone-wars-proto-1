@@ -5,7 +5,7 @@ extends Node2D
 @onready var bones : AnimatedSprite2D = $BonesLabel
 @onready var connectors : Node2D = $Connectors
 var dig_turn_counter = 2
-var dig_type = "low"
+var dig_type = "wastes"
 var owning_player = 0
 var owning_camp : Vector2i
 var my_location : Vector2i
@@ -18,12 +18,12 @@ func _ready() -> void:
 	label.frame = owning_player
 	show_connector()
 	match dig_type:
-		"high":
+		"bones":
 			bones.frame = 2
-		"med":
+		"meadow":
 			bones.frame = 1
-		"low":
-			bones.frame = 0
+		"wastes":
+			bones.frame = 4
 
 func continue_digsite() -> void:
 	dig_turn_counter -=1
@@ -35,11 +35,11 @@ func end_digsite(destroy : bool) -> void:
 		queue_free()
 		return
 	match dig_type:
-		"low":
+		"wastes":
 			dig_dug.emit(randi_range(0,1))
-		"med":
+		"meadow":
 			dig_dug.emit(randi_range(1,2))
-		"high":
+		"bones":
 			dig_dug.emit(randi_range(2,3))
 	queue_free()
 
@@ -60,7 +60,7 @@ func show_connector() -> void:
 		vec_dir = Vector2i.UP
 	if dir == "":
 		return
-	connectors.get_node(dir+str(owning_player)).visible = true
+	#connectors.get_node(dir+str(owning_player)).visible = true
 	var dig = connectors.get_node("D")
 	dig.position = Vector2i(dig.position) + (vec_dir * Vector2i(16,16))
 	dig.visible = true
