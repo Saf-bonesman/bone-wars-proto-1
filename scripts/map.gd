@@ -29,6 +29,25 @@ func board_init() -> void:
 	Player.w = board_width - 1
 	Player.h = board_height - 1
 
+func available_actions(selected_camp : Vector2i) -> Dictionary:
+	var return_val : Dictionary = {
+		"Sabotage" : [],
+		"Dig" : []
+	}
+	var avail_range_sab = _get_display_range(3, [selected_camp])
+	for sab_option in avail_range_sab:
+		if Camps.get_struct_at_location(sab_option) == "digsite":
+			return_val["Sabotage"].append(sab_option)
+	if return_val["Sabotage"].is_empty():
+		return_val.erase("Sabotage")
+	var avail_range_dig = _get_display_range(1, [selected_camp])	
+	for dig_option in avail_range_dig:
+		if Camps.get_struct_at_location(dig_option) == "nothing":
+			return_val["Dig"].append(dig_option)
+	if return_val["Dig"].is_empty():
+		return_val.erase("Dig")
+	return return_val
+
 func display_encamp_range() -> void:
 	var avail_range = _get_display_range(2, player_location_array_dict.get(current_player_turn))
 	board_node.draw_range(avail_range, board_dict)
