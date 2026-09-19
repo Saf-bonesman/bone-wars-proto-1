@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ctblw158w3k8l"
-path="res://.godot/imported/bone_get_manybones.wav-b2b9131d513d575e09110018979d64df.sample"
+uid="uid://dyg4hpgvhxocp"
+path="res://.godot/imported/bone_get_manybones.wav-e9de728795d783d57955bcbc68f2f31a.sample"
 
 [deps]
 
-source_file="res://assets/sounds/bone_get_manybones.wav"
-dest_files=["res://.godot/imported/bone_get_manybones.wav-b2b9131d513d575e09110018979d64df.sample"]
+source_file="res://assets/Sounds/bone_get_manybones.wav"
+dest_files=["res://.godot/imported/bone_get_manybones.wav-e9de728795d783d57955bcbc68f2f31a.sample"]
 
 [params]
 

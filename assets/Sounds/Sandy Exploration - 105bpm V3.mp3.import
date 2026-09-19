@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://bflprf14bgaft"
-path="res://.godot/imported/Sandy Exploration - 105bpm V3.mp3-17e589db90162edafcd25e38dd777a29.mp3str"
+uid="uid://cc4bort3j214m"
+path="res://.godot/imported/Sandy Exploration - 105bpm V3.mp3-c79295d9d43fbee7e9d2c6b47fa97177.mp3str"
 
 [deps]
 
-source_file="res://assets/sounds/Sandy Exploration - 105bpm V3.mp3"
-dest_files=["res://.godot/imported/Sandy Exploration - 105bpm V3.mp3-17e589db90162edafcd25e38dd777a29.mp3str"]
+source_file="res://assets/Sounds/Sandy Exploration - 105bpm V3.mp3"
+dest_files=["res://.godot/imported/Sandy Exploration - 105bpm V3.mp3-c79295d9d43fbee7e9d2c6b47fa97177.mp3str"]
 
 [params]
 
