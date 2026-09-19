@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dapl06nxl8x16"
-path="res://.godot/imported/dig_dig.wav-80563e0e26b6cb8f811767e5a8e64d1c.sample"
+path="res://.godot/imported/dig_dig.wav-5a564cc86ca0e6fcc9b0fbc8edea0cd1.sample"
 
 [deps]
 
-source_file="res://assets/sounds/dig_dig.wav"
-dest_files=["res://.godot/imported/dig_dig.wav-80563e0e26b6cb8f811767e5a8e64d1c.sample"]
+source_file="res://assets/Sounds/dig_dig.wav"
+dest_files=["res://.godot/imported/dig_dig.wav-5a564cc86ca0e6fcc9b0fbc8edea0cd1.sample"]
 
 [params]
 
