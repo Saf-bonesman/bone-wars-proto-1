@@ -7,9 +7,18 @@
 atlas = ExtResource("2_euxlh")
 region = Rect2(160, 1, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_euxlh"]
+atlas = ExtResource("2_euxlh")
+region = Rect2(160, 16, 16, 16)
+
 [node name="EepyIndicator" type="Node2D" unique_id=2006596933]
 script = ExtResource("1_euxlh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986556510]
 position = Vector2(8, 8)
 texture = SubResource("AtlasTexture_nt13d")
+
+[node name="DigIndicator" type="Sprite2D" parent="." unique_id=1306177549]
+visible = false
+position = Vector2(8, 7)
+texture = SubResource("AtlasTexture_euxlh")

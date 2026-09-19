@@ -15,8 +15,8 @@ var eepy_scene : PackedScene = load("res://scenes/eepy_indicator.tscn")
 @onready var eepies : Node2D = $Eeepies
 
 const structure_dict : Dictionary = {
-	"camp0" = Vector2i(0,0),
-	"camp1" = Vector2i(0,1)
+	"camp0" = Vector2i(1,0),
+	"camp1" = Vector2i(1,1)
 }
 
 var player_structure_locations : Dictionary = {}
@@ -59,10 +59,12 @@ func _on_digsite_animation_complete(loc : Vector2i) -> void:
 	print("spawn")
 	spawn_hole.emit(loc)
 
-func instantiate_digsite(player : int, struct_coord : Vector2i) -> void:
+func instantiate_digsite(player : int, struct_coord : Vector2i, camp_selected : Vector2i) -> void:
 	var dig : Node2D = digsite_scene.instantiate()
 	dig.owning_player = player
 	dig.position = struct_coord * Vector2i(16,16)
+	dig.my_location = struct_coord
+	dig.owning_camp = camp_selected
 	digsites.add_child(dig)
 	digsite_holder[struct_coord] = dig
 	var psti = PlayerStructureTypeInfo.new()
@@ -89,3 +91,4 @@ class PlayerStructureTypeInfo:
 	var owning_player : int
 	var type : String
 	var active : bool = true
+	var digging : bool = false
