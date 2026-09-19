@@ -17,9 +17,9 @@ func _ready() -> void:
 	player_location_array_dict[0] = v1
 	var v2 : Array[Vector2i] = [Vector2i(board_width-1,board_height-1)]
 	player_location_array_dict[1] = v2
-	Camps.new_camp(0, Vector2i(0,0))
+	Camps.new_camp(0, Vector2i(0,0), false)
 	#initial p2 camp
-	Camps.new_camp(1, Vector2i(board_width-1,board_height-1))
+	Camps.new_camp(1, Vector2i(board_width-1,board_height-1), false)
 
 func board_init() -> void:
 	board_node.tileSize = tile_height

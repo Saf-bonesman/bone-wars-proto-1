@@ -35,20 +35,34 @@ func _restart_game() -> void:
 	score_array = [0, 0, 0, 0, 0]
 	current_player_turn = 0
 	Map.board_init()
+	Map.display_encamp_range()
 	HUD.init_player_displays()
-
 
 func _on_broadcast_action(action_type : String) -> void:
 	print(action_type)
 	match action_type:
 		"choose_camp_loc":
-			Map.display_encamp_range()
+			_phase_encamp()
 		"encamp":
-			Map.spawn_camp()
+			_phase_choose_camp()
 		"dig":
-			Map.spawn_digsite()
+			_spawn_digsite()
 		"destroy":
-			Map.destroy_digsite()
+			_destroy_digsite()
+
+func _phase_encamp():
+	Map.undraw_range()
+	Map.display_encamp_range()
+
+func _phase_choose_camp():
+	Map.undraw_range()
+	Map.spawn_camp()
+
+func _spawn_digsite():
+	Map.spawn_digsite()
+
+func _destroy_digsite():
+	Map.destroy_digsite()
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:
