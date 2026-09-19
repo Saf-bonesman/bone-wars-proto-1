@@ -63,12 +63,14 @@ func _on_digsite_animation_complete(loc : Vector2i) -> void:
 	print("spawn")
 	spawn_hole.emit(loc)
 
-func instantiate_digsite(player : int, struct_coord : Vector2i, camp_selected : Vector2i) -> void:
+func instantiate_digsite(player : int, struct_coord : Vector2i, \
+camp_selected : Vector2i, bones_type : String) -> void:
 	var dig : Node2D = digsite_scene.instantiate()
 	dig.owning_player = player
 	dig.position = struct_coord * Vector2i(16,16)
 	dig.my_location = struct_coord
 	dig.owning_camp = camp_selected
+	dig.dig_type = bones_type
 	digsites.add_child(dig)
 	digsite_holder[struct_coord] = dig
 	var psti = PlayerStructureTypeInfo.new()

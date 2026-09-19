@@ -58,7 +58,8 @@ func undraw_range() -> void:
 
 func spawn_digsite() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "empty":
-		Camps.instantiate_digsite(current_player_turn, Player.curr_pos, selected_camp_coordinates)
+		Camps.instantiate_digsite(current_player_turn, Player.curr_pos, \
+		selected_camp_coordinates, _tile_type_here(Player.curr_pos))
 
 func destroy_digsite() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":
@@ -101,6 +102,8 @@ func _is_in_bounds(point : Vector2i) -> bool:
 		return false
 	return true
 
+func _tile_type_here(coord : Vector2i) -> String:
+	return board_dict.get(coord).tile_type
 
 func _on_camps_spawn_hole(loc : Vector2i) -> void:
 	board_dict[loc] = board_node.create_tile("hole")

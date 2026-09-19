@@ -71,12 +71,12 @@ frame_progress = 0.45015478
 
 [node name="East1" type="Sprite2D" parent="Connectors" unique_id=399845473]
 visible = false
-position = Vector2(18, 8)
+position = Vector2(18, 6)
 texture = ExtResource("9_dkh0w")
 
 [node name="West1" type="Sprite2D" parent="Connectors" unique_id=1751568459]
 visible = false
-position = Vector2(-2, 8)
+position = Vector2(-2, 6)
 texture = ExtResource("9_dkh0w")
 
 [node name="North1" type="Sprite2D" parent="Connectors" unique_id=363333471]
@@ -93,12 +93,12 @@ texture = ExtResource("9_dkh0w")
 
 [node name="East0" type="Sprite2D" parent="Connectors" unique_id=645660333]
 visible = false
-position = Vector2(18, 8)
+position = Vector2(18, 6)
 texture = ExtResource("10_48v5a")
 
 [node name="West0" type="Sprite2D" parent="Connectors" unique_id=576352856]
 visible = false
-position = Vector2(-2, 8)
+position = Vector2(-2, 6)
 texture = ExtResource("10_48v5a")
 
 [node name="South0" type="Sprite2D" parent="Connectors" unique_id=631527101]
