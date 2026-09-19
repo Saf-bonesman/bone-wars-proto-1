@@ -41,6 +41,8 @@ func _restart_game() -> void:
 func _on_broadcast_action(action_type : String) -> void:
 	print(action_type)
 	match action_type:
+		"choose_camp_loc":
+			Map.display_encamp_range()
 		"encamp":
 			Map.spawn_camp()
 		"dig":

@@ -8,9 +8,18 @@ var board_dict : Dictionary
 #var board_dict_prev : Dictionary
 @onready var Player : Node2D = $Player
 @onready var Camps : Node2D = $Camps
-var player_structures : Dictionary = {}
 var current_player_turn = 0
-var opp_player_turn = 1
+var player_location_array_dict : Dictionary = {}
+
+func _ready() -> void:
+	#initial p1 camp
+	var v1 : Array[Vector2i] = [Vector2i(0,0)]
+	player_location_array_dict[0] = v1
+	var v2 : Array[Vector2i] = [Vector2i(board_width-1,board_height-1)]
+	player_location_array_dict[1] = v2
+	Camps.new_camp(0, Vector2i(0,0))
+	#initial p2 camp
+	Camps.new_camp(1, Vector2i(board_width-1,board_height-1))
 
 func board_init() -> void:
 	board_node.tileSize = tile_height
@@ -19,6 +28,10 @@ func board_init() -> void:
 	Player.tile_height = tile_height
 	Player.w = board_width - 1
 	Player.h = board_height - 1
+
+func display_encamp_range() -> void:
+	var avail_range = _get_display_range(2, player_location_array_dict.get(current_player_turn))
+	board_node.draw_range(avail_range, board_dict)
 
 func display_range(r : int, p : Vector2i) -> void:
 	var avail_range = _get_display_range(r, [p])
@@ -32,19 +45,19 @@ func spawn_digsite() -> void:
 		Camps.instantiate_digsite(current_player_turn, Player.curr_pos)
 
 func destroy_digsite() -> void:
-	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite"+str(opp_player_turn):
-		Camps.destroy_digsite(Player.curr_pos, opp_player_turn)
+	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":
+		Camps.destroy_digsite(Player.curr_pos, current_player_turn)
 
 func spawn_camp() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) != "empty":
 		return
 	var camp_coordinates = Player.curr_pos
-	player_structures[camp_coordinates] = "camp"+str(current_player_turn)
-	Camps.draw_new_struct(player_structures.get(camp_coordinates), camp_coordinates)
+	player_location_array_dict.get(current_player_turn).append(camp_coordinates)
+	Camps.new_camp(current_player_turn, camp_coordinates)
 
 func _on_game_turn_end(turn) -> void:
-	opp_player_turn = current_player_turn
 	current_player_turn = turn
+	Camps.refresh(current_player_turn)
 
 ## this is the first time I've used a recursive function since uni btw
 func _get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector2i]:

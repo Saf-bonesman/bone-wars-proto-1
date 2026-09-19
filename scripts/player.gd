@@ -58,6 +58,7 @@ func _input(_event) -> void:
 				broadcast_action.emit("dig")
 				print("diggy diggy hole")
 				current_state = player_state.ENCAMP
+				broadcast_action.emit("choose_camp_loc")
 				
 # repeat timer
 func _on_move_timer_timeout() -> void:
