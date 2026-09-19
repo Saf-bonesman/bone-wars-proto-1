@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c01r606esft57"]
+[gd_scene format=3 uid="uid://rlyg786fj28p"]
 
 [ext_resource type="Script" uid="uid://ynbyk54xapkr" path="res://scripts/dig_site.gd" id="1_peofb"]
 [ext_resource type="SpriteFrames" uid="uid://7e7yq6d71wf2" path="res://assets/resources/spriteframes/digsite.tres" id="2_ri8f2"]
