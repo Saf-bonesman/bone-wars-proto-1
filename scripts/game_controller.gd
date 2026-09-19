@@ -42,9 +42,11 @@ func _on_broadcast_action(action_type : String) -> void:
 	print(action_type)
 	match action_type:
 		"encamp":
-			pass#Map.spawn_camp()
+			Map.spawn_camp()
 		"dig":
 			Map.spawn_digsite()
+		"destroy":
+			Map.destroy_digsite()
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:

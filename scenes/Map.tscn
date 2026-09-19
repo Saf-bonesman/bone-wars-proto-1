@@ -14,3 +14,5 @@ script = ExtResource("1_tm3qm")
 
 [node name="Player" parent="." unique_id=30233815 instance=ExtResource("2_tm3qm")]
 position = Vector2(8, 8)
+
+[connection signal="spawn_hole" from="Camps" to="." method="_on_camps_spawn_hole"]

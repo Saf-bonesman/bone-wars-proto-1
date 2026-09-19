@@ -10,6 +10,7 @@ var board_dict : Dictionary
 @onready var Camps : Node2D = $Camps
 var player_structures : Dictionary = {}
 var current_player_turn = 0
+var opp_player_turn = 1
 
 func board_init() -> void:
 	board_node.tileSize = tile_height
@@ -27,18 +28,23 @@ func undraw_range() -> void:
 	board_node.undraw_range()
 
 func spawn_digsite() -> void:
-	print("spawn digsite(map)")
-	Camps.instantiate_digsite(current_player_turn, Player.curr_pos)
+	if (Camps.get_struct_at_location(Player.curr_pos)) == "empty":
+		Camps.instantiate_digsite(current_player_turn, Player.curr_pos)
+
+func destroy_digsite() -> void:
+	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite"+str(opp_player_turn):
+		Camps.destroy_digsite(Player.curr_pos, opp_player_turn)
 
 func spawn_camp() -> void:
-	var camp_coordinates = Player.curr_pos
-	if player_structures.has(camp_coordinates):
+	if (Camps.get_struct_at_location(Player.curr_pos)) != "empty":
 		return
+	var camp_coordinates = Player.curr_pos
 	player_structures[camp_coordinates] = "camp"+str(current_player_turn)
 	Camps.draw_new_struct(player_structures.get(camp_coordinates), camp_coordinates)
 
 func _on_game_turn_end(turn) -> void:
-	current_player_turn = turn # Replace with function body.
+	opp_player_turn = current_player_turn
+	current_player_turn = turn
 
 ## this is the first time I've used a recursive function since uni btw
 func _get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector2i]:
@@ -65,3 +71,9 @@ func _is_in_bounds(point : Vector2i) -> bool:
 	if point.x > board_width || point.x < 0 || point.y > board_height || point.y < 0:
 		return false
 	return true
+
+
+func _on_camps_spawn_hole(loc : Vector2i) -> void:
+	board_dict[loc] = board_node.create_tile("hole")
+	board_node.redraw_board(board_dict)
+	
