@@ -38,11 +38,13 @@ func _restart_game() -> void:
 	HUD.init_player_displays()
 
 
-func _on_broadcast_action(action_type : String, coords : Vector2i) -> void:
+func _on_broadcast_action(action_type : String) -> void:
 	print(action_type)
 	match action_type:
 		"encamp":
-			Map.spawn_camp()
+			pass#Map.spawn_camp()
+		"dig":
+			Map.spawn_digsite()
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:

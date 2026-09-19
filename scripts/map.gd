@@ -26,7 +26,11 @@ func display_range(r : int, p : Vector2i) -> void:
 func undraw_range() -> void:
 	board_node.undraw_range()
 
-func spawn_camp():
+func spawn_digsite() -> void:
+	print("spawn digsite(map)")
+	Camps.instantiate_digsite(current_player_turn, Player.curr_pos)
+
+func spawn_camp() -> void:
 	var camp_coordinates = Player.curr_pos
 	if player_structures.has(camp_coordinates):
 		return
