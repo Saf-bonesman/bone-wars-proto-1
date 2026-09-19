@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://br7fdwg7hqy3k"]
+
+[ext_resource type="Script" uid="uid://cr3yimniw7siw" path="res://scripts/dug_site.gd" id="1_earey"]
+[ext_resource type="Texture2D" uid="uid://5g0vqih7dqf5" path="res://assets/spritesheet1.png" id="3_7twuo"]
+[ext_resource type="AudioStream" uid="uid://dsy0xjjo6hwdk" path="res://assets/Sounds/Explosion.wav" id="3_earey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cumca"]
+atlas = ExtResource("3_7twuo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixyhu"]
+atlas = ExtResource("3_7twuo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nt13d"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cumca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixyhu")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DugSite" type="Node2D" unique_id=876290749]
+script = ExtResource("1_earey")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=800104989]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_nt13d")
+
+[node name="ExplodoPlayer" type="AudioStreamPlayer2D" parent="." unique_id=377355391]
+stream = ExtResource("3_earey")
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

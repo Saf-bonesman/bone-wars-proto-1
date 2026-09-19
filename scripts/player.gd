@@ -5,6 +5,8 @@ var move_timer
 var tile_height
 var w
 var h
+var player_menu
+@export var cursor_sprite : AnimatedSprite2D
 
 enum player_state {
 	ENCAMP,
@@ -20,6 +22,7 @@ var current_state = player_state.ENCAMP
 func _ready() -> void:
 	move_timer = get_node("MoveTimer")
 	move_timer.start()
+	cursor_sprite.play("default", .5, false)
 	
 #Limit screen
 func limit_pos() -> void:
@@ -32,7 +35,7 @@ func _input(_event) -> void:
 		player_state.ENCAMP:
 			if Input.is_action_pressed("action_a"):
 				print("encamp")
-				broadcast_action.emit("encamp", curr_pos)
+				broadcast_action.emit("encamp")
 				current_state = player_state.CAMP_SELECTION
 		player_state.CAMP_SELECTION:
 			if Input.is_action_pressed("action_a"):
@@ -48,11 +51,14 @@ func _input(_event) -> void:
 			if Input.is_action_pressed("action_a"):
 				print("big esplostion")
 				move_timer.set_paused(false)
+				broadcast_action.emit("destroy")
 				current_state = player_state.ACTION_DIG
 		player_state.ACTION_DIG:
 			if Input.is_action_pressed("action_a"):
+				broadcast_action.emit("dig")
 				print("diggy diggy hole")
 				current_state = player_state.ENCAMP
+				broadcast_action.emit("choose_camp_loc")
 				
 # repeat timer
 func _on_move_timer_timeout() -> void:

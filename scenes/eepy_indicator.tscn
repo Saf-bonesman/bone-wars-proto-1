@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dywukrcxc0xp5"]
+
+[ext_resource type="Script" uid="uid://du64cxeg1gofc" path="res://scripts/eepy_indicator.gd" id="1_euxlh"]
+[ext_resource type="Texture2D" uid="uid://c5osql8hmrfj5" path="res://assets/tiles/tileset.png" id="2_euxlh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt13d"]
+atlas = ExtResource("2_euxlh")
+region = Rect2(160, 1, 16, 16)
+
+[node name="EepyIndicator" type="Node2D" unique_id=2006596933]
+script = ExtResource("1_euxlh")
+
+[node name="E" type="Sprite2D" parent="." unique_id=986556510]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_nt13d")
