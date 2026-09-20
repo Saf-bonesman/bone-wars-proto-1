@@ -32,15 +32,19 @@ func board_init() -> void:
 	Camps.new_camp(1, Vector2i(board_width-1,board_height-1), false)
 
 func available_actions(selected_camp : Vector2i) -> Dictionary:
+	var s : Array[Vector2i]
+	var d : Array[Vector2i]
 	var return_val : Dictionary = {
-		"Sabotage" : [],
-		"Dig" : []
+		"Sabotage" : s,
+		"Dig" : d
 	}
-	var avail_range_sab = _get_display_range(3, [selected_camp])
+	var selected_camp_start : Array[Vector2i] = [selected_camp]
+	var avail_range_sab = _get_display_range(3, selected_camp_start)
 	for sab_option in avail_range_sab:
-		if Camps.get_struct_at_location(sab_option) == "digsite":
+		if Camps.get_struct_at_location(sab_option) == "digsite" \
+		&& Camps.player_structure_locations.get(sab_option).owning_player == current_player_turn:
 			return_val["Sabotage"].append(sab_option)
-	var avail_range_dig = _get_display_range(1, [selected_camp])	
+	var avail_range_dig = _get_display_range(1, selected_camp_start)	
 	for dig_option in avail_range_dig:
 		if Camps.get_struct_at_location(dig_option) == "empty":
 			return_val["Dig"].append(dig_option)
@@ -66,10 +70,10 @@ func display_range(r : int, p : Vector2i) -> void:
 func undraw_range() -> void:
 	board_node.undraw_range()
 
-func spawn_digsite() -> void:
-	if (Camps.get_struct_at_location(Player.curr_pos)) == "empty":
-		Camps.instantiate_digsite(current_player_turn, Player.curr_pos, \
-		selected_camp_coordinates, _tile_type_here(Player.curr_pos))
+func spawn_digsite(selected_space : Vector2i, camp_space : Vector2i) -> void:
+	if (Camps.get_struct_at_location(selected_space)) == "empty":
+		Camps.instantiate_digsite(current_player_turn, selected_space, \
+		camp_space, _tile_type_here(Player.curr_pos))
 
 func destroy_digsite() -> void:
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":
@@ -96,7 +100,7 @@ func load_menu(acts_menu : Array[String]) -> void:
 func exit_menu() -> void:
 	player_menu.queue_free()
 
-func _on_game_turn_end(turn) -> void:
+func receive_end_turn(turn) -> void:
 	current_player_turn = turn
 	Camps.refresh(current_player_turn)
 

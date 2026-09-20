@@ -53,10 +53,10 @@ func _button_pressed(act_button : Button):
 	match act_button.text:
 		"Pass":
 			#disable camp
-			broadcast_menu_action.emit("exit_menu")
+			broadcast_menu_action.emit("pass_camp")
 		"Back":
 			broadcast_menu_action.emit("exit_menu")
 		"Sabotage":
-			broadcast_menu_action.emit("sabotage")
+			broadcast_menu_action.emit("choose_sabotage")
 		"Dig":
-			broadcast_menu_action.emit("dig")
+			broadcast_menu_action.emit("choose_dig")

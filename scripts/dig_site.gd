@@ -4,7 +4,7 @@ extends Node2D
 @onready var label : AnimatedSprite2D = $PlayerLabel
 @onready var bones : AnimatedSprite2D = $BonesLabel
 @onready var connectors : Node2D = $Connectors
-@onready var dig_noise : AudioStreamPlayback
+@onready var dig_noise : AudioStreamPlayer = $DigsiteNoise
 var dig_turn_counter = 2
 var dig_type = "wastes"
 var owning_player = 0

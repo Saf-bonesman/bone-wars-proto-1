@@ -37,13 +37,10 @@ func _input(_event) -> void:
 			if Input.is_action_pressed("action_a"):
 				broadcast_action.emit("spawn_new_camp")
 		player_state.SELECT_CAMP_FOR_ACTION:
-			move_timer.set_paused(false)
-			cursor_sprite.play("default", .5, false)
 			if Input.is_action_pressed("action_a"):
 				broadcast_action.emit("select_camp_for_action")
 		player_state.MENUING:
-			move_timer.set_paused(true)
-			cursor_sprite.play("default", .2, false)
+			pass
 			# inputs while menuing are handled by menu
 			#if Input.is_action_pressed("action_b"):
 				#broadcast_action.emit("exit_menu")
@@ -57,6 +54,15 @@ func _input(_event) -> void:
 				broadcast_action.emit("dig")
 			if Input.is_action_pressed("action_b"):
 				broadcast_action.emit("return_to_menu")
+
+func change_state(state : player_state) -> void:
+	current_state = state
+	if (state == player_state.MENUING):
+		move_timer.set_paused(true)
+		cursor_sprite.play("default", .2, false)
+	else:
+		move_timer.set_paused(false)
+		cursor_sprite.play("default", .5, false)
 
 # repeat timer
 func _on_move_timer_timeout() -> void:

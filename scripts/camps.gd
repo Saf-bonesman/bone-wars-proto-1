@@ -63,6 +63,7 @@ func refresh(player_turn : int) -> void:
 		if eepy.owning_player == player_turn:
 			player_structure_locations.get(eepy.coord).active = true
 			eepy.queue_free()
+	refresh_done.emit()
 
 func _on_digsite_animation_complete(loc : Vector2i) -> void:
 	spawn_hole.emit(loc)
@@ -77,6 +78,7 @@ camp_selected : Vector2i, bones_type : String) -> void:
 	dig.position = struct_coord * Vector2i(16,16)
 	dig.my_location = struct_coord
 	dig.owning_camp = camp_selected
+	player_structure_locations.get(camp_selected).digging = true
 	dig.dig_type = bones_type
 	dig.dig_complete.connect(_on_dig_complete)
 	## TODO check this worked lol
@@ -104,6 +106,7 @@ func new_camp(turn : int, coordinates: Vector2i, inactivate : bool = true):
 	
 signal spawn_hole
 signal spawn_camp
+signal refresh_done
 
 class PlayerStructureTypeInfo:
 	var owning_player : int
