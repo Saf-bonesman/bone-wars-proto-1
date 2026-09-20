@@ -21,7 +21,7 @@ var player_structure_locations : Dictionary = {}
 var digsite_holder : Dictionary = {}
 
 func continue_all_camps(player : int):
-	print(digsite_holder)
+	#print(digsite_holder)
 	for digsite in digsite_holder.values():
 		if !is_instance_valid(digsite):
 			continue

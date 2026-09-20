@@ -7,6 +7,7 @@ var w
 var h
 var player_menu
 @export var cursor_sprite : AnimatedSprite2D
+var my_turn = true
 
 enum player_state {
 	SPAWN_NEW_CAMP,
@@ -31,6 +32,8 @@ func limit_pos() -> void:
 	
 # Movin' the cursor
 func _unhandled_key_input(event: InputEvent) -> void:
+	if !my_turn:
+		return
 	#print(current_state)
 	match current_state:
 		player_state.SPAWN_NEW_CAMP:
@@ -56,6 +59,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				broadcast_action.emit("return_to_menu")
 
 func change_state(state : player_state) -> void:
+	if !my_turn:
+		return
 	current_state = state
 	if (state == player_state.MENUING):
 		move_timer.set_paused(true)

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var HUD : Control = $HUD
 @onready var Map : Node2D = $Map
+@onready var Enemy : Node = $EnemyAI
 var score_array : Array[int] = [0, 0, 0, 0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
@@ -9,16 +10,17 @@ var last_selected_camp : Vector2i = Vector2i(0,0)
 var available_actions : Dictionary
 var usable_camps : Array[Vector2i]
 var turn_counter : int = 1
+
 ### test
-func _unhandled_input(_event: InputEvent) -> void:
-	#pass
-	if Input.is_action_just_pressed("debug_middlemoues"):
-		print(Map.Player.current_state)
-		print(current_player_turn)
-		print(usable_camps)
-		print(last_selected_camp)
-		print(available_actions.get("Dig"))
-		print(available_actions.get("Sabotage"))
+#func _unhandled_input(_event: InputEvent) -> void:
+	##pass
+	#if Input.is_action_just_pressed("debug_middlemoues"):
+		#print(Map.Player.current_state)
+		#print(current_player_turn)
+		#print(usable_camps)
+		#print(last_selected_camp)
+		#print(available_actions.get("Dig"))
+		#print(available_actions.get("Sabotage"))
 	#if Input.is_action_just_pressed("debug_rightmouse"):
 		#end_turn()
 	#if Input.is_action_just_pressed("debug_key_1"):
@@ -87,7 +89,7 @@ func _check_for_camp_spots() -> void:
 func _spawn_camp(selected_location : Vector2i) -> void:
 	var available_camp_spots = Map.available_camp_spots()
 	if available_camp_spots.has(selected_location):
-		Map.spawn_camp()
+		Map.spawn_camp(selected_location)
 		_score_new_building()
 		_set_player_state_to_select_camp()
 
@@ -141,7 +143,7 @@ func _select_camp_for_action_and_open_menu() -> void:
 		actions_for_menu.append("Dig")
 	actions_for_menu.append("Pass")
 	actions_for_menu.append("Back")
-	print(actions_for_menu)
+	#print(actions_for_menu)
 	Map.Player.change_state(Map.Player.player_state.MENUING)
 	_load_menu(actions_for_menu) # open menu here with the options in this array
 
@@ -158,7 +160,7 @@ func _spawn_digsite() -> void:
 func _do_sabotage() -> void:
 	var selected_space = Map.Player.curr_pos
 	if (available_actions.get("Sabotage").has(selected_space)):
-		Map.destroy_digsite()
+		Map.destroy_digsite(selected_space)
 		_clear_available_actions()
 		Map.undraw_range()
 		_sabotage_punishment()
@@ -184,6 +186,7 @@ func end_turn() -> void:
 		turn_counter += 1
 	else:
 		current_player_turn += 1
+		Map.Player.my_turn = false
 	if turn_counter >= 9:
 		_finish_game()
 	HUD.update_info_display("start",turn_counter,current_player_turn+1)
@@ -193,15 +196,16 @@ func end_turn() -> void:
 	_check_for_camp_spots()
 	Map.Camps.continue_all_camps(current_player_turn)
 	_reset_usable_camps()
-	Map.display_encamp_range()
 	Map.Player.change_state(Map.Player.player_state.SPAWN_NEW_CAMP)
+	if (current_player_turn == 1):
+		_enter_enemy_phase()
 
 func _on_refresh() -> void:
 	_reset_usable_camps()
 
 func _reset_usable_camps() -> void:
 	usable_camps = Map.Camps.get_usable_camps(current_player_turn)
-	print(usable_camps)
+	#print(usable_camps)
 
 func _send_score() -> void:
 	HUD.set_score_display(current_player_turn, score_array[current_player_turn])
@@ -228,3 +232,13 @@ func _finish_game() -> void:
 	else:
 		winner = 0
 	HUD.update_info_display("gameend", score_array[winner], winner)
+
+func _on_enemy_ai_eai_done() -> void:
+	Map.Player.my_turn = true
+	end_turn()
+
+func _enter_enemy_phase() -> void:
+	Map.undraw_range()
+	Enemy.choose_next_camp_AI(Map.available_camp_spots())
+	_reset_usable_camps()
+	Enemy.choose_next_move_AI(usable_camps)
