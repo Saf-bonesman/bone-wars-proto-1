@@ -33,7 +33,7 @@ func continue_digsite() -> void:
 		end_digsite(false)
 
 func end_digsite(destroy : bool) -> void:
-	dig_complete.emit(owning_camp)
+	dig_complete.emit(owning_camp, my_location)
 	if destroy:
 		queue_free()
 		return
