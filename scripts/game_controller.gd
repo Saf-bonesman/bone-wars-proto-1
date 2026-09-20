@@ -50,6 +50,8 @@ func _on_broadcast_action(action_type : String) -> void:
 			_spawn_digsite()
 		"destroy":
 			_destroy_digsite()
+		"menu":
+			_load_menu()
 
 func _phase_encamp():
 	Map.undraw_range()
@@ -64,6 +66,9 @@ func _spawn_digsite():
 
 func _destroy_digsite():
 	Map.destroy_digsite()
+	
+func _load_menu():
+	Map.load_menu()
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:
