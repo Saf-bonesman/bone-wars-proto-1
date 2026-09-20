@@ -8,6 +8,7 @@ var current_player_turn : int = 0
 var last_selected_camp : Vector2i = Vector2i(0,0)
 var available_actions : Dictionary
 var usable_camps : Array[Vector2i]
+var turn_counter : int = 1
 ## test
 func _unhandled_input(_event: InputEvent) -> void:
 	pass
@@ -35,6 +36,7 @@ func _ready() -> void:
 func _restart_game() -> void:
 	#i made this size 4 in case we ever want 4 players but that aint happening this jam
 	score_array = [0, 0, 0, 0, 0] 
+	turn_counter = 1
 	current_player_turn = 0
 	Map.board_init()
 	Map.display_encamp_range()
@@ -133,8 +135,11 @@ func _load_menu(acts_menu : Array[String]) -> void:
 func end_turn() -> void:
 	if current_player_turn >= player_count:
 		current_player_turn = 0
+		turn_counter += 1
 	else:
 		current_player_turn += 1
+	if turn_counter >= 10:
+		_finish_game()
 	HUD.update_info_display("turn",0,current_player_turn+1)
 	turn_end.emit(current_player_turn)
 	_check_for_camp_spots()
@@ -155,11 +160,19 @@ func _score_new_building() -> void:
 	score_array[current_player_turn] +=1	
 	HUD.update_info_display("encamp", 0,0)
 	_send_score()
-	
+
 func _sabotage_punishment() -> void:
 	var punishment = randi_range(0,4)
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage", punishment, 0)
 	_send_score()
-	
+
+func _finish_game() -> void:
+	var winner : int
+	if score_array[0] > score_array[1]:
+		winner = 1
+	else:
+		winner = 0
+	HUD.update_info_display("gameend", score_array[winner], winner)
+
 signal turn_end

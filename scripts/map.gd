@@ -15,7 +15,13 @@ var player_location_array_dict : Dictionary = {}
 var player_menu
 var PLAYER_MENU = preload("res://scenes/PlayerMenu.tscn")
 
-func _ready() -> void:
+func board_init() -> void:
+	board_node.tileSize = tile_height
+	board_dict = board_node._init_board(board_width, board_height)
+	board_node.redraw_board(board_dict)
+	Player.tile_height = tile_height
+	Player.w = board_width - 1
+	Player.h = board_height - 1
 	#initial p1 camp
 	var v1 : Array[Vector2i] = [Vector2i(0,0)]
 	player_location_array_dict[0] = v1
@@ -24,14 +30,6 @@ func _ready() -> void:
 	Camps.new_camp(0, Vector2i(0,0), false)
 	#initial p2 camp
 	Camps.new_camp(1, Vector2i(board_width-1,board_height-1), false)
-
-func board_init() -> void:
-	board_node.tileSize = tile_height
-	board_dict = board_node._init_board(board_width, board_height)
-	board_node.redraw_board(board_dict)
-	Player.tile_height = tile_height
-	Player.w = board_width - 1
-	Player.h = board_height - 1
 
 func available_actions(selected_camp : Vector2i) -> Dictionary:
 	var return_val : Dictionary = {
@@ -131,7 +129,11 @@ func _is_in_bounds(point : Vector2i) -> bool:
 func _tile_type_here(coord : Vector2i) -> String:
 	return board_dict.get(coord).tile_type
 
-func _on_camps_spawn_hole(loc : Vector2i) -> void:
-	board_dict[loc] = board_node.create_tile("hole")
+func _on_camps_spawn_hole(coord : Vector2i) -> void:
+	board_dict[coord] = board_node.create_tile("hole")
 	board_node.redraw_board(board_dict)
-	
+
+func _on_camps_spawn_camp(camp_type : String, coord : Vector2i) -> void:
+	board_dict[coord] = board_node.create_tile(camp_type)
+	print("spawn camp ", camp_type)
+	board_node.redraw_board(board_dict)

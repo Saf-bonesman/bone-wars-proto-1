@@ -28,6 +28,8 @@ func update_info_display(type : String, num : int, player : int) -> void:
 			text_to_update = "P"+str(player)+"'s turn"
 		"encamp":
 			text_to_update = "new camp"
+		"gameend":
+			text_to_update = "P"+str(player)+" wins!\nAny button to restart"
 	info_disp.text = text_to_update
 
 ## refactor this later, or don't
