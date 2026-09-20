@@ -4,20 +4,18 @@ var menu_buttons : Array[Button]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.add_action("Dig", test)
-	self.add_action("Sabotage", test)
-	self.add_action("Quit!", test)
-	self.add_action("Foruth", test)
+	set_focus()
+	
+func setup(acts_menu : Array[String]) -> void:
+	for act in acts_menu:
+		self.add_button(act)
 	self.add_menu(menu_buttons)
-	set_focus()	
 	
-func test() -> void:
-	pass
-	
-func add_action(text: String, action: Callable) -> void:
-	var button := add_button(Button.new(), text) as Button
+#func add_action(text: String, action: Callable) -> void:
+	#var button := add_button(Button.new(), text) as Button
 
-func add_button(button: Button, text: String) -> Button:
+func add_button(text: String) -> Button:
+	var button := Button.new() as Button
 	button.text = text
 	button.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.custom_minimum_size = Vector2i(64, 16)
@@ -40,6 +38,6 @@ func add_menu(buttons : Array[Button]) -> void:
 	
 func set_focus() -> void:
 	if not menu_buttons.is_empty():
-		var button: Button = menu_buttons.front()
-		if button:
-			button.grab_focus()
+		var first: Button = menu_buttons.front()
+		if first:
+			first.grab_focus()
