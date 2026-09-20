@@ -47,6 +47,9 @@ func _restart_game() -> void:
 	Map.board_init()
 	Map.display_encamp_range()
 	HUD.init_player_displays()
+	HUD.update_info_display("start",turn_counter,current_player_turn+1)
+	await get_tree().create_timer(1.0).timeout
+	HUD.update_info_display("turn",turn_counter,current_player_turn+1)
 	_reset_usable_camps()
 
 func _on_broadcast_action(action_type : String) -> void:
@@ -85,11 +88,13 @@ func _spawn_camp(selected_location : Vector2i) -> void:
 	var available_camp_spots = Map.available_camp_spots()
 	if available_camp_spots.has(selected_location):
 		Map.spawn_camp()
+		_score_new_building()
 		_set_player_state_to_select_camp()
 
 func _set_player_state_to_select_camp() -> void:
 		Map.undraw_range()
 		Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
+		HUD.update_info_display("camping",0,current_player_turn+1)
 
 func _set_player_state_to_dig() -> void:
 	_exit_menu()
@@ -156,6 +161,7 @@ func _do_sabotage() -> void:
 		Map.destroy_digsite()
 		_clear_available_actions()
 		Map.undraw_range()
+		_sabotage_punishment()
 		_set_camp_to_sleep()
 
 func _return_to_camp_selection() -> void:
@@ -178,9 +184,11 @@ func end_turn() -> void:
 		turn_counter += 1
 	else:
 		current_player_turn += 1
-	if turn_counter >= 10:
+	if turn_counter >= 9:
 		_finish_game()
-	HUD.update_info_display("turn",0,current_player_turn+1)
+	HUD.update_info_display("start",turn_counter,current_player_turn+1)
+	await get_tree().create_timer(1.0).timeout
+	HUD.update_info_display("turn",turn_counter,current_player_turn+1)
 	Map.receive_end_turn(current_player_turn)
 	_check_for_camp_spots()
 	Map.Camps.continue_all_camps(current_player_turn)
@@ -205,11 +213,10 @@ func _find_bones(bones : int) -> void:
 
 func _score_new_building() -> void:
 	score_array[current_player_turn] +=1	
-	HUD.update_info_display("encamp", 0,0)
 	_send_score()
 
 func _sabotage_punishment() -> void:
-	var punishment = randi_range(0,4)
+	var punishment = randi_range(0,6)
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage", punishment, 0)
 	_send_score()
