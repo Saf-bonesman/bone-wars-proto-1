@@ -74,7 +74,6 @@ func spawn_digsite() -> void:
 		selected_camp_coordinates, _tile_type_here(Player.curr_pos))
 
 func destroy_digsite() -> void:
-	player_menu.queue_free()
 	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":
 		Camps.destroy_digsite(Player.curr_pos, current_player_turn)
 
@@ -85,14 +84,18 @@ func spawn_camp() -> void:
 	player_location_array_dict.get(current_player_turn).append(camp_coordinates)
 	Camps.new_camp(current_player_turn, camp_coordinates)
 
-func load_menu() -> void:
+func load_menu(acts_menu : Array[String]) -> void:
 	var player_coords = Player.curr_pos
 	player_menu = PLAYER_MENU.instantiate()
-	if player_coords.x < 4:
+	player_menu.setup(acts_menu)
+	if player_coords.x < board_width/2:
 		player_menu.position = Vector2i(3 * tile_height + tile_height, 0)
 	else:
 		player_menu.position = Vector2i(0, 0)
 	add_child(player_menu)
+
+func exit_menu() -> void:
+	player_menu.queue_free()
 
 func _on_game_turn_end(turn) -> void:
 	current_player_turn = turn

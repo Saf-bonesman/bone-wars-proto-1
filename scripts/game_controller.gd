@@ -54,8 +54,6 @@ func _on_broadcast_action(action_type : String) -> void:
 			_spawn_digsite()
 		"sabotage":
 			_do_sabotage()
-		"menu":
-			_load_menu()
 
 func _check_for_camp_spots() -> void:
 	Map.undraw_range()
@@ -91,38 +89,38 @@ func _select_camp_for_action_and_open_menu() -> void:
 		actions_for_menu.append("Sabotage")
 	if !available_actions.get("Dig").is_empty():
 		actions_for_menu.append("Dig")
-	actions_for_menu.append("Back")
 	actions_for_menu.append("Pass")
+	actions_for_menu.append("Back")
 	print(actions_for_menu)
 	## TODO Make this load the menu with the options above ^^^
-	_load_menu()	
 	Map.Player.current_state = Map.Player.player_state.MENUING
-	# open menu here with the options in this array
+	_load_menu(actions_for_menu) # open menu here with the options in this array
 
 func _spawn_digsite() -> void:
 	var selected_space = Map.Player.curr_pos
 	if (available_actions.get("Dig").has(selected_space)):
 		Map.spawn_digsite()
 		_clear_available_actions()
-		_return_to_camp_selection()
+		_exit_menu()
 
 func _do_sabotage() -> void:
 	var selected_space = Map.Player.curr_pos
 	if (available_actions.get("Sabotage").has(selected_space)):
 		Map.destroy_digsite()
 		_clear_available_actions()
-		_return_to_camp_selection()
+		_exit_menu()
 
 func _return_to_camp_selection() -> void:
 	## TODO function to check if there are any selectable camps
 	Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
 
-## TODO Implement this 
+# Unloads player menu instance
 func _exit_menu() -> void:
-	pass
+	Map.exit_menu()
+	_return_to_camp_selection()
 
-func _load_menu() -> void:
-	Map.load_menu()
+func _load_menu(acts_menu : Array[String]) -> void:
+	Map.load_menu(acts_menu)
 
 func end_turn() -> void:
 	if current_player_turn >= player_count:
