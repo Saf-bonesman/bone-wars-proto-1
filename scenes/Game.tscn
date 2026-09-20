@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c6k836ejmockf" path="res://scripts/game_controller.gd" id="1_cpr0p"]
 [ext_resource type="PackedScene" uid="uid://5a8tictfyrl5" path="res://scenes/HUD.tscn" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://djtdvklxw2yey" path="res://scenes/Map.tscn" id="3_s0nni"]
+[ext_resource type="Script" uid="uid://bgjdc0nt7qsfv" path="res://scripts/enemy_ai.gd" id="4_78awf"]
 
 [node name="Game" type="Node2D" unique_id=1720362518]
 script = ExtResource("1_cpr0p")
@@ -11,3 +12,10 @@ script = ExtResource("1_cpr0p")
 
 [node name="Map" parent="." unique_id=2024162226 instance=ExtResource("3_s0nni")]
 position = Vector2(16, 0)
+
+[node name="EnemyAI" type="Node" parent="." unique_id=717069408 node_paths=PackedStringArray("Game", "Map")]
+script = ExtResource("4_78awf")
+Game = NodePath("..")
+Map = NodePath("../Map")
+
+[connection signal="eai_done" from="EnemyAI" to="." method="_on_enemy_ai_eai_done"]

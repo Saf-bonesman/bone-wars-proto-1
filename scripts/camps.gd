@@ -21,7 +21,7 @@ var player_structure_locations : Dictionary = {}
 var digsite_holder : Dictionary = {}
 
 func continue_all_camps(player : int):
-	print(digsite_holder)
+	#print(digsite_holder)
 	for digsite in digsite_holder.values():
 		if !is_instance_valid(digsite):
 			continue
@@ -79,6 +79,7 @@ func _on_digsite_animation_complete(loc : Vector2i) -> void:
 
 func _on_dig_complete(camp : Vector2i, digsite : Vector2i) -> void:
 	player_structure_locations.get(camp).digging = false
+	player_structure_locations.get(digsite).type = "dugsite"
 	refresh_done.emit()
 	_on_digsite_animation_complete(digsite)
 

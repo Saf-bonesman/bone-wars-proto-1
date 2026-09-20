@@ -77,14 +77,13 @@ func spawn_digsite(selected_space : Vector2i, camp_space : Vector2i) -> void:
 		Camps.instantiate_digsite(current_player_turn, selected_space, \
 		camp_space, _tile_type_here(Player.curr_pos))
 
-func destroy_digsite() -> void:
-	if (Camps.get_struct_at_location(Player.curr_pos)) == "digsite":
-		Camps.destroy_digsite(Player.curr_pos, current_player_turn)
+func destroy_digsite(coord : Vector2i) -> void:
+	if (Camps.get_struct_at_location(coord)) == "digsite":
+		Camps.destroy_digsite(coord, current_player_turn)
 
-func spawn_camp() -> void:
-	if (Camps.get_struct_at_location(Player.curr_pos)) != "empty":
+func spawn_camp(camp_coordinates) -> void:
+	if (Camps.get_struct_at_location(camp_coordinates)) != "empty":
 		return
-	var camp_coordinates = Player.curr_pos
 	player_location_array_dict.get(current_player_turn).append(camp_coordinates)
 	Camps.new_camp(current_player_turn, camp_coordinates)
 
@@ -141,5 +140,5 @@ func _on_camps_spawn_hole(coord : Vector2i) -> void:
 
 func _on_camps_spawn_camp(camp_type : String, coord : Vector2i) -> void:
 	board_dict[coord] = board_node.create_tile(camp_type)
-	print("spawn camp ", camp_type)
+	#print("spawn camp ", camp_type)
 	board_node.redraw_board(board_dict)
