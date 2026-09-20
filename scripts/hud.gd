@@ -6,6 +6,12 @@ extends Control
 @onready var player2_label : Label = $PlayerDisplay2/PlayerNumber
 @onready var info_disp : Label = $InfoDisplay
 
+var intro_snippet : Array[String] = ["Get paleontologing!", "Bones is power", \
+"Industrial evolution", "Count your raptors\n before they hatch"]
+
+var sab_snippet : Array[String] = ["Probably just teeth.", "Break 'em to make 'em!", \
+"Amateur saboteur~", "Paleollateral damage"]
+
 func init_player_displays() -> void:
 	player1_label.text = "P1"
 	player2_label.text = "P2"
@@ -16,20 +22,29 @@ func update_info_display(type : String, num : int, player : int) -> void:
 	var text_to_update : String = ""
 	match type:
 		"bones":
-			text_to_update = "P" + str(player) + " got " + str(num) + " bones!"
+			text_to_update = "Player " + str(player) + "\n Dug up " + str(num) + " bones"
 		"sabotage":
-			if (num == 0):
-				text_to_update = "sneaky!!"
-			elif num == 4:
-				text_to_update = "exposed!!"
-			else:
-				text_to_update = "sabotage!"
+			match num:
+				0:
+					text_to_update = "Sneaky devil."+str(num)+"\n REP lost"
+				6:
+					text_to_update = "You're exposed!"+str(num)+"\n REP lost"
+				_:
+					var random_text: String = sab_snippet.pick_random()
+					text_to_update = random_text+"\n REP lost"
+		"start":
+			var random_text: String = intro_snippet.pick_random()
+			text_to_update = random_text
 		"turn":
-			text_to_update = "P"+str(player)+"'s turn"
-		"encamp":
-			text_to_update = "new camp"
+			match num:
+				9:
+					text_to_update = "Player "+str(player)+"\nFinal turn!"
+				_:
+					text_to_update = "Player "+str(player)+", turn "+str(num)+"\nPlace new camp"
+		"camping":
+			text_to_update = "Player "+str(player)+"\nSelect camp to action"
 		"gameend":
-			text_to_update = "P"+str(player)+" wins!\nAny button to restart"
+			text_to_update = "P"+str(player)+" wins!\nPress space encamp anew"
 	info_disp.text = text_to_update
 
 ## refactor this later, or don't
