@@ -62,6 +62,7 @@ func _check_for_camp_spots() -> void:
 	var available_camp_spots = Map.available_camp_spots()
 	if available_camp_spots.is_empty():
 		_no_available_spots_to_camp()
+		return
 	Map.display_encamp_range()
 	Map.Player.current_state = Map.Player.player_state.SPAWN_NEW_CAMP
 
@@ -76,6 +77,7 @@ func _no_available_spots_to_camp() -> void:
 	Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
 
 func _set_last_selected_camp() -> void:
+	## TODO only run this if the spot is a camp
 	last_selected_camp = Map.Player.curr_pos
 	available_actions = Map.available_actions(last_selected_camp)
 
@@ -83,6 +85,7 @@ func _clear_available_actions() -> void:
 	available_actions.clear()
 
 func _select_camp_for_action_and_open_menu() -> void:
+	## TODO only run this if the spot is a camp
 	var actions_for_menu : Array[String]
 	if !available_actions.get("Sabotage").is_empty():
 		actions_for_menu.append("Sabotage")
