@@ -88,6 +88,7 @@ func load_menu(acts_menu : Array[String]) -> void:
 	var player_coords = Player.curr_pos
 	player_menu = PLAYER_MENU.instantiate()
 	player_menu.setup(acts_menu)
+	player_menu.broadcast_menu_action.connect(get_parent()._on_broadcast_action)
 	if player_coords.x < board_width/2:
 		player_menu.position = Vector2i(3 * tile_height + tile_height, 0)
 	else:
