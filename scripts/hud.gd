@@ -10,7 +10,7 @@ var intro_snippet : Array[String] = ["Get paleontologing!", "Bones is power", \
 "Industrial evolution", "Count your raptors\n before they hatch"]
 
 var sab_snippet : Array[String] = ["Probably just teeth.", "Break 'em to make 'em!", \
-"Amateur saboteur~", "Paleollateral damage"]
+"Amateur saboteur", "Paleollateral damage"]
 
 func init_player_displays() -> void:
 	player1_label.text = "P1"
@@ -18,33 +18,42 @@ func init_player_displays() -> void:
 	player1_score.text = "00"
 	player2_score.text = "00"
 
-func update_info_display(type : String, num : int, player : int) -> void:
+func update_info_display(type : String, turn : int, player : int, num : int) -> void:
+	var player_snippet : String = "Player "+str(player)+", turn "+str(turn)
 	var text_to_update : String = ""
 	match type:
 		"bones":
-			text_to_update = "Player " + str(player) + "\n Dug up " + str(num) + " bones"
+			text_to_update = player_snippet+"\nDug up " + str(num) + " bones"
 		"sabotage":
 			match num:
 				0:
-					text_to_update = "Sneaky devil."+str(num)+"\n REP lost"
-				6:
-					text_to_update = "You're exposed!"+str(num)+"\n REP lost"
+					text_to_update = "Sneaky devil.\n"+str(num)+" REP lost"
+				4:
+					text_to_update = "You're exposed!\n"+str(num)+" REP lost"
 				_:
 					var random_text: String = sab_snippet.pick_random()
-					text_to_update = random_text+"\n REP lost"
+					text_to_update = random_text+"\n"+str(num)+" REP lost"
 		"start":
 			var random_text: String = intro_snippet.pick_random()
 			text_to_update = random_text
 		"turn":
 			match num:
 				9:
-					text_to_update = "Player "+str(player)+"\nFinal turn!"
+					text_to_update = player_snippet+"\nLast turn!"
 				_:
-					text_to_update = "Player "+str(player)+", turn "+str(num)+"\nPlace new camp"
+					text_to_update = player_snippet+"\nPlace new camp"
 		"camping":
-			text_to_update = "Player "+str(player)+"\nSelect camp to action"
+			match num:
+				1:
+					text_to_update = player_snippet+"\n1 camp to action"
+				_:
+					text_to_update = player_snippet+"\n"+str(num)+" camps to action"
+		"dig":
+			text_to_update = player_snippet+"\nPick dig site"
+		"dig":
+			text_to_update = player_snippet+"\nChoose site to sabotage"
 		"gameend":
-			text_to_update = "P"+str(player)+" wins!\nPress space encamp anew"
+			text_to_update = "PLAYER "+str(player)+" WINS!\nSpace to restart"
 	info_disp.text = text_to_update
 
 ## refactor this later, or don't
