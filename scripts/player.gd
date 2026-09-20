@@ -9,14 +9,14 @@ var player_menu
 @export var cursor_sprite : AnimatedSprite2D
 
 enum player_state {
-	ENCAMP,
-	CAMP_SELECTION,
+	SPAWN_NEW_CAMP,
+	SELECT_CAMP_FOR_ACTION,
 	MENUING,
 	ACTION_SABOTAGE,
 	ACTION_DIG
 }
 
-var current_state = player_state.ENCAMP
+var current_state = player_state.SPAWN_NEW_CAMP
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,35 +31,29 @@ func limit_pos() -> void:
 	
 # Movin' the cursor
 func _input(_event) -> void:
+	#print(current_state)
 	match current_state:
-		player_state.ENCAMP:
+		player_state.SPAWN_NEW_CAMP:
 			if Input.is_action_pressed("action_a"):
-				print("encamp")
-				broadcast_action.emit("encamp")
-				current_state = player_state.CAMP_SELECTION
-		player_state.CAMP_SELECTION:
+				broadcast_action.emit("spawn_new_camp")
+		player_state.SELECT_CAMP_FOR_ACTION:
 			if Input.is_action_pressed("action_a"):
-				print("choose camp")
-				current_state = player_state.MENUING
-				broadcast_action.emit("menu")
+				broadcast_action.emit("select_camp_for_action")
 		player_state.MENUING:
-			#move_timer.set_paused(true)
-			if Input.is_action_pressed("action_a"):
-				print("choose menu option")
-				current_state = player_state.ACTION_SABOTAGE
-				broadcast_action.emit("destroy")
+			# inputs while menuing are handled by menu
+			if Input.is_action_pressed("action_b"):
+				broadcast_action.emit("exit_menu")
 		player_state.ACTION_SABOTAGE:
-			#move_timer.set_paused(false)
 			if Input.is_action_pressed("action_a"):
-				print("big esplostion")
-				current_state = player_state.ACTION_DIG
-				broadcast_action.emit("dig")
+				broadcast_action.emit("sabotage")
+			if Input.is_action_pressed("action_b"):
+				broadcast_action.emit("return_to_menu")
 		player_state.ACTION_DIG:
 			if Input.is_action_pressed("action_a"):
-				print("diggy diggy hole")
-				current_state = player_state.ENCAMP
-				broadcast_action.emit("choose_camp_loc")
-				
+				broadcast_action.emit("dig")
+			if Input.is_action_pressed("action_b"):
+				broadcast_action.emit("return_to_menu")
+
 # repeat timer
 func _on_move_timer_timeout() -> void:
 	match current_state:

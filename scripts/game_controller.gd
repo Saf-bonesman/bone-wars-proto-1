@@ -5,23 +5,23 @@ extends Node2D
 var score_array : Array[int] = [0, 0, 0, 0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
-
-
-
+var last_selected_camp : Vector2i = Vector2i(0,0)
+var available_actions : Dictionary
 ## test
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("debug_middlemoues"):
-		_restart_game()
-	if Input.is_action_just_pressed("debug_rightmouse"):
-		end_turn()
-	if Input.is_action_just_pressed("debug_key_1"):
-		Map.display_range(1, Map.Player.curr_pos)
-	if Input.is_action_just_pressed("debug_key_2"):
-		Map.display_range(2, Map.Player.curr_pos)
-	if Input.is_action_just_pressed("debug_key_3"):
-		Map.display_range(3, Map.Player.curr_pos)
-	if Input.is_action_just_pressed("debug_key_4"):
-		Map.undraw_range()
+	pass
+	#if Input.is_action_just_pressed("debug_middlemoues"):
+		#_restart_game()
+	#if Input.is_action_just_pressed("debug_rightmouse"):
+		#end_turn()
+	#if Input.is_action_just_pressed("debug_key_1"):
+		#Map.display_range(1, Map.Player.curr_pos)
+	#if Input.is_action_just_pressed("debug_key_2"):
+		#Map.display_range(2, Map.Player.curr_pos)
+	#if Input.is_action_just_pressed("debug_key_3"):
+		#Map.display_range(3, Map.Player.curr_pos)
+	#if Input.is_action_just_pressed("debug_key_4"):
+		#Map.undraw_range()
 	##if Input.is_action_just_pressed("action_left"):
 	##	_sabotage_punishment()
 	##if Input.is_action_just_pressed("action_up"):
@@ -32,42 +32,93 @@ func _ready() -> void:
 	Map.Player.broadcast_action.connect(_on_broadcast_action)
 
 func _restart_game() -> void:
-	score_array = [0, 0, 0, 0, 0]
+	#i made this size 4 in case we ever want 4 players but that aint happening this jam
+	score_array = [0, 0, 0, 0, 0] 
 	current_player_turn = 0
 	Map.board_init()
 	Map.display_encamp_range()
 	HUD.init_player_displays()
 
 func _on_broadcast_action(action_type : String) -> void:
-	print(action_type)
 	match action_type:
-		"choose_camp_loc":
-			_phase_encamp()
-		"encamp":
-			_phase_choose_camp()
-			print(Map.available_actions(Map.Player.curr_pos))
+		"spawn_new_camp":
+			_spawn_camp(Map.Player.curr_pos)
+		"select_camp_for_action":
+			_set_last_selected_camp()
+			_select_camp_for_action_and_open_menu()
+		"return_to_menu":
+			_select_camp_for_action_and_open_menu()
+		"exit_menu":
+			_exit_menu()
 		"dig":
 			_spawn_digsite()
-		"destroy":
-			_destroy_digsite()
+		"sabotage":
+			_do_sabotage()
 		"menu":
 			_load_menu()
 
-func _phase_encamp():
+func _check_for_camp_spots() -> void:
 	Map.undraw_range()
+	var available_camp_spots = Map.available_camp_spots()
+	if available_camp_spots.is_empty():
+		_no_available_spots_to_camp()
 	Map.display_encamp_range()
+	Map.Player.current_state = Map.Player.player_state.SPAWN_NEW_CAMP
 
-func _phase_choose_camp():
-	Map.undraw_range()
-	Map.spawn_camp()
+func _spawn_camp(selected_location : Vector2i) -> void:
+	var available_camp_spots = Map.available_camp_spots()
+	if available_camp_spots.has(selected_location):
+		Map.undraw_range()
+		Map.spawn_camp()
+		Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
 
-func _spawn_digsite():
-	Map.spawn_digsite()
+func _no_available_spots_to_camp() -> void:
+	Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
 
-func _destroy_digsite():
-	Map.destroy_digsite()
-	
-func _load_menu():
+func _set_last_selected_camp() -> void:
+	last_selected_camp = Map.Player.curr_pos
+	available_actions = Map.available_actions(last_selected_camp)
+
+func _clear_available_actions() -> void:
+	available_actions.clear()
+
+func _select_camp_for_action_and_open_menu() -> void:
+	var actions_for_menu : Array[String]
+	if !available_actions.get("Sabotage").is_empty():
+		actions_for_menu.append("Sabotage")
+	if !available_actions.get("Dig").is_empty():
+		actions_for_menu.append("Dig")
+	actions_for_menu.append("Back")
+	actions_for_menu.append("Pass")
+	print(actions_for_menu)
+	## TODO Make this load the menu with the options above ^^^
+	_load_menu()	
+	Map.Player.current_state = Map.Player.player_state.MENUING
+	# open menu here with the options in this array
+
+func _spawn_digsite() -> void:
+	var selected_space = Map.Player.curr_pos
+	if (available_actions.get("Dig").has(selected_space)):
+		Map.spawn_digsite()
+		_clear_available_actions()
+		_return_to_camp_selection()
+
+func _do_sabotage() -> void:
+	var selected_space = Map.Player.curr_pos
+	if (available_actions.get("Sabotage").has(selected_space)):
+		Map.destroy_digsite()
+		_clear_available_actions()
+		_return_to_camp_selection()
+
+func _return_to_camp_selection() -> void:
+	## TODO function to check if there are any selectable camps
+	Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
+
+## TODO Implement this 
+func _exit_menu() -> void:
+	pass
+
+func _load_menu() -> void:
 	Map.load_menu()
 
 func end_turn() -> void:
@@ -77,6 +128,7 @@ func end_turn() -> void:
 		current_player_turn += 1
 	HUD.update_info_display("turn",0,current_player_turn+1)
 	turn_end.emit(current_player_turn)
+	_check_for_camp_spots()
 
 func _send_score() -> void:
 	HUD.set_score_display(current_player_turn, score_array[current_player_turn])
