@@ -4,6 +4,7 @@ extends Node2D
 @onready var label : AnimatedSprite2D = $PlayerLabel
 @onready var bones : AnimatedSprite2D = $BonesLabel
 @onready var connectors : Node2D = $Connectors
+@onready var dig_noise : AudioStreamPlayback
 var dig_turn_counter = 2
 var dig_type = "wastes"
 var owning_player = 0
@@ -24,6 +25,7 @@ func _ready() -> void:
 			bones.frame = 1
 		"wastes":
 			bones.frame = 4
+	dig_noise.play(0.0)
 
 func continue_digsite() -> void:
 	dig_turn_counter -=1
@@ -31,6 +33,7 @@ func continue_digsite() -> void:
 		end_digsite(false)
 
 func end_digsite(destroy : bool) -> void:
+	dig_complete.emit(owning_camp)
 	if destroy:
 		queue_free()
 		return
@@ -66,3 +69,4 @@ func show_connector() -> void:
 	dig.visible = true
 
 signal dig_dug
+signal dig_complete
