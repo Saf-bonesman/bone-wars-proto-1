@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var HUD : Control = $HUD
 @onready var Map : Node2D = $Map
-var score_array : Array[int] = [0, 0, 0, 0, 0]
+var score_array : Array[int] = [0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
 var last_selected_camp : Vector2i = Vector2i(0,0)
@@ -41,16 +41,16 @@ func _ready() -> void:
 
 func _restart_game() -> void:
 	#i made this size 4 in case we ever want 4 players but that aint happening this jam
-	score_array = [0, 0, 0, 0, 0] 
+	score_array = [0, 0] 
 	turn_counter = 1
 	current_player_turn = 0
 	Map.board_init()
-	Map.display_encamp_range()
 	HUD.init_player_displays()
-	HUD.update_info_display("start",turn_counter,current_player_turn+1)
-	await get_tree().create_timer(1.0).timeout
-	HUD.update_info_display("turn",turn_counter,current_player_turn+1)
+	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	_reset_usable_camps()
+	await get_tree().create_timer(1.0).timeout
+	Map.display_encamp_range()
+	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 
 func _on_broadcast_action(action_type : String) -> void:
 	match action_type:
@@ -94,17 +94,19 @@ func _spawn_camp(selected_location : Vector2i) -> void:
 func _set_player_state_to_select_camp() -> void:
 		Map.undraw_range()
 		Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
-		HUD.update_info_display("camping",0,current_player_turn+1)
+		HUD.update_info_display("camping",turn_counter,current_player_turn+1,usable_camps.size())
 
 func _set_player_state_to_dig() -> void:
 	_exit_menu()
 	Map.display_range(1,last_selected_camp)
 	Map.Player.change_state(Map.Player.player_state.ACTION_DIG)
+	HUD.update_info_display("dig",turn_counter,current_player_turn+1,0)
 
 func _set_player_state_to_sabotage() -> void:
 	_exit_menu()
 	Map.display_range(3,last_selected_camp)	
 	Map.Player.change_state(Map.Player.player_state.ACTION_SABOTAGE)
+	HUD.update_info_display("sab",turn_counter,current_player_turn+1,0)
 
 func _no_available_spots_to_camp() -> void:
 	Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
@@ -126,6 +128,7 @@ func _set_camp_to_sleep() -> void:
 		end_turn()
 		return
 	Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
+	HUD.update_info_display("camping",turn_counter,current_player_turn+1,usable_camps.size())
 
 func _clear_available_actions() -> void:
 	available_actions["Sabotage"].clear()
@@ -162,6 +165,7 @@ func _do_sabotage() -> void:
 		_clear_available_actions()
 		Map.undraw_range()
 		_sabotage_punishment()
+		await get_tree().create_timer(2.0).timeout
 		_set_camp_to_sleep()
 
 func _return_to_camp_selection() -> void:
@@ -184,17 +188,16 @@ func end_turn() -> void:
 		turn_counter += 1
 	else:
 		current_player_turn += 1
-	if turn_counter >= 9:
+	if turn_counter > 10:
 		_finish_game()
-	HUD.update_info_display("start",turn_counter,current_player_turn+1)
-	await get_tree().create_timer(1.0).timeout
-	HUD.update_info_display("turn",turn_counter,current_player_turn+1)
+		return
+	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	Map.receive_end_turn(current_player_turn)
 	_check_for_camp_spots()
 	Map.Camps.continue_all_camps(current_player_turn)
 	_reset_usable_camps()
-	Map.display_encamp_range()
-	Map.Player.change_state(Map.Player.player_state.SPAWN_NEW_CAMP)
+	await get_tree().create_timer(1.0).timeout
+	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 
 func _on_refresh() -> void:
 	_reset_usable_camps()
@@ -208,23 +211,26 @@ func _send_score() -> void:
 
 func _find_bones(bones : int) -> void:
 	score_array[current_player_turn] += bones * 2
-	HUD.update_info_display("bones", bones, current_player_turn+1)
+	HUD.update_info_display("bones",turn_counter,current_player_turn+1,bones)
 	_send_score()
+	await get_tree().create_timer(2.0).timeout
+	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
+	
 
 func _score_new_building() -> void:
 	score_array[current_player_turn] +=1	
 	_send_score()
 
 func _sabotage_punishment() -> void:
-	var punishment = randi_range(0,6)
+	var punishment = randi_range(0,4)
 	score_array[current_player_turn] -= punishment
-	HUD.update_info_display("sabotage", punishment, 0)
+	HUD.update_info_display("sabotage",0,0,punishment)
 	_send_score()
 
 func _finish_game() -> void:
 	var winner : int
 	if score_array[0] > score_array[1]:
-		winner = 1
+		winner = 2
 	else:
-		winner = 0
-	HUD.update_info_display("gameend", score_array[winner], winner)
+		winner = 1
+	HUD.update_info_display("gameend",0,winner,score_array[winner])
