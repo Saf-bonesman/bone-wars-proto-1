@@ -143,7 +143,7 @@ func _select_camp_for_action_and_open_menu() -> void:
 		actions_for_menu.append("Dig")
 	actions_for_menu.append("Pass")
 	actions_for_menu.append("Back")
-	print(actions_for_menu)
+	#print(actions_for_menu)
 	Map.Player.change_state(Map.Player.player_state.MENUING)
 	_load_menu(actions_for_menu) # open menu here with the options in this array
 
@@ -205,7 +205,7 @@ func _on_refresh() -> void:
 
 func _reset_usable_camps() -> void:
 	usable_camps = Map.Camps.get_usable_camps(current_player_turn)
-	print(usable_camps)
+	#print(usable_camps)
 
 func _send_score() -> void:
 	HUD.set_score_display(current_player_turn, score_array[current_player_turn])

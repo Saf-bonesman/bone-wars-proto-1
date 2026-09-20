@@ -7,9 +7,10 @@ var my_available_camps : Array[Vector2i]
 
 func choose_next_camp_AI(my_available_camp_locations : Array[Vector2i]) -> void:
 	var next_camp = my_available_camp_locations.pick_random()
+	#print("enemy camp locations ", my_available_camp_locations)
 	Map.spawn_camp(next_camp)
 	Game._score_new_building()
-	print("enemy encamping at ", next_camp)
+	#print("enemy encamping at ", next_camp)
 	Game._score_new_building()
 
 func choose_next_move_AI(get_my_available_moves) -> void:
@@ -31,7 +32,7 @@ func choose_next_move_AI(get_my_available_moves) -> void:
 			move_loc = available_moves.get(chosen_move).pick_random()
 		_do_chosen_move(chosen_move, camp, move_loc)
 		my_available_camps.erase(camp)
-		await get_tree().create_timer(1).timeout
+		#await get_tree().create_timer(1).timeout
 	eai_done.emit()
 
 func _do_chosen_move(move : String, camp : Vector2i, space : Vector2i) -> void:

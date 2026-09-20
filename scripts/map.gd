@@ -140,5 +140,5 @@ func _on_camps_spawn_hole(coord : Vector2i) -> void:
 
 func _on_camps_spawn_camp(camp_type : String, coord : Vector2i) -> void:
 	board_dict[coord] = board_node.create_tile(camp_type)
-	print("spawn camp ", camp_type)
+	#print("spawn camp ", camp_type)
 	board_node.redraw_board(board_dict)
