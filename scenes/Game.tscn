@@ -11,5 +11,3 @@ script = ExtResource("1_cpr0p")
 
 [node name="Map" parent="." unique_id=2024162226 instance=ExtResource("3_s0nni")]
 position = Vector2(16, 0)
-
-[connection signal="turn_end" from="." to="Map" method="_on_game_turn_end"]
