@@ -235,10 +235,10 @@ func _sabotage_punishment() -> void:
 func _finish_game() -> void:
 	var winner : int
 	if score_array[0] > score_array[1]:
-		winner = 2
-	else:
 		winner = 1
-	HUD.update_info_display("gameend",0,winner,score_array[winner])
+	else:
+		winner = 2
+	HUD.update_info_display("gameend",0,winner,score_array[winner - 1])
 
 func _on_enemy_ai_eai_done() -> void:
 	Map.Player.my_turn = true
