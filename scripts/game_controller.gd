@@ -104,18 +104,17 @@ func _spawn_digsite() -> void:
 	if (available_actions.get("Dig").has(selected_space)):
 		Map.spawn_digsite()
 		_clear_available_actions()
-		_exit_menu()
 		usable_camps.erase(last_selected_camp)
-		_return_to_camp_selection()
+		_exit_menu()
 
 func _do_sabotage() -> void:
 	var selected_space = Map.Player.curr_pos
 	if (available_actions.get("Sabotage").has(selected_space)):
 		Map.destroy_digsite()
 		_clear_available_actions()
-		_exit_menu()
 		usable_camps.erase(last_selected_camp)
-		_return_to_camp_selection()
+		_exit_menu()
+		
 
 func _return_to_camp_selection() -> void:
 	if usable_camps.size() <= 0:
