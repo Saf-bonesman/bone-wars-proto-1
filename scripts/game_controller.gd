@@ -108,7 +108,7 @@ func _set_player_state_to_sabotage() -> void:
 	_exit_menu()
 	Map.display_range(3,last_selected_camp)	
 	Map.Player.change_state(Map.Player.player_state.ACTION_SABOTAGE)
-	HUD.update_info_display("sab",turn_counter,current_player_turn+1,0)
+	HUD.update_info_display("choose_sab",turn_counter,current_player_turn+1,0)
 
 func _no_available_spots_to_camp() -> void:
 	Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
@@ -247,5 +247,6 @@ func _on_enemy_ai_eai_done() -> void:
 func _enter_enemy_phase() -> void:
 	Map.undraw_range()
 	Enemy.choose_next_camp_AI(Map.available_camp_spots())
+	#await get_tree().create_timer(1.0).timeout
 	_reset_usable_camps()
 	Enemy.choose_next_move_AI(usable_camps)

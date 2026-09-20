@@ -21,7 +21,6 @@ Map = NodePath("../Map")
 cursor_sprite = NodePath("EnemyCursor")
 
 [node name="EnemyCursor" type="AnimatedSprite2D" parent="EnemyAI" unique_id=380309401]
-visible = false
 position = Vector2(136, 88)
 sprite_frames = ExtResource("5_s0nni")
 animation = &"evil"
