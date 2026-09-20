@@ -31,6 +31,16 @@ func get_struct_at_location(coord : Vector2i) -> String:
 		return player_structure_locations.get(coord).type
 	return "empty"
 
+func get_usable_camps(owning_player : int ) -> Array[Vector2i]:
+	var return_val : Array[Vector2i]
+	for structure in player_structure_locations:
+		if player_structure_locations.get(structure).type == "camp" \
+		&& player_structure_locations.get(structure).active == true && \
+		player_structure_locations.get(structure).digging == false && \
+		player_structure_locations.get(structure).owning_player == owning_player:
+			return_val.append(structure)
+	return return_val
+
 func destroy_digsite(coord : Vector2i, player : int) -> void:
 	if !player_structure_locations.has(coord) \
 	|| player_structure_locations.get(coord).type != "digsite" \
@@ -57,11 +67,14 @@ func sleep_camp(coord : Vector2i, player_turn : int) -> void:
 func refresh(player_turn : int) -> void:
 	for eepy in eepies.get_children():
 		if eepy.owning_player == player_turn:
+			player_structure_locations.get(eepy.coord).active = true
 			eepy.queue_free()
 
 func _on_digsite_animation_complete(loc : Vector2i) -> void:
-	print("spawn")
 	spawn_hole.emit(loc)
+
+func _on_dig_complete(camp : Vector2i) -> void:
+	player_structure_locations.get(camp).digging = false
 
 func instantiate_digsite(player : int, struct_coord : Vector2i, \
 camp_selected : Vector2i, bones_type : String) -> void:
@@ -71,6 +84,9 @@ camp_selected : Vector2i, bones_type : String) -> void:
 	dig.my_location = struct_coord
 	dig.owning_camp = camp_selected
 	dig.dig_type = bones_type
+	dig.dig_complete.connect(_on_dig_complete)
+	## TODO check this worked lol
+	dig.dig_dug.connect(get_parent().get_parent()._find_bones)
 	digsites.add_child(dig)
 	digsite_holder[struct_coord] = dig
 	var psti = PlayerStructureTypeInfo.new()
@@ -82,6 +98,7 @@ func new_camp(turn : int, coordinates: Vector2i, inactivate : bool = true):
 	_draw_new_struct("camp"+str(turn), coordinates)
 	var psti = PlayerStructureTypeInfo.new()
 	psti.type = "camp"
+	psti.owning_player = turn
 	player_structure_locations[coordinates] = psti
 	if inactivate:
 		sleep_camp(coordinates, turn)
