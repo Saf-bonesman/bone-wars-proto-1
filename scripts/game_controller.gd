@@ -7,6 +7,7 @@ var current_player_turn : int = 0
 @export var player_count : int = 1
 var last_selected_camp : Vector2i = Vector2i(0,0)
 var available_actions : Dictionary
+var usable_camps : Array[Vector2i]
 ## test
 func _unhandled_input(_event: InputEvent) -> void:
 	pass
@@ -38,6 +39,7 @@ func _restart_game() -> void:
 	Map.board_init()
 	Map.display_encamp_range()
 	HUD.init_player_displays()
+	_reset_usable_camps()
 
 func _on_broadcast_action(action_type : String) -> void:
 	match action_type:
@@ -83,7 +85,8 @@ func _clear_available_actions() -> void:
 	available_actions.clear()
 
 func _select_camp_for_action_and_open_menu() -> void:
-	## TODO only run this if the spot is a camp
+	if !usable_camps.has(last_selected_camp):
+		return
 	var actions_for_menu : Array[String]
 	if !available_actions.get("Sabotage").is_empty():
 		actions_for_menu.append("Sabotage")
@@ -102,6 +105,8 @@ func _spawn_digsite() -> void:
 		Map.spawn_digsite()
 		_clear_available_actions()
 		_exit_menu()
+		usable_camps.erase(last_selected_camp)
+		_return_to_camp_selection()
 
 func _do_sabotage() -> void:
 	var selected_space = Map.Player.curr_pos
@@ -109,9 +114,13 @@ func _do_sabotage() -> void:
 		Map.destroy_digsite()
 		_clear_available_actions()
 		_exit_menu()
+		usable_camps.erase(last_selected_camp)
+		_return_to_camp_selection()
 
 func _return_to_camp_selection() -> void:
-	## TODO function to check if there are any selectable camps
+	if usable_camps.size() <= 0:
+		end_turn()
+		return
 	Map.Player.current_state = Map.Player.player_state.SELECT_CAMP_FOR_ACTION
 
 # Unloads player menu instance
@@ -130,6 +139,10 @@ func end_turn() -> void:
 	HUD.update_info_display("turn",0,current_player_turn+1)
 	turn_end.emit(current_player_turn)
 	_check_for_camp_spots()
+	_reset_usable_camps()
+
+func _reset_usable_camps() -> void:
+	usable_camps = Map.Camps.get_usable_camps(current_player_turn)
 
 func _send_score() -> void:
 	HUD.set_score_display(current_player_turn, score_array[current_player_turn])

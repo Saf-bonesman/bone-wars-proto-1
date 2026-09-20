@@ -31,6 +31,7 @@ func continue_digsite() -> void:
 		end_digsite(false)
 
 func end_digsite(destroy : bool) -> void:
+	dig_complete.emit(owning_camp)
 	if destroy:
 		queue_free()
 		return
@@ -66,3 +67,4 @@ func show_connector() -> void:
 	dig.visible = true
 
 signal dig_dug
+signal dig_complete
