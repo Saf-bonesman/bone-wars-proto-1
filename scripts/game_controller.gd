@@ -190,8 +190,8 @@ func end_turn() -> void:
 		turn_counter += 1
 	else:
 		current_player_turn += 1
-	if turn_counter > 10:
 		Map.Player.my_turn = false
+	if turn_counter > 10:
 		_finish_game()
 		return
 	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
