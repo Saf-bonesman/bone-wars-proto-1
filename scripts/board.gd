@@ -45,7 +45,9 @@ class Tile:
 		"meadow" = [Vector2i(3,0), Vector2i(4,0), Vector2i(5,0), Vector2i(6,0)],
 		"wastes" = [Vector2i(3,1), Vector2i(4,1), Vector2i(5,1), Vector2i(6,1)],
 		"hole" = [Vector2i(3,3),Vector2i(4,3),Vector2i(3,4)],
-		"bones" = [Vector2i(3,2), Vector2i(4,2), Vector2i(5,2), Vector2i(6,2), Vector2i(7,2)]
+		"bones" = [Vector2i(3,2), Vector2i(4,2), Vector2i(5,2), Vector2i(6,2), Vector2i(7,2)],
+		"camp0" = [Vector2i(1,0)],
+		"camp1" = [Vector2i(1,1)]
 	}
 	var loc : Marker2D
 	var tile_type : String = "wastes"
@@ -58,4 +60,3 @@ class Tile:
 		var rando = starting_tiles[randi() % starting_tiles.size()]
 		tile_type = rando
 		type_id = terrainDict.get(tile_type).pick_random()
-	

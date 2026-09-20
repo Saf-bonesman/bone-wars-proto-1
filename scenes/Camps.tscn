@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://dg410gpfwwu8y"]
 
 [ext_resource type="Script" uid="uid://dfkt7y7oavgrs" path="res://scripts/camps.gd" id="1_ct76l"]
-[ext_resource type="TileSet" uid="uid://d1f5d525bqpqx" path="res://assets/resources/tilesets/terraintileset.tres" id="2_37xnl"]
+[ext_resource type="AudioStream" uid="uid://mckdwiq5pnn4" path="res://assets/Sounds/encamp_tingting.wav" id="2_37xnl"]
 
 [node name="Camps" type="Node2D" unique_id=1464024325]
 script = ExtResource("1_ct76l")
-
-[node name="PlayerStructureTiles" type="TileMapLayer" parent="." unique_id=589632294]
-tile_set = ExtResource("2_37xnl")
 
 [node name="Dugsites" type="Node2D" parent="." unique_id=1399315254]
 
 [node name="Digsites" type="Node2D" parent="." unique_id=688116645]
 
 [node name="Eeepies" type="Node2D" parent="." unique_id=1371793603]
+
+[node name="CampNoise" type="AudioStreamPlayer" parent="." unique_id=1761093038]
+stream = ExtResource("2_37xnl")
