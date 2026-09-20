@@ -79,6 +79,7 @@ func _on_digsite_animation_complete(loc : Vector2i) -> void:
 
 func _on_dig_complete(camp : Vector2i, digsite : Vector2i) -> void:
 	player_structure_locations.get(camp).digging = false
+	player_structure_locations.get(digsite).type = "dugsite"
 	refresh_done.emit()
 	_on_digsite_animation_complete(digsite)
 
