@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ihmm1kq4uxrd"
-path="res://.godot/imported/evil_child_laughter.wav-0772e9b30c709aaaa327e512b8043989.sample"
+path="res://.godot/imported/evil_child_laughter.wav-6f20d02940e368a875054c1401ccfdfe.sample"
 
 [deps]
 
-source_file="res://assets/sounds/evil_child_laughter.wav"
-dest_files=["res://.godot/imported/evil_child_laughter.wav-0772e9b30c709aaaa327e512b8043989.sample"]
+source_file="res://assets/Sounds/evil_child_laughter.wav"
+dest_files=["res://.godot/imported/evil_child_laughter.wav-6f20d02940e368a875054c1401ccfdfe.sample"]
 
 [params]
 
