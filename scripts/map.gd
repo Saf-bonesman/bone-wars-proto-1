@@ -42,7 +42,7 @@ func available_actions(selected_camp : Vector2i) -> Dictionary:
 	var avail_range_sab = _get_display_range(3, selected_camp_start)
 	for sab_option in avail_range_sab:
 		if Camps.get_struct_at_location(sab_option) == "digsite" \
-		&& Camps.player_structure_locations.get(sab_option).owning_player == current_player_turn:
+		&& Camps.player_structure_locations.get(sab_option).owning_player != current_player_turn:
 			return_val["Sabotage"].append(sab_option)
 	var avail_range_dig = _get_display_range(1, selected_camp_start)	
 	for dig_option in avail_range_dig:

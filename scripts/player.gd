@@ -30,7 +30,7 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _input(_event) -> void:
+func _unhandled_key_input(event: InputEvent) -> void:
 	#print(current_state)
 	match current_state:
 		player_state.SPAWN_NEW_CAMP:
