@@ -48,6 +48,15 @@ func available_actions(selected_camp : Vector2i) -> Dictionary:
 			return_val["Dig"].append(dig_option)
 	return return_val
 
+func available_camp_spots() -> Array[Vector2i]:
+	var return_val : Array[Vector2i]
+	var avail_range = _get_display_range(2, player_location_array_dict.get(current_player_turn))
+	for camp_option in avail_range:
+		if Camps.get_struct_at_location(camp_option) == "empty":
+			return_val.append(camp_option)
+	return return_val
+
+
 func display_encamp_range() -> void:
 	var avail_range = _get_display_range(2, player_location_array_dict.get(current_player_turn))
 	board_node.draw_range(avail_range, board_dict)
