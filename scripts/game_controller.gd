@@ -3,7 +3,7 @@ extends Node2D
 @onready var HUD : Control = $HUD
 @onready var Map : Node2D = $Map
 @onready var Enemy : Node = $EnemyAI
-var score_array : Array[int] = [0, 0, 0, 0, 0]
+var score_array : Array[int] = [0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
 var last_selected_camp : Vector2i = Vector2i(0,0)
@@ -192,7 +192,6 @@ func end_turn() -> void:
 		current_player_turn += 1
 	if turn_counter > 10:
 		Map.Player.my_turn = false
-	if turn_counter >= 9:
 		_finish_game()
 		return
 	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
@@ -202,7 +201,6 @@ func end_turn() -> void:
 	_reset_usable_camps()
 	await get_tree().create_timer(1.0).timeout
 	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
-	Map.Player.change_state(Map.Player.player_state.SPAWN_NEW_CAMP)
 	if (current_player_turn == 1):
 		_enter_enemy_phase()
 
@@ -241,8 +239,6 @@ func _finish_game() -> void:
 	else:
 		winner = 1
 	HUD.update_info_display("gameend",0,winner,score_array[winner])
-		winner = 0
-	HUD.update_info_display("gameend", score_array[winner], winner)
 
 func _on_enemy_ai_eai_done() -> void:
 	Map.Player.my_turn = true
