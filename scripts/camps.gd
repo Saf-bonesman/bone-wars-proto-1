@@ -21,7 +21,10 @@ var player_structure_locations : Dictionary = {}
 var digsite_holder : Dictionary = {}
 
 func continue_all_camps(player : int):
+	print(digsite_holder)
 	for digsite in digsite_holder.values():
+		if !is_instance_valid(digsite):
+			continue
 		if digsite.owning_player == player:
 			digsite.continue_digsite()
 
@@ -49,6 +52,7 @@ func destroy_digsite(coord : Vector2i, player : int) -> void:
 	psti.type = "dugsite"
 	player_structure_locations[coord] = psti
 	digsite_holder.get(coord).end_digsite(true)
+	digsite_holder.erase(coord)
 	var dug : Node2D = dugsite_scene.instantiate()
 	dug.position = coord * Vector2i(16,16)
 	dug.digsite_animation_complete.connect(_on_digsite_animation_complete)
@@ -73,8 +77,10 @@ func refresh(player_turn : int) -> void:
 func _on_digsite_animation_complete(loc : Vector2i) -> void:
 	spawn_hole.emit(loc)
 
-func _on_dig_complete(camp : Vector2i) -> void:
+func _on_dig_complete(camp : Vector2i, digsite : Vector2i) -> void:
 	player_structure_locations.get(camp).digging = false
+	refresh_done.emit()
+	_on_digsite_animation_complete(digsite)
 
 func instantiate_digsite(player : int, struct_coord : Vector2i, \
 camp_selected : Vector2i, bones_type : String) -> void:

@@ -10,10 +10,15 @@ var available_actions : Dictionary
 var usable_camps : Array[Vector2i]
 var turn_counter : int = 1
 ### test
-#func _unhandled_input(_event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	#pass
-	#if Input.is_action_just_pressed("debug_middlemoues"):
-		#_restart_game()
+	if Input.is_action_just_pressed("debug_middlemoues"):
+		print(Map.Player.current_state)
+		print(current_player_turn)
+		print(usable_camps)
+		print(last_selected_camp)
+		print(available_actions.get("Dig"))
+		print(available_actions.get("Sabotage"))
 	#if Input.is_action_just_pressed("debug_rightmouse"):
 		#end_turn()
 	#if Input.is_action_just_pressed("debug_key_1"):
@@ -32,6 +37,7 @@ var turn_counter : int = 1
 func _ready() -> void:
 	_restart_game()
 	Map.Player.broadcast_action.connect(_on_broadcast_action)
+	Map.Camps.refresh_done.connect(_on_refresh)
 
 func _restart_game() -> void:
 	#i made this size 4 in case we ever want 4 players but that aint happening this jam
@@ -113,6 +119,8 @@ func _set_camp_to_sleep() -> void:
 	Map.Camps.sleep_camp(last_selected_camp, current_player_turn)
 	if usable_camps.is_empty():
 		end_turn()
+		return
+	Map.Player.change_state(Map.Player.player_state.SELECT_CAMP_FOR_ACTION)
 
 func _clear_available_actions() -> void:
 	available_actions["Sabotage"].clear()
@@ -138,7 +146,7 @@ func _spawn_digsite() -> void:
 		return
 	if (available_actions.get("Dig").has(selected_space)):
 		Map.spawn_digsite(selected_space, last_selected_camp)
-		_clear_available_actions()
+		#_clear_available_actions()
 		Map.undraw_range()
 		_set_camp_to_sleep()
 
@@ -146,7 +154,7 @@ func _do_sabotage() -> void:
 	var selected_space = Map.Player.curr_pos
 	if (available_actions.get("Sabotage").has(selected_space)):
 		Map.destroy_digsite()
-		_clear_available_actions()
+		#_clear_available_actions()
 		Map.undraw_range()
 		_set_camp_to_sleep()
 
@@ -179,6 +187,9 @@ func end_turn() -> void:
 	_reset_usable_camps()
 	Map.display_encamp_range()
 	Map.Player.change_state(Map.Player.player_state.SPAWN_NEW_CAMP)
+
+func _on_refresh() -> void:
+	_reset_usable_camps()
 
 func _reset_usable_camps() -> void:
 	usable_camps = Map.Camps.get_usable_camps(current_player_turn)

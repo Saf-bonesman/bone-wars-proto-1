@@ -38,7 +38,8 @@ func available_actions(selected_camp : Vector2i) -> Dictionary:
 		"Sabotage" : s,
 		"Dig" : d
 	}
-	var selected_camp_start : Array[Vector2i] = [selected_camp]
+	var selected_camp_start : Array[Vector2i]
+	selected_camp_start.append(selected_camp)
 	var avail_range_sab = _get_display_range(3, selected_camp_start)
 	for sab_option in avail_range_sab:
 		if Camps.get_struct_at_location(sab_option) == "digsite" \
@@ -60,11 +61,12 @@ func available_camp_spots() -> Array[Vector2i]:
 
 
 func display_encamp_range() -> void:
-	var avail_range = _get_display_range(2, player_location_array_dict.get(current_player_turn))
+	var avail_range : Array[Vector2i] = _get_display_range(2, player_location_array_dict.get(current_player_turn))
 	board_node.draw_range(avail_range, board_dict)
 
 func display_range(r : int, p : Vector2i) -> void:
-	var avail_range = _get_display_range(r, [p])
+	var p_arr : Array[Vector2i] = [p]
+	var avail_range = _get_display_range(r, p_arr)
 	board_node.draw_range(avail_range, board_dict)
 
 func undraw_range() -> void:
@@ -122,11 +124,11 @@ func _get_display_range(walkdist : int, start : Array[Vector2i]) -> Array[Vector
 			if !movement_range.has(next) \
 			&& _is_in_bounds(next):
 				movement_range.append(next)
-	movement_range.append(start)
+	#movement_range.append(start as Array[Vector2i])
 	return _get_display_range(walkdist - 1, movement_range)
 
 func _is_in_bounds(point : Vector2i) -> bool:
-	if point.x > board_width || point.x < 0 || point.y > board_height || point.y < 0:
+	if point.x >= board_width || point.x < 0 || point.y >= board_height || point.y < 0:
 		return false
 	return true
 
