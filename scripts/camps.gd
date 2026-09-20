@@ -20,6 +20,11 @@ var eepy_scene : PackedScene = load("res://scenes/eepy_indicator.tscn")
 var player_structure_locations : Dictionary = {}
 var digsite_holder : Dictionary = {}
 
+func continue_all_camps(player : int):
+	for digsite in digsite_holder.values():
+		if digsite.owning_player == player:
+			digsite.continue_digsite()
+
 func get_struct_at_location(coord : Vector2i) -> String:
 	if player_structure_locations.has(coord):
 		return player_structure_locations.get(coord).type
@@ -81,7 +86,6 @@ camp_selected : Vector2i, bones_type : String) -> void:
 	player_structure_locations.get(camp_selected).digging = true
 	dig.dig_type = bones_type
 	dig.dig_complete.connect(_on_dig_complete)
-	## TODO check this worked lol
 	dig.dig_dug.connect(get_parent().get_parent()._find_bones)
 	digsites.add_child(dig)
 	digsite_holder[struct_coord] = dig

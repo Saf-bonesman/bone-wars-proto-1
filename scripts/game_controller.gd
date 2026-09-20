@@ -175,6 +175,7 @@ func end_turn() -> void:
 	HUD.update_info_display("turn",0,current_player_turn+1)
 	Map.receive_end_turn(current_player_turn)
 	_check_for_camp_spots()
+	Map.Camps.continue_all_camps(current_player_turn)
 	_reset_usable_camps()
 	Map.display_encamp_range()
 	Map.Player.change_state(Map.Player.player_state.SPAWN_NEW_CAMP)
@@ -209,5 +210,3 @@ func _finish_game() -> void:
 	else:
 		winner = 0
 	HUD.update_info_display("gameend", score_array[winner], winner)
-
-signal turn_end
