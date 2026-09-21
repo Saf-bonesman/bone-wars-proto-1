@@ -200,9 +200,10 @@ func end_turn() -> void:
 	Map.Camps.continue_all_camps(current_player_turn)
 	_reset_usable_camps()
 	await get_tree().create_timer(1.0).timeout
-	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 	if (current_player_turn == 1):
 		_enter_enemy_phase()
+	else:
+		HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 
 func _on_refresh() -> void:
 	_reset_usable_camps()
@@ -246,7 +247,7 @@ func _on_enemy_ai_eai_done() -> void:
 
 func _enter_enemy_phase() -> void:
 	Map.undraw_range()
+	HUD.update_info_display("enemy",turn_counter,current_player_turn+1,3)
 	Enemy.choose_next_camp_AI(Map.available_camp_spots())
-	#await get_tree().create_timer(1.0).timeout
 	_reset_usable_camps()
 	Enemy.choose_next_move_AI(usable_camps)

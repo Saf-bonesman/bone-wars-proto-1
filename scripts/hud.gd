@@ -7,9 +7,9 @@ extends Control
 @onready var info_disp : Label = $InfoDisplay
 
 var intro_snippet : Array[String] = ["Get paleontologing!", "Bones is power", \
-"Industrial evolution", "Count your raptors\n before they hatch"]
+"Industrial evolution.", "Count your raptors\n before they hatch"]
 
-var sab_snippet : Array[String] = ["Probably just teeth.", "Break 'em to make 'em!", \
+var sab_snippet : Array[String] = ["Probably just teeth.", "Break it to make it!", \
 "Amateur saboteur", "Paleollateral damage"]
 
 func init_player_displays() -> void:
@@ -39,9 +39,17 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 		"turn":
 			match num:
 				9:
-					text_to_update = player_snippet+"\nLast turn!"
+					text_to_update = player_snippet+"\nLast camp!"
 				_:
 					text_to_update = player_snippet+"\nPlace new camp"
+		"enemy":
+			match num:
+				3:
+					text_to_update = player_snippet+"\nThinking..."
+				2:
+					text_to_update = player_snippet+"\nThinking.."
+				1:
+					text_to_update = player_snippet+"\nThinking."
 		"camping":
 			match num:
 				1:
