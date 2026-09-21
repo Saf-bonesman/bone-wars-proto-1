@@ -94,18 +94,4 @@ func _handle_move() -> void:
 		curr_pos.x * tile_height + tile_height/2, 
 		curr_pos.y * tile_height + tile_height/2)
 
-#func set_state(text_act : String) -> void:
-	#match text_act:
-		#"Sabotage":
-			#current_state = player_state.ACTION_SABOTAGE
-		#"Dig":
-			#current_state = player_state.ACTION_DIG
-		#"Pass":
-			##disable camp?
-			#broadcast_action.emit("exit_menu")
-			#current_state = player_state.SELECT_CAMP_FOR_ACTION
-		#"Back":
-			#broadcast_action.emit("exit_menu")
-			#current_state = player_state.SELECT_CAMP_FOR_ACTION
-
 signal broadcast_action
