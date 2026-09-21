@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bhipjyjuxnvhj"
-path="res://.godot/imported/sad_times.wav-ce16bc2c46d07936ca78a76894aae7fb.sample"
+path="res://.godot/imported/sad_times.wav-b3fb2d8fdc3fe068a1993ead6d5da5fb.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sad_times.wav"
-dest_files=["res://.godot/imported/sad_times.wav-ce16bc2c46d07936ca78a76894aae7fb.sample"]
+source_file="res://assets/Sounds/sad_times.wav"
+dest_files=["res://.godot/imported/sad_times.wav-b3fb2d8fdc3fe068a1993ead6d5da5fb.sample"]
 
 [params]
 

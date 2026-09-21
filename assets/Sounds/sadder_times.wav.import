@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://clfoikidb6v45"
-path="res://.godot/imported/sadder_times.wav-ba1a8879fa660f4635d7f4f0493dbe10.sample"
+path="res://.godot/imported/sadder_times.wav-cee6a1b01c5b3349c0fd2d5fb36dff22.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sadder_times.wav"
-dest_files=["res://.godot/imported/sadder_times.wav-ba1a8879fa660f4635d7f4f0493dbe10.sample"]
+source_file="res://assets/Sounds/sadder_times.wav"
+dest_files=["res://.godot/imported/sadder_times.wav-cee6a1b01c5b3349c0fd2d5fb36dff22.sample"]
 
 [params]
 

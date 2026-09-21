@@ -35,11 +35,11 @@ func continue_digsite() -> void:
 		end_digsite(false)
 
 func end_digsite(destroy : bool) -> void:
-	dig_complete.emit(owning_camp, my_location)
 	if destroy:
+		dig_complete.emit(owning_camp, my_location)
 		queue_free()
 		return
-	var bone_num
+	var bone_num = 0
 	match dig_type:
 		"wastes":
 			bone_num = randi_range(0,1)
@@ -55,6 +55,7 @@ func end_digsite(destroy : bool) -> void:
 		_:
 			manybone_noise.play(0.0)
 	dig_dug.emit(bone_num)
+	dig_complete.emit(owning_camp, my_location)
 	queue_free()
 
 func show_connector() -> void:
