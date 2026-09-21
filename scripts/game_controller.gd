@@ -263,6 +263,7 @@ func _sabotage_punishment() -> void:
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage",0,current_player_turn+1,punishment)
 	_send_score()
+	#if score_array[current_player_turn]
 
 func _finish_game() -> void:
 	var winner : int
