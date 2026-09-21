@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djtdvklxw2yey" path="res://scenes/Map.tscn" id="3_s0nni"]
 [ext_resource type="Script" uid="uid://bgjdc0nt7qsfv" path="res://scripts/enemy_ai.gd" id="4_78awf"]
 [ext_resource type="SpriteFrames" uid="uid://fo1cln8l0p1e" path="res://assets/resources/spriteframes/animated_cursor.tres" id="5_s0nni"]
+[ext_resource type="Texture2D" uid="uid://sln0xxtmhcli" path="res://assets/ui/title_splash.png" id="6_aug50"]
 
 [node name="Game" type="Node2D" unique_id=1720362518]
 script = ExtResource("1_cpr0p")
@@ -26,5 +27,10 @@ visible = false
 position = Vector2(136, 88)
 sprite_frames = ExtResource("5_s0nni")
 animation = &"evil"
+
+[node name="Splash" type="Sprite2D" parent="." unique_id=1834980783]
+visible = false
+position = Vector2(80, 72)
+texture = ExtResource("6_aug50")
 
 [connection signal="eai_done" from="EnemyAI" to="." method="_on_enemy_ai_eai_done"]

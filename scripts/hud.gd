@@ -33,6 +33,8 @@ func init_player_displays() -> void:
 
 func update_info_display(type : String, turn : int, player : int, num : int) -> void:
 	var player_snippet : String = "Player "+str(player)+", turn "+str(turn)
+	if turn>9:
+		player_snippet = "P"+str(player)+", turn "+str(turn)
 	var text_to_update : String = ""
 	var emotion : String = "default"
 	var _player = player

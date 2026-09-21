@@ -3,6 +3,7 @@ extends Node2D
 @onready var HUD : Control = $HUD
 @onready var Map : Node2D = $Map
 @onready var Enemy : Node = $EnemyAI
+@onready var Splash : Sprite2D = $Splash
 var score_array : Array[int] = [0, 0]
 var current_player_turn : int = 0
 @export var player_count : int = 1
@@ -39,6 +40,9 @@ var game_state : String
 
 func _ready() -> void:
 	_restart_game()
+	Splash.set_visible(true)
+	await get_tree().create_timer(3.0).timeout
+	Splash.set_visible(false)
 	Map.Player.broadcast_action.connect(_on_broadcast_action)
 	Map.Camps.refresh_done.connect(_on_refresh)
 
@@ -259,6 +263,7 @@ func _sabotage_punishment() -> void:
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage",0,current_player_turn+1,punishment)
 	_send_score()
+	#if score_array[current_player_turn]
 
 func _finish_game() -> void:
 	var winner : int
