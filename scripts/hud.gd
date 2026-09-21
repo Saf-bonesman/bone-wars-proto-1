@@ -45,9 +45,11 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 					emotion = "winning"
 					text_to_update = "Sneaky devil.\n"+str(num)+" REP lost"
 				4:
-					emotion = "down"
+					emotion = "losing"
 					text_to_update = "You're exposed!\n"+str(num)+" REP lost"
 				_:
+					_player = 99
+					emotion = "down"
 					var random_text: String = sab_snippet.pick_random()
 					text_to_update = random_text+"\n"+str(num)+" REP lost"
 		"start":
@@ -78,7 +80,7 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 		"dig":
 			text_to_update = "Pick dig site"
 		"choose_sab":
-			_player = 99
+			emotion = "winning"
 			text_to_update = "Choose site\nto sabotage"
 		"gameend":
 			emotion = "winning"
