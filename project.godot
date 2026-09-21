@@ -22,8 +22,8 @@ window/size/viewport_height=144
 window/size/sharp_corners=true
 window/size/window_width_override=640
 window/size/window_height_override=576
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 
 [input]
