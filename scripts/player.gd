@@ -60,7 +60,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func change_state(state : player_state) -> void:
 	if !my_turn:
+		move_timer.set_paused(true)
+		cursor_sprite.set_visible(false)
 		return
+	cursor_sprite.set_visible(true)
 	current_state = state
 	if (state == player_state.MENUING):
 		move_timer.set_paused(true)

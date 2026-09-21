@@ -43,6 +43,7 @@ func get_usable_camps(owning_player : int ) -> Array[Vector2i]:
 			return_val.append(structure)
 	return return_val
 
+#digsite.holder functions not working, to be fixed
 func destroy_digsite(coord : Vector2i, player : int) -> void:
 	if !player_structure_locations.has(coord) \
 	|| player_structure_locations.get(coord).type != "digsite" \
