@@ -5,6 +5,19 @@ extends Control
 @onready var player1_label : Label = $PlayerDisplay/PlayerNumber
 @onready var player2_label : Label = $PlayerDisplay2/PlayerNumber
 @onready var info_disp : Label = $InfoDisplay
+@onready var square_info_disp : Label = $SquareInfoDisplay
+@onready var triangle_info_disp : Label = $TriInfoDisplay
+@onready var triangle_portrait : AnimatedSprite2D = $Triangle
+@onready var square_portrait : AnimatedSprite2D = $Square
+
+var primary_info_display : Label = info_disp
+
+const portrait_emotion : Dictionary = {
+	"default" : 0,
+	"down" : 1,
+	"losing" : 2,
+	"winning" : 3
+}
 
 var intro_snippet : Array[String] = ["Get paleontologing!", "Bones is power", \
 "Industrial evolution.", "Count your raptors\n before they hatch"]
@@ -21,14 +34,18 @@ func init_player_displays() -> void:
 func update_info_display(type : String, turn : int, player : int, num : int) -> void:
 	var player_snippet : String = "Player "+str(player)+", turn "+str(turn)
 	var text_to_update : String = ""
+	var emotion : String = "default"
+	var _player = player
 	match type:
 		"bones":
 			text_to_update = player_snippet+"\nDug up " + str(num) + " bones"
 		"sabotage":
 			match num:
 				0:
+					emotion = "winning"
 					text_to_update = "Sneaky devil.\n"+str(num)+" REP lost"
 				4:
+					emotion = "down"
 					text_to_update = "You're exposed!\n"+str(num)+" REP lost"
 				_:
 					var random_text: String = sab_snippet.pick_random()
@@ -36,6 +53,7 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 		"start":
 			var random_text: String = intro_snippet.pick_random()
 			text_to_update = random_text
+			_player = 99
 		"turn":
 			match num:
 				9:
@@ -51,20 +69,24 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 				1:
 					text_to_update = player_snippet+"\nThinking."
 		"camping":
+			_player = 99
 			match num:
 				1:
 					text_to_update = player_snippet+"\n1 camp to action"
 				_:
 					text_to_update = player_snippet+"\n"+str(num)+" camps to action"
 		"dig":
-			text_to_update = player_snippet+"\nPick dig site"
+			text_to_update = "Pick dig site"
 		"choose_sab":
-			text_to_update = player_snippet+"\nChoose site to bomb"
+			_player = 99
+			text_to_update = "Choose site\nto sabotage"
 		"gameend":
-			text_to_update = "PLAYER "+str(player)+" WINS!\nSpace to restart"
+			emotion = "winning"
+			text_to_update = "PLAYER "+str(player)+" WINS!\nSpace restarts"
 		"restart":
+			_player = 99
 			text_to_update = player_snippet+"\nSpace again restarts"
-	info_disp.text = text_to_update
+	display_text(text_to_update, _player, emotion)
 
 ## refactor this later, or don't
 func set_score_display( playerNumber : int, score : int ):
@@ -77,3 +99,29 @@ func set_score_display( playerNumber : int, score : int ):
 		player1_score.text = string_score
 	if playerNumber == 1:
 		player2_score.text = string_score
+
+func display_text(text_to_update : String, player_disp : int, emotion : String = "default"):
+	match player_disp:
+		2:
+			triangle_info_disp.text = text_to_update
+			triangle_portrait.visible = true
+			triangle_portrait.frame = portrait_emotion.get(emotion)
+			square_portrait.visible = false
+			info_disp.visible = false
+			square_info_disp.visible = false
+			triangle_info_disp.visible = true
+		1:
+			square_info_disp.text = text_to_update
+			triangle_portrait.visible = false
+			square_portrait.visible = true
+			square_portrait.frame = portrait_emotion.get(emotion)
+			info_disp.visible = false
+			triangle_info_disp.visible = false
+			square_info_disp.visible = true
+		99:
+			info_disp.text = text_to_update
+			square_portrait.visible = false
+			triangle_portrait.visible = false
+			info_disp.visible = true
+			triangle_info_disp.visible = false
+			square_info_disp.visible = false
