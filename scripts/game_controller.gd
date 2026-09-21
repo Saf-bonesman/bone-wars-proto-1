@@ -10,6 +10,7 @@ var last_selected_camp : Vector2i = Vector2i(0,0)
 var available_actions : Dictionary
 var usable_camps : Array[Vector2i]
 var turn_counter : int = 1
+var game_state : String
 
 ### test
 #func _unhandled_input(_event: InputEvent) -> void:
@@ -42,15 +43,15 @@ func _ready() -> void:
 	Map.Camps.refresh_done.connect(_on_refresh)
 
 func _restart_game() -> void:
-	#i made this size 4 in case we ever want 4 players but that aint happening this jam
-	score_array = [0, 0] 
+	game_state = "active"
+	score_array = [0, 0] #2 player scores
 	turn_counter = 1
 	current_player_turn = 0
 	Map.board_init()
 	HUD.init_player_displays()
 	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	_reset_usable_camps()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	Map.display_encamp_range()
 	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 
@@ -62,6 +63,7 @@ func _on_broadcast_action(action_type : String) -> void:
 			_set_last_selected_camp()
 			_select_camp_for_action_and_open_menu()
 		"return_to_menu":
+			Map.undraw_range()
 			_select_camp_for_action_and_open_menu()
 		"exit_menu":
 			_set_player_state_to_select_camp()
@@ -76,6 +78,27 @@ func _on_broadcast_action(action_type : String) -> void:
 			_do_sabotage()
 		"pass_camp":
 			_pass_camp()
+
+func _unhandled_input(event: InputEvent) -> void:
+	match game_state:
+		#"active":
+			#if event.is_action_pressed("action_start"):
+				##_restart_game()	
+				#HUD.update_info_display("restart",turn_counter,current_player_turn+1,0)
+				#game_state = "pause"
+				#print(game_state)
+				#return
+				## TODO display range?
+		#"pause":
+			#if event.is_action_pressed("action_start"):
+				#_restart_game()	
+				#print(game_state)
+			#else:
+				#game_state = "active"
+				#return
+		"end":
+			if event.is_action_pressed("action_start"):
+				_restart_game()	
 
 func _check_for_camp_spots() -> void:
 	Map.undraw_range()
@@ -167,7 +190,7 @@ func _do_sabotage() -> void:
 		_clear_available_actions()
 		Map.undraw_range()
 		_sabotage_punishment()
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		_set_camp_to_sleep()
 
 func _return_to_camp_selection() -> void:
@@ -199,7 +222,7 @@ func end_turn() -> void:
 	_check_for_camp_spots()
 	Map.Camps.continue_all_camps(current_player_turn)
 	_reset_usable_camps()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	if (current_player_turn == 1):
 		_enter_enemy_phase()
 	else:
@@ -219,7 +242,7 @@ func _find_bones(bones : int) -> void:
 	score_array[current_player_turn] += bones * 2
 	HUD.update_info_display("bones",turn_counter,current_player_turn+1,bones)
 	_send_score()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 	
 
@@ -240,6 +263,7 @@ func _finish_game() -> void:
 	else:
 		winner = 2
 	HUD.update_info_display("gameend",0,winner,score_array[winner - 1])
+	game_state = "end"
 
 func _on_enemy_ai_eai_done() -> void:
 	Map.Player.my_turn = true

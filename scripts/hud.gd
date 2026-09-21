@@ -62,6 +62,8 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 			text_to_update = player_snippet+"\nChoose site to sabotage"
 		"gameend":
 			text_to_update = "PLAYER "+str(player)+" WINS!\nSpace to restart"
+		"restart":
+			text_to_update = player_snippet+"\nSpace again restarts"
 	info_disp.text = text_to_update
 
 ## refactor this later, or don't
