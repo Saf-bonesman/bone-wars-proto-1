@@ -43,17 +43,19 @@ func _ready() -> void:
 	Map.Camps.refresh_done.connect(_on_refresh)
 
 func _restart_game() -> void:
+	Map.Player.my_turn = false
 	game_state = "active"
 	score_array = [0, 0] #2 player scores
 	turn_counter = 1
 	current_player_turn = 0
 	Map.board_init()
 	HUD.init_player_displays()
-	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	_reset_usable_camps()
 	Map.display_encamp_range()
+	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	await get_tree().create_timer(3.0).timeout
 	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
+	Map.Player.my_turn = true
 
 func _on_broadcast_action(action_type : String) -> void:
 	match action_type:
@@ -164,7 +166,7 @@ func _select_camp_for_action_and_open_menu() -> void:
 		return
 	var actions_for_menu : Array[String]
 	if !available_actions.get("Sabotage").is_empty():
-		actions_for_menu.append("Sabotage")
+		actions_for_menu.append("Bomb")
 	if !available_actions.get("Dig").is_empty():
 		actions_for_menu.append("Dig")
 	actions_for_menu.append("Pass")
@@ -217,13 +219,14 @@ func end_turn() -> void:
 	if turn_counter > 10:
 		_finish_game()
 		return
-	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	Map.receive_end_turn(current_player_turn)
-	_check_for_camp_spots()
+	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
+	await get_tree().create_timer(2.0).timeout
 	Map.Camps.continue_all_camps(current_player_turn)
+	await get_tree().create_timer(1.0).timeout
+	_check_for_camp_spots()
 	_reset_usable_camps()
-	await get_tree().create_timer(4.0).timeout
-	if (current_player_turn == 1):
+	if current_player_turn == 1:
 		_enter_enemy_phase()
 	else:
 		HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
@@ -242,10 +245,9 @@ func _find_bones(bones : int) -> void:
 	score_array[current_player_turn] += bones * 2
 	HUD.update_info_display("bones",turn_counter,current_player_turn+1,bones)
 	_send_score()
-	await get_tree().create_timer(3.0).timeout
-	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
+	#await get_tree().create_timer(3.0).timeout
+	#HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 	
-
 func _score_new_building() -> void:
 	score_array[current_player_turn] +=1	
 	_send_score()

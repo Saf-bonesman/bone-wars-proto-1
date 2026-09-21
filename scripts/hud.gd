@@ -59,7 +59,7 @@ func update_info_display(type : String, turn : int, player : int, num : int) -> 
 		"dig":
 			text_to_update = player_snippet+"\nPick dig site"
 		"choose_sab":
-			text_to_update = player_snippet+"\nChoose site to sabotage"
+			text_to_update = player_snippet+"\nChoose site to bomb"
 		"gameend":
 			text_to_update = "PLAYER "+str(player)+" WINS!\nSpace to restart"
 		"restart":
