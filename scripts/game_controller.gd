@@ -257,7 +257,7 @@ func _score_new_building() -> void:
 func _sabotage_punishment() -> void:
 	var punishment = randi_range(0,4)
 	score_array[current_player_turn] -= punishment
-	HUD.update_info_display("sabotage",0,0,punishment)
+	HUD.update_info_display("sabotage",0,current_player_turn+1,punishment)
 	_send_score()
 
 func _finish_game() -> void:
