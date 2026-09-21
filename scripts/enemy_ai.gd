@@ -8,14 +8,17 @@ var my_available_camps : Array[Vector2i]
 @export var cursor_sprite : AnimatedSprite2D
 
 func choose_next_camp_AI(my_available_camp_locations : Array[Vector2i]) -> void:
-	var next_camp = my_available_camp_locations.pick_random()
+	if (!my_available_camp_locations.is_empty()):
+		var next_camp = my_available_camp_locations.pick_random()
 	#print("enemy camp locations ", my_available_camp_locations)
-	Map.spawn_camp(next_camp)
+		Map.spawn_camp(next_camp)
 	#print("enemy encamping at ", next_camp)
-	Game._score_new_building()
+		Game._score_new_building()
+		cursor_sprite.position = next_camp * Vector2i(16,16) + Vector2i(24,8)
+	else:
+		cursor_sprite.position = Vector2i(7,5) * Vector2i(16,16) + Vector2i(24,8)
 	cursor_sprite.set_visible(true)
 	cursor_sprite.play("evil", .5, false)
-	cursor_sprite.position = next_camp * Vector2i(16,16) + Vector2i(24,8)
 
 func choose_next_move_AI(get_my_available_moves) -> void:
 	await get_tree().create_timer(1.0).timeout

@@ -56,7 +56,7 @@ func _button_pressed(act_button : Button):
 			broadcast_menu_action.emit("pass_camp")
 		"Back":
 			broadcast_menu_action.emit("exit_menu")
-		"Sabotage":
+		"Bomb":
 			broadcast_menu_action.emit("choose_sabotage")
 		"Dig":
 			broadcast_menu_action.emit("choose_dig")

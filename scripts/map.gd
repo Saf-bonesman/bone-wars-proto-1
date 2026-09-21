@@ -30,6 +30,9 @@ func board_init() -> void:
 	Camps.new_camp(0, Vector2i(0,0), false)
 	#initial p2 camp
 	Camps.new_camp(1, Vector2i(board_width-1,board_height-1), false)
+	Camps.refresh(0)
+	Camps.refresh(1)
+	undraw_range()
 
 func available_actions(selected_camp : Vector2i) -> Dictionary:
 	var s : Array[Vector2i]
