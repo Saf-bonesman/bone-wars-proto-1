@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://crpj6wto3u0ar" path="res://assets/tiles/linker_squarecamp.png" id="9_dkh0w"]
 [ext_resource type="Texture2D" uid="uid://brsfmhsj8y157" path="res://assets/tiles/linker_trianglecamp.png" id="10_48v5a"]
 [ext_resource type="AudioStream" uid="uid://xrkpf6emhqig" path="res://assets/sounds/dig_dig.wav" id="11_48v5a"]
+[ext_resource type="AudioStream" uid="uid://b8uf446avv3ym" path="res://assets/sounds/bone_get_onebone.wav" id="12_ejq6q"]
+[ext_resource type="AudioStream" uid="uid://ctblw158w3k8l" path="res://assets/sounds/bone_get_manybones.wav" id="13_npxv0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nt13d"]
 animations = [{
@@ -120,3 +122,9 @@ texture = SubResource("AtlasTexture_dkh0w")
 
 [node name="DigsiteNoise" type="AudioStreamPlayer" parent="." unique_id=1057118950]
 stream = ExtResource("11_48v5a")
+
+[node name="OneBoneNoise" type="AudioStreamPlayer" parent="." unique_id=1577173529]
+stream = ExtResource("12_ejq6q")
+
+[node name="ManyBoneNoise" type="AudioStreamPlayer" parent="." unique_id=1623628580]
+stream = ExtResource("13_npxv0")

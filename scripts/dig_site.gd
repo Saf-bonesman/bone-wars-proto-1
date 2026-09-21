@@ -5,6 +5,8 @@ extends Node2D
 @onready var bones : AnimatedSprite2D = $BonesLabel
 @onready var connectors : Node2D = $Connectors
 @onready var dig_noise : AudioStreamPlayer = $DigsiteNoise
+@onready var onebone_noise : AudioStreamPlayer = $OneBoneNoise
+@onready var manybone_noise : AudioStreamPlayer = $ManyBoneNoise
 var dig_turn_counter = 2
 var dig_type = "wastes"
 var owning_player = 0
@@ -37,13 +39,22 @@ func end_digsite(destroy : bool) -> void:
 	if destroy:
 		queue_free()
 		return
+	var bone_num
 	match dig_type:
 		"wastes":
-			dig_dug.emit(randi_range(0,1))
+			bone_num = randi_range(0,1)
 		"meadow":
-			dig_dug.emit(randi_range(1,2))
+			bone_num = randi_range(1,2)
 		"bones":
-			dig_dug.emit(randi_range(2,3))
+			bone_num = randi_range(2,3)
+	match bone_num:
+		0:
+			pass # TODO zeronoise
+		1:
+			onebone_noise.play(0.0)
+		_:
+			manybone_noise.play(0.0)
+	dig_dug.emit(bone_num)
 	queue_free()
 
 func show_connector() -> void:

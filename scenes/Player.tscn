@@ -7,10 +7,5 @@
 script = ExtResource("1_3li8b")
 cursor_sprite = NodePath("Cursor")
 
-[node name="MoveTimer" type="Timer" parent="." unique_id=1033107008]
-wait_time = 0.06
-
 [node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=689992505]
 sprite_frames = ExtResource("4_mdl7e")
-
-[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
