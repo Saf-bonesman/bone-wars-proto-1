@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://d1f5d525bqpqx"]
 
 [ext_resource type="Texture2D" uid="uid://dmuc7yaomgmu2" path="res://assets/tiles/overlay.png" id="2_mnaw6"]
+[ext_resource type="Texture2D" uid="uid://deoh3jlafbdhv" path="res://assets/tiles/overlay_2.png" id="3_8up6l"]
 [ext_resource type="Texture2D" uid="uid://doyddfn03gto0" path="res://assets/tiles/overlay_small.png" id="3_mnaw6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cmpqc"]
@@ -40,7 +41,12 @@ texture = ExtResource("2_mnaw6")
 texture = ExtResource("3_mnaw6")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cf8ch"]
+texture = ExtResource("3_8up6l")
+0:0/0 = 0
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_66b1s")
 sources/1 = SubResource("TileSetAtlasSource_8up6l")
 sources/2 = SubResource("TileSetAtlasSource_hmqql")
+sources/3 = SubResource("TileSetAtlasSource_cf8ch")
