@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bltyvguoffipj"
-path="res://.godot/imported/bone_get_onebone.wav-f84762d5b7547e02ccf49d550ffd1602.sample"
+uid="uid://b8uf446avv3ym"
+path="res://.godot/imported/bone_get_onebone.wav-2d8bad9c4d171c0c43ab2c133b70322d.sample"
 
 [deps]
 
-source_file="res://assets/Sounds/bone_get_onebone.wav"
-dest_files=["res://.godot/imported/bone_get_onebone.wav-f84762d5b7547e02ccf49d550ffd1602.sample"]
+source_file="res://assets/sounds/bone_get_onebone.wav"
+dest_files=["res://.godot/imported/bone_get_onebone.wav-2d8bad9c4d171c0c43ab2c133b70322d.sample"]
 
 [params]
 

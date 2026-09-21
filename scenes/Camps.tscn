@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dg410gpfwwu8y"]
 
 [ext_resource type="Script" uid="uid://dfkt7y7oavgrs" path="res://scripts/camps.gd" id="1_ct76l"]
-[ext_resource type="AudioStream" uid="uid://mckdwiq5pnn4" path="res://assets/Sounds/encamp_tingting.wav" id="2_37xnl"]
+[ext_resource type="AudioStream" uid="uid://bamnfgkgi3vgt" path="res://assets/sounds/encamp_tingting.wav" id="2_37xnl"]
 
 [node name="Camps" type="Node2D" unique_id=1464024325]
 script = ExtResource("1_ct76l")

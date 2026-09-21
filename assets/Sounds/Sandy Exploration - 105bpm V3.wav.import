@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://domd4645bqlo2"
-path="res://.godot/imported/Sandy Exploration - 105bpm V3.wav-fb6ee91cc8e29770a43add025edb0dd4.sample"
+uid="uid://d07h3ygekvo6x"
+path="res://.godot/imported/Sandy Exploration - 105bpm V3.wav-7a00af1cebf387114172ac6f0be02de0.sample"
 
 [deps]
 
-source_file="res://assets/Sounds/Sandy Exploration - 105bpm V3.wav"
-dest_files=["res://.godot/imported/Sandy Exploration - 105bpm V3.wav-fb6ee91cc8e29770a43add025edb0dd4.sample"]
+source_file="res://assets/sounds/Sandy Exploration - 105bpm V3.wav"
+dest_files=["res://.godot/imported/Sandy Exploration - 105bpm V3.wav-7a00af1cebf387114172ac6f0be02de0.sample"]
 
 [params]
 

@@ -19,7 +19,7 @@ func draw_range(r : Array[Vector2i], board):
 	var local = board.duplicate(false)
 	view_range.clear()
 	for point in r:
-		local.erase(point)
+		local.erase(point) #might need to refactor? unsure
 	for cell in local:
 		view_range.set_cell(cell, 0, board.get(cell).type_id, 0)
 

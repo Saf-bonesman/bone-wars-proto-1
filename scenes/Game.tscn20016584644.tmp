@@ -14,15 +14,13 @@ script = ExtResource("1_cpr0p")
 [node name="Map" parent="." unique_id=2024162226 instance=ExtResource("3_s0nni")]
 position = Vector2(16, 0)
 
-[node name="EnemyAI" type="Node" parent="." unique_id=717069408 node_paths=PackedStringArray("Game", "Map", "HUD", "cursor_sprite")]
+[node name="EnemyAI" type="Node" parent="." unique_id=717069408 node_paths=PackedStringArray("Game", "Map", "cursor_sprite")]
 script = ExtResource("4_78awf")
 Game = NodePath("..")
 Map = NodePath("../Map")
-HUD = NodePath("../HUD")
 cursor_sprite = NodePath("EnemyCursor")
 
 [node name="EnemyCursor" type="AnimatedSprite2D" parent="EnemyAI" unique_id=380309401]
-visible = false
 position = Vector2(136, 88)
 sprite_frames = ExtResource("5_s0nni")
 animation = &"evil"
