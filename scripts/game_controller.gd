@@ -255,15 +255,17 @@ func _find_bones(bones : int) -> void:
 	#HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 	
 func _score_new_building() -> void:
-	score_array[current_player_turn] +=1	
+	score_array[current_player_turn] -=1	
 	_send_score()
+	if score_array[current_player_turn] < 0:
+		_finish_game()
 
 func _sabotage_punishment() -> void:
 	var punishment = randi_range(0,4)
 	score_array[current_player_turn] -= punishment
 	HUD.update_info_display("sabotage",0,current_player_turn+1,punishment)
 	_send_score()
-	#if score_array[current_player_turn]
+	
 
 func _finish_game() -> void:
 	var winner : int
