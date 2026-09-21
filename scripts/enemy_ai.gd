@@ -17,13 +17,14 @@ func choose_next_camp_AI(my_available_camp_locations : Array[Vector2i]) -> void:
 	Game._score_new_building()
 	cursor_sprite.set_visible(true)
 	cursor_sprite.play("evil", .5, false)
-	await get_tree().create_timer(1.0).timeout
 
 func choose_next_move_AI(get_my_available_moves) -> void:
+	print(get_my_available_moves)
 	my_available_camps = get_my_available_moves
-	for camp in my_available_camps:
+	while my_available_camps.size() > 0:
 		var chosen_move = "Pass"
 		var move_loc : Vector2i
+		var camp = my_available_camps.pop_front()
 		var available_moves : Dictionary = Map.available_actions(camp)
 		var has_sabotage : bool = !available_moves.get("Sabotage").is_empty()
 		var has_dig : bool = !available_moves.get("Dig").is_empty()
@@ -37,9 +38,9 @@ func choose_next_move_AI(get_my_available_moves) -> void:
 			chosen_move = "Sabotage"
 			move_loc = available_moves.get(chosen_move).pick_random()
 		cursor_sprite.position = camp * Vector2i(16,16) + Vector2i(24,8)
-		print(cursor_sprite.position)
+		#print(cursor_sprite.position)
 		_do_chosen_move(chosen_move, camp, move_loc)
-		my_available_camps.erase(camp)
+		#print(my_available_camps)
 		await get_tree().create_timer(1.0).timeout
 	cursor_sprite.set_visible(false)
 	eai_done.emit()
@@ -56,5 +57,4 @@ func _do_chosen_move(move : String, camp : Vector2i, space : Vector2i) -> void:
 			Map.spawn_digsite(space, camp)
 			Map.Camps.sleep_camp(camp, 1)
 			
-
 signal eai_done
