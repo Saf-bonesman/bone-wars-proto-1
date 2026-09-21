@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://doh3paw68435m"
-path="res://.godot/imported/camp_tingting_ver2.wav-dc948c1fec09fe9fad98d5d270ce184e.sample"
+path="res://.godot/imported/camp_tingting_ver2.wav-dfe4ebad8718871555e8f25055d94b0a.sample"
 
 [deps]
 
-source_file="res://assets/Sounds/camp_tingting_ver2.wav"
-dest_files=["res://.godot/imported/camp_tingting_ver2.wav-dc948c1fec09fe9fad98d5d270ce184e.sample"]
+source_file="res://assets/sounds/camp_tingting_ver2.wav"
+dest_files=["res://.godot/imported/camp_tingting_ver2.wav-dfe4ebad8718871555e8f25055d94b0a.sample"]
 
 [params]
 
