@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbdhrq4ubcb0f" path="res://scenes/PlayerDisplay.tscn" id="3_1etfg"]
 [ext_resource type="Texture2D" uid="uid://cdfgomf86ld8s" path="res://assets/ui/Textbox_border_64px.png" id="3_nysna"]
 [ext_resource type="Theme" uid="uid://crll6jfs1qhjx" path="res://assets/resources/themes/main_info_label.tres" id="4_7hsmw"]
-[ext_resource type="AudioStream" uid="uid://bflprf14bgaft" path="res://assets/Sounds/Sandy Exploration - 105bpm V3.mp3" id="6_f6qnu"]
+[ext_resource type="AudioStream" uid="uid://bflprf14bgaft" path="res://assets/sounds/Sandy Exploration - 105bpm V3.mp3" id="6_f6qnu"]
 [ext_resource type="Texture2D" uid="uid://dq1l6i34uuwu5" path="res://assets/portraits/square_default.png" id="7_467v5"]
 [ext_resource type="Texture2D" uid="uid://bgnskxo5tfmve" path="res://assets/portraits/square_down.png" id="8_natmc"]
 [ext_resource type="Texture2D" uid="uid://bh5dm3q8wrt30" path="res://assets/portraits/square_losing.png" id="9_p625d"]
