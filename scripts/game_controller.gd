@@ -100,7 +100,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				#return
 		"end":
 			if event.is_action_pressed("action_start"):
-				_restart_game()	
+				get_tree().reload_current_scene()
+			else:
+				pass
 
 func _check_for_camp_spots() -> void:
 	Map.undraw_range()
