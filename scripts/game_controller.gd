@@ -51,8 +51,8 @@ func _restart_game() -> void:
 	HUD.init_player_displays()
 	HUD.update_info_display("start",turn_counter,current_player_turn+1,0)
 	_reset_usable_camps()
-	await get_tree().create_timer(4.0).timeout
 	Map.display_encamp_range()
+	await get_tree().create_timer(3.0).timeout
 	HUD.update_info_display("turn",turn_counter,current_player_turn+1,0)
 
 func _on_broadcast_action(action_type : String) -> void:
