@@ -31,7 +31,7 @@ func limit_pos() -> void:
 	curr_pos.y = clamp(curr_pos.y,0,h)
 	
 # Movin' the cursor
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_key_input(_event: InputEvent) -> void:
 	if !my_turn:
 		return
 	#print(current_state)
